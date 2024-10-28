@@ -43,7 +43,7 @@ const Hero = () => {
         <div className="relative rounded-2xl overflow-hidden border-4 border-brown-lighter/20 aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500">
           {/* Main image with responsive sizing */}
           <img
-            src="/src/assets/pfp.png"
+            src="/pfp.png"
             alt="Divine - Web3 Developer"
             className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
             onLoad={() => setImageLoaded(true)}
