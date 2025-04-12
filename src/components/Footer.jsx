@@ -1,100 +1,163 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Twitter, Linkedin, Mail, Heart } from 'lucide-react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Github, Twitter, Linkedin, Mail, Heart, Code, Sparkles, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [year] = useState(new Date().getFullYear());
   
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 20;
-      const y = (clientY / window.innerHeight - 0.5) * 20;
-      setMousePosition({ x, y });
-    };
+  const links = [
+    { title: 'Social', items: [
+      { name: 'Twitter', href: 'https://x.com/divine_js2' },
+      { name: 'GitHub', href: 'https://github.com' },
+      { name: 'LinkedIn', href: 'https://linkedin.com' }
+    ]},
+    { title: 'Resources', items: [
+      { name: 'Blog', href: '#' },
+      { name: 'Projects', href: '#projects' },
+      { name: 'Contact', href: '#contact' }
+    ]},
+    { title: 'Legal', items: [
+      { name: 'Privacy Policy', href: '#' },
+      { name: 'Terms of Service', href: '#' }
+    ]}
+  ];
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
-    <footer className="relative overflow-hidden py-12 px-8">
-      {/* Animated background with gradient and "video-like" effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brown-dark via-brown-medium to-brown-dark">
-        <div className="absolute inset-0 opacity-30">
-          {/* Animated shapes that create a video-like background effect */}
-          <div className="absolute w-full h-full animate-slide">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full opacity-20"
-                style={{
-                  width: `${Math.random() * 100 + 50}px`,
-                  height: `${Math.random() * 100 + 50}px`,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  background: `radial-gradient(circle at center, ${['#FFE6CC', '#E6C9A8', '#B89F8A'][Math.floor(Math.random() * 3)]}, transparent)`,
-                  animation: `float ${Math.random() * 10 + 5}s infinite linear`,
-                  animationDelay: `${Math.random() * 5}s`
-                }}
-              />
-            ))}
-          </div>
-        </div>
+    <footer className="relative mt-12 pt-16 pb-8 border-t border-[var(--color-border)]">
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10 bg-[var(--color-secondary-darker)] opacity-50"></div>
+      
+      {/* Animated particles */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-[var(--color-primary)]/10 blur-lg"
+            style={{
+              width: `${Math.random() * 200 + 50}px`,
+              height: `${Math.random() * 200 + 50}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [Math.random() * 50, Math.random() * -50, Math.random() * 50],
+              y: [Math.random() * 30, Math.random() * -30, Math.random() * 30],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 15 + Math.random() * 10,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </div>
 
-      {/* Main content with 3D effect */}
-      <div 
-        className="relative z-10 max-w-6xl mx-auto"
-        style={{
-          transform: `perspective(1000px) rotateX(${mousePosition.y * 0.1}deg) rotateY(${mousePosition.x * 0.1}deg)`
-        }}
-      >
-        {/* Main heading with glowing effect */}
-        <h2 className="text-4xl font-bold mb-8 relative">
-          <span className="animate-gradient bg-gradient-to-r from-brown-lightest via-brown-lighter to-brown-lightest bg-clip-text text-transparent bg-[length:200%_auto]">
-            Let's Create Something Amazing Together
-          </span>
-        </h2>
-
-        {/* Social links */}
-        <div className="flex justify-center gap-6 mb-8">
-          {[
-            { Icon: Github, href: "https://github.com", label: "GitHub" },
-            { Icon: Twitter, href: "https://x.com/divine_js2", label: "Twitter" },
-            { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-            { Icon: Mail, href: "mailto:raphealdivine2@gmail.com", label: "Email" }
-          ].map(({ Icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative p-2 hover:scale-110 transition-transform duration-300"
+      <div className="container-custom relative z-10">
+        {/* Footer top section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+          {/* Brand section */}
+          <div className="lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-brown-lighter to-brown-lightest rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-              <Icon 
-                size={24} 
-                className="text-brown-lightest transform group-hover:rotate-12 transition-transform duration-300"
-              />
-            </a>
-          ))}
-        </div>
-
-        {/* Footer text with animated border */}
-        <div className="relative p-6 rounded-xl overflow-hidden group">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-brown-lighter via-brown-lightest to-brown-lighter opacity-10 animate-gradient" />
+              <h3 className="text-2xl font-bold heading-gradient mb-4">PRAISE.ETH</h3>
+              <p className="text-[var(--color-text-secondary)] mb-6 max-w-md">
+                Building the decentralized future through Web3 technologies, smart contracts, and blockchain innovation.
+              </p>
+              
+              {/* Social links */}
+              <div className="flex gap-4">
+                {[
+                  { Icon: Github, href: "https://github.com", label: "GitHub", color: "hover:bg-gray-800" },
+                  { Icon: Twitter, href: "https://x.com/divine_js2", label: "Twitter", color: "hover:bg-blue-500" },
+                  { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "hover:bg-blue-700" },
+                  { Icon: Mail, href: "mailto:raphealdivine2@gmail.com", label: "Email", color: "hover:bg-red-500" }
+                ].map(({ Icon, href, label, color }) => (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-2.5 rounded-lg bg-[var(--color-secondary-lighter)] text-[var(--color-text-secondary)] ${color} hover:text-white transition-colors duration-300`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon size={20} />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
           </div>
           
-          <div className="relative z-10 flex flex-col items-center gap-4">
-            <p className="text-brown-lightest text-lg">
-              Made with <Heart className="inline-block text-red-500 animate-bounce" size={16} /> by Divine
-            </p>
-            <p className="text-brown-lighter">
-              &copy; {year} Web3 Developer Portfolio. All rights reserved.
-            </p>
+          {/* Quick links */}
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              {links.map((category, idx) => (
+                <motion.div 
+                  key={category.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                >
+                  <h4 className="text-lg font-semibold text-[var(--color-text)] mb-4">{category.title}</h4>
+                  <ul className="space-y-2">
+                    {category.items.map(item => (
+                      <li key={item.name}>
+                        <a 
+                          href={item.href}
+                          className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center gap-1"
+                        >
+                          <Sparkles className="h-3 w-3 opacity-0 group-hover:opacity-100" />
+                          {item.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
           </div>
+        </div>
+        
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent my-8"></div>
+        
+        {/* Footer bottom */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex items-center gap-2"
+          >
+            <Code size={18} className="text-[var(--color-primary)]" />
+            <p className="text-[var(--color-text-secondary)]">
+              Made with <Heart className="inline-block text-red-500 animate-pulse-soft" size={14} /> by Divine | &copy; {year} All rights reserved
+            </p>
+          </motion.div>
+          
+          <motion.button
+            onClick={scrollToTop}
+            className="p-3 rounded-full bg-[var(--color-secondary-lighter)] hover:bg-[var(--color-primary)] text-[var(--color-text-secondary)] hover:text-white transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={18} />
+          </motion.button>
         </div>
       </div>
     </footer>

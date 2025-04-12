@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Github, ExternalLink, Code, Terminal, Sparkles, Star, Globe, Cpu } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Github, ExternalLink, Code, Terminal, Sparkles, Globe, Cpu, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const x = (clientX / window.innerWidth - 0.5) * 20;
@@ -15,10 +14,8 @@ const Hero = () => {
       setMousePosition({ x, y });
     };
 
-    window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
@@ -28,19 +25,41 @@ const Hero = () => {
     'Smart Contracts', 'DeFi', 'NFTs', 'Blockchain'
   ];
 
-  // Enhanced image component with skeleton loading and effects
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  // Enhanced image component
   const EnhancedImage = () => {
     return (
-      <div className="relative w-full aspect-square lg:aspect-[4/5] max-w-2xl mx-auto">
+      <motion.div 
+        className="relative w-full aspect-square lg:aspect-[4/5] max-w-2xl mx-auto"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         {/* Skeleton loader */}
-        <div className={`absolute inset-0 bg-brown-medium/30 rounded-2xl animate-pulse ${imageLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`} />
+        <div className={`absolute inset-0 bg-[var(--color-secondary-lighter)] rounded-2xl animate-pulse-soft ${imageLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`} />
 
         {/* Decorative elements */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-brown-lighter via-brown-lightest to-brown-lighter rounded-3xl opacity-20 blur-lg animate-pulse" />
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-brown-lighter to-brown-lightest rounded-2xl opacity-20 animate-gradient" />
+        <div className="absolute -inset-4 bg-gradient-to-r from-[var(--color-primary-lighter)]/20 via-[var(--color-primary)]/20 to-[var(--color-primary-lighter)]/20 rounded-3xl opacity-30 blur-xl animate-pulse-soft" />
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--color-primary-lighter)]/40 to-[var(--color-primary)]/40 rounded-2xl opacity-30 animate-gradient" />
 
         {/* Image container */}
-        <div className="relative rounded-2xl overflow-hidden border-4 border-brown-lighter/20 aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500">
+        <div className="relative rounded-2xl overflow-hidden border-2 border-[var(--color-border)] aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500 shadow-xl">
           {/* Main image with responsive sizing */}
           <img
             src="/pfp.png"
@@ -50,18 +69,17 @@ const Hero = () => {
           />
 
           {/* Overlay effects */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brown-dark/40" />
-          <div className="absolute inset-0 bg-brown-dark/10 backdrop-blur-[1px] mix-blend-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-secondary-darker)]/70" />
           
           {/* Animated grain effect */}
           <div className="absolute inset-0 opacity-20 mix-blend-overlay animate-grain" 
-               style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.5"/%3E%3C/svg%3E")' }} />
+               style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E\")" }} />
 
           {/* Interactive hover overlay */}
-          <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-brown-dark/80 via-transparent to-transparent flex items-end justify-center p-6">
+          <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[var(--color-secondary-darker)]/80 via-transparent to-transparent flex items-end justify-center p-6">
             <div className="text-center transform translate-y-4 hover:translate-y-0 transition-transform duration-300">
-              <h3 className="text-brown-lightest text-2xl font-bold mb-2">Web3 Developer</h3>
-              <p className="text-brown-lighter">Building the Future of Web3</p>
+              <h3 className="text-[var(--color-text)] text-2xl font-bold mb-2">Web3 Developer</h3>
+              <p className="text-[var(--color-text-secondary)]">Building the Future of Web3</p>
             </div>
           </div>
         </div>
@@ -72,98 +90,158 @@ const Hero = () => {
           { icon: <Globe size={20} />, text: "Web3 Expert", color: "from-purple-500/80 to-purple-600/80" },
           { icon: <Cpu size={20} />, text: "Smart Contracts", color: "from-green-500/80 to-green-600/80" }
         ].map((badge, index) => (
-          <div
+          <motion.div
             key={index}
-            className={`absolute backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2 animate-float shadow-lg
+            className={`absolute backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg z-10
                       transform hover:scale-110 transition-transform duration-300
                       sm:text-sm md:text-base
                       ${index === 0 ? 'top-[15%] -left-[10%] lg:-left-[20%]' : 
                         index === 1 ? 'top-[45%] -right-[10%] lg:-right-[20%]' : 
                         'bottom-[15%] -left-[10%] lg:-left-[20%]'}`}
             style={{ 
-              animationDelay: `${index * 0.5}s`,
               background: `linear-gradient(to right, ${badge.color.split(' ')[0]}, ${badge.color.split(' ')[1]})`
             }}
+            initial={{ opacity: 0, x: index === 1 ? 50 : -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 + index * 0.2 }}
           >
             {badge.icon}
             <span className="text-white whitespace-nowrap font-medium">{badge.text}</span>
-          </div>
+          </motion.div>
         ))}
 
         {/* Decorative circles */}
         {[...Array(3)].map((_, i) => (
-          <div
+          <motion.div
             key={i}
-            className="absolute w-32 h-32 rounded-full animate-pulse"
+            className="absolute rounded-full"
             style={{
-              background: `radial-gradient(circle at center, ${['#FFE6CC33', '#E6C9A833', '#B89F8A33'][i]}, transparent)`,
-              top: `${25 * i}%`,
+              width: `${120 + i * 40}px`,
+              height: `${120 + i * 40}px`,
+              background: `radial-gradient(circle at center, ${
+                i === 0 ? 'var(--color-primary)/40' : 
+                i === 1 ? 'var(--color-accent)/30' : 'var(--color-primary-lighter)/20'
+              }, transparent)`,
+              top: `${15 + 25 * i}%`,
               right: `${-10 - 15 * i}%`,
-              animationDelay: `${i * 0.3}s`,
-              filter: 'blur(20px)'
+              filter: 'blur(30px)'
+            }}
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.6, 0.8, 0.6]
+            }}
+            transition={{
+              duration: 8,
+              ease: "easeInOut",
+              repeat: Infinity,
+              delay: i * 2
             }}
           />
         ))}
-      </div>
+      </motion.div>
     );
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-brown-dark to-brown-medium">
-      {/* Background elements remain the same */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full opacity-20 animate-float"
-            style={{
-              width: `${Math.random() * 100 + 50}px`,
-              height: `${Math.random() * 100 + 50}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: `radial-gradient(circle at center, ${['#FFE6CC', '#E6C9A8', '#B89F8A'][Math.floor(Math.random() * 3)]}, transparent)`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 10 + 10}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main content */}
-      <div className="relative container mx-auto px-4 sm:px-6 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left column content remains the same */}
-          <div 
+    <section className="relative min-h-screen py-16 flex items-center" id="about">
+      <div className="container-custom">
+        <motion.div 
+          className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Left column content */}
+          <motion.div 
             className="relative z-10 text-center lg:text-left"
             style={{
-              transform: `perspective(1000px) rotateX(${mousePosition.y * 0.05}deg) rotateY(${mousePosition.x * 0.05}deg)`
+              transform: `perspective(1000px) rotateX(${mousePosition.y * 0.03}deg) rotateY(${mousePosition.x * 0.03}deg)`
             }}
           >
-            {/* Previous content remains the same */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 text-brown-lightest mb-4 justify-center lg:justify-start">
-                <Terminal className="animate-bounce" size={24} />
-                <span className="text-xl">Hello World! I'm</span>
-              </div>
+            <div className="space-y-8">
+              <motion.div 
+                className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] justify-center lg:justify-start px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)]"
+                variants={itemVariants}
+              >
+                <Terminal className="text-[var(--color-primary)]" size={18} />
+                <span className="text-sm font-medium">Hello World! I'm</span>
+              </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                <span className="animate-gradient bg-gradient-to-r from-brown-lightest via-brown-lighter to-brown-lightest bg-clip-text text-transparent bg-[length:200%_auto]">
-                  Divine
-                </span>
-              </h1>
+              <motion.h1 
+                className="text-5xl sm:text-6xl lg:text-7xl font-bold space-y-2"
+                variants={itemVariants}
+              >
+                <span className="heading-gradient block">Divine</span>
+                <span className="text-[var(--color-text)] block text-4xl sm:text-5xl lg:text-6xl">Web3 Developer</span>
+              </motion.h1>
 
-              {/* Rest of the content remains the same */}
-              {/* ... */}
+              <motion.p 
+                className="text-[var(--color-text-secondary)] text-lg max-w-lg mx-auto lg:mx-0"
+                variants={itemVariants}
+              >
+                I build decentralized applications and smart contracts that power the future of Web3. Specialized in blockchain development, DeFi protocols, and NFT marketplaces.
+              </motion.p>
+
+              <motion.div 
+                className="flex flex-wrap gap-3 justify-center lg:justify-start"
+                variants={itemVariants}
+              >
+                {techStack.slice(0, 6).map((tech) => (
+                  <span 
+                    key={tech} 
+                    className="px-3 py-1.5 bg-[var(--color-secondary-lighter)]/70 border border-[var(--color-border)] rounded-md text-sm text-[var(--color-text-secondary)] flex items-center gap-1.5"
+                  >
+                    <Sparkles size={12} className="text-[var(--color-primary)]" />
+                    {tech}
+                  </span>
+                ))}
+              </motion.div>
+
+              <motion.div 
+                className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
+                variants={itemVariants}
+              >
+                <a href="#projects" className="btn-primary flex items-center gap-2 group w-full sm:w-auto">
+                  View Projects 
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+                
+                <a href="#contact" className="btn-secondary flex items-center gap-2 w-full sm:w-auto">
+                  Contact Me
+                </a>
+              </motion.div>
+
+              <motion.div 
+                className="flex items-center gap-4 justify-center lg:justify-start text-[var(--color-text-secondary)]"
+                variants={itemVariants}
+              >
+                <a 
+                  href="https://github.com/" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="hover:text-[var(--color-primary)] transition-colors p-2"
+                >
+                  <Github size={24} />
+                </a>
+                <a 
+                  href="https://example.com" 
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[var(--color-primary)] transition-colors p-2"
+                >
+                  <ExternalLink size={24} />
+                </a>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right column - Enhanced image */}
           <div className="relative z-10">
             <EnhancedImage />
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -2,8 +2,125 @@
 @tailwind components;
 @tailwind utilities;
 
-.dark {
-  --color-primary: #5c4d42;
-  --color-secondary: #221f1f;
-  --color-text: #f5f5f5;
+:root {
+  --color-primary: #6366f1;
+  --color-primary-darker: #4f46e5;
+  --color-primary-lighter: #a5b4fc;
+  --color-secondary: #111827;
+  --color-secondary-darker: #030712;
+  --color-secondary-lighter: #1f2937;
+  --color-accent: #f97316;
+  --color-text: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
+  --color-background: #0f172a;
+  --color-border: #374151;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gradient-to-b from-[var(--color-background)] to-[var(--color-secondary)] text-[var(--color-text)];
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  .heading-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] animate-gradient bg-[length:200%_auto];
+  }
+  
+  .card {
+    @apply bg-[var(--color-secondary-lighter)] rounded-xl border border-[var(--color-border)] shadow-xl backdrop-blur-sm;
+  }
+  
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] text-white hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-[var(--color-secondary-lighter)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-lg;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    animation: gradient 5s ease infinite;
+  }
+  
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+  
+  .animate-grain {
+    animation: grain 8s steps(10) infinite;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes grain {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  30% {
+    transform: translate(3%, -15%);
+  }
+  50% {
+    transform: translate(12%, 9%);
+  }
+  70% {
+    transform: translate(9%, 4%);
+  }
+  90% {
+    transform: translate(-1%, 7%);
+  }
 }
