@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code, Github, Mail, Terminal } from 'lucide-react';
+import { Menu, X, Code, Github, Mail, Terminal, Gamepad2 } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,8 +36,9 @@ const Header = () => {
   const navItems = [
     { name: 'About', icon: <Terminal size={16} /> },
     { name: 'Projects', icon: <Code size={16} /> },
+    { name: 'Game', icon: <Gamepad2 size={16} /> },
     { name: 'Contact', icon: <Mail size={16} /> },
-    { name: 'Github', icon: <Github size={16} />, external: true, href: 'https://github.com/' }
+    { name: 'Github', icon: <Github size={16} />, external: true, href: 'https://github.com/divine' }
   ];
 
   return (
