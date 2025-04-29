@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code2, Layers, ArrowRight, Terminal, Database, Coffee, Bot, Wallet } from 'lucide-react';
+import { Github, ExternalLink, Code2, Layers, ArrowRight, Terminal, Database, Coffee, Bot, Wallet, MessageCircle } from 'lucide-react';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -269,8 +269,8 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Add GitHub profile link */}
-        <div className="mt-16 text-center">
+        {/* Add GitHub profile link and Telegram Channel */}
+        <div className="mt-16 text-center flex flex-wrap justify-center gap-4">
           <motion.a 
             href="https://github.com/Dipraise1"
             target="_blank"
@@ -281,6 +281,17 @@ const Projects = () => {
           >
             <span className="font-medium">View More on GitHub</span>
             <Github className="w-5 h-5" />
+          </motion.a>
+          <motion.a 
+            href="https://t.me/+l_zN6tKLVUkwNDc5"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-text)] hover:bg-[var(--color-accent)]/20 transition-colors duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="font-medium">Join Telegram Channel</span>
+            <MessageCircle className="w-5 h-5" />
           </motion.a>
         </div>
       </div>
