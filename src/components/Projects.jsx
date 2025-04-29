@@ -268,6 +268,21 @@ const Projects = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Add GitHub profile link */}
+        <div className="mt-16 text-center">
+          <motion.a 
+            href="https://github.com/Dipraise1"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-secondary-lighter)] text-[var(--color-text)] hover:bg-[var(--color-secondary)] transition-colors duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="font-medium">View More on GitHub</span>
+            <Github className="w-5 h-5" />
+          </motion.a>
+        </div>
       </div>
     </section>
   );
