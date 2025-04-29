@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code2, Radio, Users, Layers, ArrowRight, Terminal, Database, Coffee, Book } from 'lucide-react';
+import { Github, ExternalLink, Code2, Layers, ArrowRight, Terminal, Database, Coffee, Bot, Wallet } from 'lucide-react';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -8,114 +8,86 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Solana NFT Marketplace',
+      title: 'Crypto Escrow DApp',
       description:
-        'A high-performance NFT marketplace built on Solana blockchain, featuring fast transactions and low gas fees. Supports collection creation, minting, and trading digital assets.',
-      icon: <Layers className="w-10 h-10 text-[var(--color-primary)]" />,
-      tech: ['Solana', 'Rust', 'React', 'Web3.js'],
-      githubLink: 'https://github.com/divine/solana-nft-marketplace',
-      liveLink: 'https://solana-nft.example.com',
+        'A decentralized escrow service supporting both Ethereum and Solana blockchains with a modern web interface. Features secure smart contract escrow, multi-party transaction security, and wallet integration.',
+      icon: <Database className="w-10 h-10 text-[var(--color-primary)]" />,
+      tech: ['TypeScript', 'Rust', 'Solidity', 'Next.js'],
+      githubLink: 'https://github.com/Dipraise1/escrowdapp',
+      liveLink: 'https://escrowdapp-cyan.vercel.app',
       category: 'blockchain',
       stats: {
-        txns: '50K+',
-        volume: '$1.5M+',
-        users: '10K+'
+        languages: 'TypeScript 48.9%, Rust 27.3%, Solidity 15.1%, JavaScript 7.7%'
       }
     },
     {
       id: 2,
-      title: 'DeFi Yield Aggregator',
+      title: 'Keeper Solidity',
       description:
-        'An automated yield farming protocol that optimizes returns across multiple DeFi platforms. Implements smart contract integration with various lending protocols.',
-      icon: <Database className="w-10 h-10 text-[var(--color-accent)]" />,
-      tech: ['Solidity', 'Ethers.js', 'React', 'TheGraph'],
-      githubLink: 'https://github.com/divine/defi-yield-aggregator',
-      liveLink: 'https://yield-aggregator.example.com',
+        'A blockchain-based keeper system built with Solidity for automated smart contract maintenance and execution. Ensures critical contract functions run reliably without manual intervention.',
+      icon: <Terminal className="w-10 h-10 text-[var(--color-accent)]" />,
+      tech: ['JavaScript', 'Solidity', 'Ethers.js', 'Web3'],
+      githubLink: 'https://github.com/Dipraise1/keepersolidity',
+      liveLink: '',
       category: 'blockchain',
       stats: {
-        TVL: '$3.2M+',
-        APY: '12-18%',
-        protocols: '8'
+        status: 'Active Development'
       }
     },
     {
       id: 3,
-      title: 'Decentralized Social Platform',
+      title: 'Meme Generator',
       description:
-        'A decentralized social media platform using blockchain for content ownership and monetization. Features include content creation, tipping, and social networking.',
-      icon: <Users className="w-10 h-10 text-[var(--color-primary-lighter)]" />,
-      tech: ['IPFS', 'Smart Contracts', 'Next.js', 'TypeScript'],
-      githubLink: 'https://github.com/divine/decentralized-social',
-      liveLink: 'https://decentral-social.example.com',
-      category: 'social',
+        'An interactive meme creation platform that allows users to create, customize, and share memes. Features image upload, text customization, and export functionality.',
+      icon: <Coffee className="w-10 h-10 text-[var(--color-primary-lighter)]" />,
+      tech: ['React', 'JavaScript', 'Canvas API', 'CSS'],
+      githubLink: 'https://github.com/Dipraise1/memegen',
+      liveLink: '',
+      category: 'web',
       stats: {
-        users: '8K+',
-        posts: '45K+',
-        engagement: '180K+'
+        features: 'Image Upload, Text Editing, Export'
       }
     },
     {
       id: 4,
-      title: 'ML-Powered Trading Bot',
+      title: 'Smile NFT Mint Page',
       description:
-        'A cryptocurrency trading bot that uses machine learning algorithms to predict price movements and execute trades. Features backtesting capabilities and risk management.',
-      icon: <Terminal className="w-10 h-10 text-green-500" />,
-      tech: ['Python', 'TensorFlow', 'Pandas', 'RESTful APIs'],
-      githubLink: 'https://github.com/divine/ml-trading-bot',
-      liveLink: 'https://ml-bot.example.com',
-      category: 'python',
+        'A modern NFT minting page interface for the Smile collection. Features wallet connection, minting functionality, and collection details display with an intuitive user experience.',
+      icon: <Layers className="w-10 h-10 text-green-500" />,
+      tech: ['JavaScript', 'CSS', 'Web3.js', 'React'],
+      githubLink: 'https://github.com/Dipraise1/smilemintpage',
+      liveLink: '',
+      category: 'blockchain',
       stats: {
-        accuracy: '72%',
-        profit: '15.3%',
-        pairs: '12'
+        languages: 'JavaScript 83.4%, CSS 16.6%'
       }
     },
     {
       id: 5,
-      title: 'Blockchain Data Analyzer',
+      title: 'Volume Bot Solana',
       description:
-        'A Python-based tool for analyzing blockchain data, transaction patterns, and wallet behaviors. Provides visual analytics and pattern recognition for market insights.',
-      icon: <Book className="w-10 h-10 text-blue-500" />,
-      tech: ['Python', 'Django', 'Matplotlib', 'Web3.py'],
-      githubLink: 'https://github.com/divine/blockchain-analyzer',
-      liveLink: 'https://blockchain-analyzer.example.com',
-      category: 'python',
+        'An automated trading bot for the Solana blockchain that monitors and responds to volume changes in real-time. Helps traders capitalize on market movements efficiently.',
+      icon: <Bot className="w-10 h-10 text-blue-500" />,
+      tech: ['JavaScript', 'Solana/Web3.js', 'Node.js', 'APIs'],
+      githubLink: 'https://github.com/Dipraise1/volumebotsolana',
+      liveLink: '',
+      category: 'blockchain',
       stats: {
-        chains: '5',
-        reports: '20+',
-        metrics: '35+'
+        features: 'Volume Tracking, Automated Trading, Market Analysis'
       }
     },
     {
       id: 6,
-      title: 'NFT Gaming Platform',
+      title: 'Wallet Messenger Galaxy',
       description:
-        'A C# game engine with blockchain integration for NFT-based gaming assets. Allows players to own, trade, and utilize blockchain assets within gaming environments.',
-      icon: <Coffee className="w-10 h-10 text-purple-500" />,
-      tech: ['C#', 'Unity', '.NET', 'Blockchain'],
-      githubLink: 'https://github.com/divine/nft-gaming-platform',
-      liveLink: 'https://nft-gaming.example.com',
-      category: 'csharp',
+        'A secure messaging platform that uses blockchain wallet authentication for identity verification. Enables encrypted communications between crypto wallet addresses.',
+      icon: <Wallet className="w-10 h-10 text-purple-500" />,
+      tech: ['TypeScript', 'Blockchain', 'Encryption', 'Web3'],
+      githubLink: 'https://github.com/Dipraise1/wallet-messenger-galaxy',
+      liveLink: '',
+      category: 'blockchain',
       stats: {
-        games: '3',
-        assets: '1K+',
-        players: '5K+'
-      }
-    },
-    {
-      id: 7,
-      title: 'Supply Chain Tracking System',
-      description:
-        'A C# supply chain management system that uses blockchain for transparent tracking of goods from manufacturer to customer. Includes real-time monitoring and reporting.',
-      icon: <Radio className="w-10 h-10 text-blue-400" />,
-      tech: ['C#', 'ASP.NET', 'SQL Server', 'Ethereum'],
-      githubLink: 'https://github.com/divine/blockchain-supply-chain',
-      liveLink: 'https://chain-track.example.com',
-      category: 'csharp',
-      stats: {
-        companies: '12',
-        shipments: '5K+',
-        efficiency: '+32%'
+        features: 'Wallet Authentication, Encrypted Messages, Cross-Chain Support'
       }
     }
   ];
@@ -127,9 +99,7 @@ const Projects = () => {
   const filters = [
     { id: 'all', label: 'All Projects' },
     { id: 'blockchain', label: 'Blockchain' },
-    { id: 'python', label: 'Python' },
-    { id: 'csharp', label: 'C#' },
-    { id: 'social', label: 'Social' }
+    { id: 'web', label: 'Web' }
   ];
 
   const containerVariants = {
@@ -176,7 +146,7 @@ const Projects = () => {
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Exploring the frontiers of technology through innovative applications across blockchain, Python, C#, and more.
+            Exploring the frontiers of technology through innovative applications across blockchain, web development, and AI.
           </p>
 
           {/* Filter tabs */}
@@ -230,15 +200,17 @@ const Projects = () => {
                     >
                       <Github className="w-5 h-5" />
                     </motion.a>
-                    <motion.a 
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      whileHover={{ y: -3, color: "var(--color-primary)" }}
-                      className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors duration-300"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </motion.a>
+                    {project.liveLink && (
+                      <motion.a 
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        whileHover={{ y: -3, color: "var(--color-primary)" }}
+                        className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors duration-300"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </motion.a>
+                    )}
                   </div>
                 </div>
 
@@ -250,14 +222,13 @@ const Projects = () => {
                   {project.description}
                 </p>
 
+                {/* Tech stack */}
                 <div className="mb-6">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, index) => (
-                      <span
+                      <span 
                         key={index}
-                        className="px-3 py-1 text-sm rounded-full 
-                                 bg-[var(--color-secondary-darker)]/80 text-[var(--color-text-secondary)] 
-                                 border border-[var(--color-border)]"
+                        className="text-xs px-3 py-1 rounded-full bg-[var(--color-secondary-darker)]/80 text-[var(--color-text-secondary)]"
                       >
                         {tech}
                       </span>
@@ -265,43 +236,38 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-[var(--color-border)]">
-                  {Object.entries(project.stats).map(([key, value], index) => (
-                    <div key={index} className="text-center">
-                      <div className="text-[var(--color-primary)] font-bold">{value}</div>
-                      <div className="text-[var(--color-text-muted)] text-sm capitalize">{key}</div>
-                    </div>
-                  ))}
+                {/* Stats */}
+                <div className="border-t border-[var(--color-border)] pt-4 mt-auto">
+                  <div className="text-xs text-[var(--color-text-secondary)]">
+                    {Object.entries(project.stats).map(([key, value]) => (
+                      <div key={key} className="flex items-center mt-2">
+                        <span className="capitalize">{key}:</span>
+                        <span className="ml-2 font-semibold text-[var(--color-text)]">{value}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                
-                <motion.a 
-                  href={project.liveLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6 pt-4 border-t border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] flex items-center justify-between transition-colors duration-300"
-                  whileHover={{ x: 5 }}
+
+                {/* Overlay for link */}
+                <motion.div 
+                  className="absolute bottom-4 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ x: -10, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
                 >
-                  <span className="font-medium">View Project</span>
-                  <ArrowRight size={16} />
-                </motion.a>
+                  <a 
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[var(--color-primary)] font-medium inline-flex items-center text-sm hover:underline"
+                  >
+                    View Project <ArrowRight className="w-4 h-4 ml-1" />
+                  </a>
+                </motion.div>
               </div>
             </motion.div>
           ))}
         </motion.div>
-        
-        <div className="mt-16 text-center">
-          <motion.a 
-            href="https://github.com/divine" 
-            target="_blank"
-            rel="noreferrer"
-            className="btn-secondary inline-flex items-center gap-2"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View More on GitHub
-            <Github size={18} />
-          </motion.a>
-        </div>
       </div>
     </section>
   );
