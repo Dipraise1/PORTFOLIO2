@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Twitter, Linkedin, Mail, Heart, Code, Sparkles, ArrowUp } from 'lucide-react';
+import { Github, Twitter, Mail, Heart, Code, Sparkles, ArrowUp, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const [year] = useState(new Date().getFullYear());
@@ -8,11 +8,11 @@ const Footer = () => {
   const links = [
     { title: 'Social', items: [
       { name: 'Twitter', href: 'https://x.com/divine_js2' },
-      { name: 'GitHub', href: 'https://github.com' },
-      { name: 'LinkedIn', href: 'https://linkedin.com' }
+      { name: 'GitHub', href: 'https://github.com/Dipraise1' },
+      { name: 'Telegram', href: 'https://t.me/+l_zN6tKLVUkwNDc5' }
     ]},
     { title: 'Resources', items: [
-      { name: 'Blog', href: '#' },
+      { name: 'Portfolio', href: 'https://deesporfolio.vercel.app' },
       { name: 'Projects', href: '#projects' },
       { name: 'Contact', href: '#contact' }
     ]},
@@ -78,9 +78,9 @@ const Footer = () => {
               {/* Social links */}
               <div className="flex gap-4">
                 {[
-                  { Icon: Github, href: "https://github.com", label: "GitHub", color: "hover:bg-gray-800" },
+                  { Icon: Github, href: "https://github.com/Dipraise1", label: "GitHub", color: "hover:bg-gray-800" },
                   { Icon: Twitter, href: "https://x.com/divine_js2", label: "Twitter", color: "hover:bg-blue-500" },
-                  { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "hover:bg-blue-700" },
+                  { Icon: MessageCircle, href: "https://t.me/+l_zN6tKLVUkwNDc5", label: "Telegram", color: "hover:bg-blue-400" },
                   { Icon: Mail, href: "mailto:raphealdivine2@gmail.com", label: "Email", color: "hover:bg-red-500" }
                 ].map(({ Icon, href, label, color }) => (
                   <motion.a

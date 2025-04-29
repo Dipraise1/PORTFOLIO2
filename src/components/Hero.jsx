@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code, Terminal, Sparkles, Globe, Cpu, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, Code, Terminal, Sparkles, Globe, Cpu, ArrowRight, MessageCircle } from 'lucide-react';
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -164,7 +164,7 @@ const Hero = () => {
                 variants={itemVariants}
               >
                 <Terminal className="text-[var(--color-primary)]" size={18} />
-                <span className="text-sm font-medium">Hello World! I'm</span>
+                <span className="text-sm font-medium">Hello World! I&apos;m</span>
               </motion.div>
 
               <motion.h1 
@@ -216,18 +216,29 @@ const Hero = () => {
                 variants={itemVariants}
               >
                 <a 
-                  href="https://github.com/" 
+                  href="https://github.com/Dipraise1" 
                   target="_blank" 
                   rel="noreferrer"
                   className="hover:text-[var(--color-primary)] transition-colors p-2"
+                  aria-label="GitHub Profile"
                 >
                   <Github size={24} />
                 </a>
                 <a 
-                  href="https://example.com" 
+                  href="https://t.me/+l_zN6tKLVUkwNDc5" 
                   target="_blank"
                   rel="noreferrer"
                   className="hover:text-[var(--color-primary)] transition-colors p-2"
+                  aria-label="Telegram Channel"
+                >
+                  <MessageCircle size={24} />
+                </a>
+                <a 
+                  href="https://deesporfolio.vercel.app" 
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[var(--color-primary)] transition-colors p-2"
+                  aria-label="Portfolio Website"
                 >
                   <ExternalLink size={24} />
                 </a>
