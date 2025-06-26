@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -59,6 +60,7 @@ const App = () => {
       </main>
       
       <Footer />
+      <Analytics />
     </div>
   );
 };
