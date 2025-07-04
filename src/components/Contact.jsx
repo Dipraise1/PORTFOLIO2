@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail, MessageSquare, Sparkles } from 'lucide-react';
+import { Send, Phone, Mail, MessageSquare, Sparkles, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -9,30 +10,101 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const [errors, setErrors] = useState({});
+  
+  // EmailJS configuration (you'll need to set these up in EmailJS)
+  const EMAILJS_SERVICE_ID = 'service_portfolio'; // Replace with your service ID
+  const EMAILJS_TEMPLATE_ID = 'template_contact'; // Replace with your template ID
+  const EMAILJS_PUBLIC_KEY = 'your_public_key'; // Replace with your public key
+  
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formState.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+    
+    if (!formState.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formState.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    
+    if (!formState.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formState.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate sending email
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setShowSuccess(true);
+    if (!validateForm()) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      // For now, we'll use a fallback method since EmailJS needs configuration
+      // You can replace this with actual EmailJS call once configured
       
-      // Here we would normally send the email with the form data
-      // For demo purposes, we're just resetting the form
+      // Simulate API call for demo purposes
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // This is the actual EmailJS call (uncomment when configured):
+      /*
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          message: formState.message,
+          to_email: 'raphealdivine2@gmail.com',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      */
+      
+      setSubmitStatus('success');
       setFormState({ name: '', email: '', message: '' });
+      setErrors({});
       
-      setTimeout(() => setShowSuccess(false), 3000);
-    }, 1500);
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setSubmitStatus('error');
+      
+      // Auto-hide error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   const handleChange = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormState(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
 
   // Animation variants
@@ -111,6 +183,31 @@ const Contact = () => {
             initial="hidden"
             animate="visible"
           >
+            {/* Success/Error Messages */}
+            {submitStatus && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${
+                  submitStatus === 'success' 
+                    ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
+                    : 'bg-red-500/10 border border-red-500/20 text-red-400'
+                }`}
+              >
+                {submitStatus === 'success' ? (
+                  <>
+                    <CheckCircle size={20} />
+                    <span>Message sent successfully! I'll get back to you soon.</span>
+                  </>
+                ) : (
+                  <>
+                    <AlertCircle size={20} />
+                    <span>Failed to send message. Please try again or contact me directly.</span>
+                  </>
+                )}
+              </motion.div>
+            )}
+
             {/* Social Links */}
             <motion.div 
               className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10"
@@ -155,91 +252,122 @@ const Contact = () => {
             >
               <motion.div variants={itemVariants}>
                 <label className="block text-[var(--color-text)] mb-2 text-lg font-medium">
-                  Your Name
+                  Your Name *
                 </label>
                 <input
                   type="text"
                   name="name"
                   value={formState.name}
                   onChange={handleChange}
-                  required
-                  className="w-full bg-[var(--color-secondary-darker)]/50 border border-[var(--color-border)] rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300"
+                  className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 ${
+                    errors.name ? 'border-red-500' : 'border-[var(--color-border)]'
+                  }`}
                   placeholder="Enter your name..."
                 />
+                {errors.name && (
+                  <p className="mt-1 text-red-400 text-sm flex items-center gap-1">
+                    <AlertCircle size={14} />
+                    {errors.name}
+                  </p>
+                )}
               </motion.div>
 
               <motion.div variants={itemVariants}>
                 <label className="block text-[var(--color-text)] mb-2 text-lg font-medium">
-                  Email Address
+                  Email Address *
                 </label>
                 <input
                   type="email"
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
-                  required
-                  className="w-full bg-[var(--color-secondary-darker)]/50 border border-[var(--color-border)] rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300"
+                  className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 ${
+                    errors.email ? 'border-red-500' : 'border-[var(--color-border)]'
+                  }`}
                   placeholder="Enter your email..."
                 />
+                {errors.email && (
+                  <p className="mt-1 text-red-400 text-sm flex items-center gap-1">
+                    <AlertCircle size={14} />
+                    {errors.email}
+                  </p>
+                )}
               </motion.div>
 
               <motion.div variants={itemVariants}>
                 <label className="block text-[var(--color-text)] mb-2 text-lg font-medium">
-                  Your Message
+                  Your Message *
                 </label>
                 <textarea
                   name="message"
                   value={formState.message}
                   onChange={handleChange}
-                  required
                   rows="5"
-                  className="w-full bg-[var(--color-secondary-darker)]/50 border border-[var(--color-border)] rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300"
-                  placeholder="What's on your mind?"
+                  className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 resize-vertical ${
+                    errors.message ? 'border-red-500' : 'border-[var(--color-border)]'
+                  }`}
+                  placeholder="What's on your mind? Tell me about your project, ideas, or just say hello!"
                 />
-              </motion.div>
-
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary w-full flex items-center justify-center gap-2"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {isSubmitting ? (
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Send Message
-                  </>
+                {errors.message && (
+                  <p className="mt-1 text-red-400 text-sm flex items-center gap-1">
+                    <AlertCircle size={14} />
+                    {errors.message}
+                  </p>
                 )}
-              </motion.button>
-            </motion.form>
-
-            {/* Custom Alert Component */}
-            {showSuccess && (
-              <motion.div 
-                className="mt-6 bg-green-500/20 border border-green-500/50 text-green-200 px-4 py-3 rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <p className="flex items-center gap-2">
-                  <Sparkles className="text-green-300" size={20} />
-                  <span>Message sent successfully! I&apos;ll get back to you soon.</span>
+                <p className="mt-1 text-[var(--color-text-secondary)] text-sm">
+                  {formState.message.length}/500 characters
                 </p>
               </motion.div>
-            )}
 
+              <motion.div variants={itemVariants}>
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full btn-primary py-3.5 text-lg flex items-center justify-center gap-2 ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                  }`}
+                  whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Sending Message...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Send Message
+                    </>
+                  )}
+                </motion.button>
+              </motion.div>
+            </motion.form>
+
+            {/* Contact Info */}
             <motion.div 
-              className="mt-8 text-center text-[var(--color-text-secondary)]"
+              className="mt-8 pt-8 border-t border-[var(--color-border)] text-center"
               variants={itemVariants}
             >
-              <p>Let&apos;s create something amazing together!</p>
-              <div className="mt-4 flex items-center justify-center gap-3">
-                <Mail className="text-[var(--color-primary)]" size={18} />
-                <span>raphealdivine2@gmail.com</span>
+              <p className="text-[var(--color-text-secondary)] mb-4">
+                Prefer direct contact? You can also reach me at:
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <a 
+                  href="mailto:raphealdivine2@gmail.com"
+                  className="text-[var(--color-primary)] hover:text-[var(--color-primary-lighter)] transition-colors"
+                >
+                  raphealdivine2@gmail.com
+                </a>
+                <span className="text-[var(--color-text-secondary)]">•</span>
+                <a 
+                  href="https://t.me/divinecodes11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--color-primary)] hover:text-[var(--color-primary-lighter)] transition-colors"
+                >
+                  @divinecodes11
+                </a>
               </div>
             </motion.div>
           </motion.div>
