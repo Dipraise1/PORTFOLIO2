@@ -240,6 +240,22 @@ const Contact = () => {
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
                     Web3 Application Architecture
                   </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    AI Agent Development
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    Telegram Bot Scripts
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    Automated Trading Bots
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    AI-Powered Analytics Tools
+                  </li>
                 </ul>
               </motion.div>
             </motion.div>

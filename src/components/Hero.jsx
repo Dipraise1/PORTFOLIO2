@@ -22,7 +22,7 @@ const Hero = () => {
 
   const techStack = [
     'React', 'Node.js', 'Web3', 'Solidity', 'JavaScript', 'TypeScript',
-    'Smart Contracts', 'DeFi', 'NFTs', 'Blockchain'
+    'Rust', 'Python', 'Figma', 'Terminal', 'Smart Contracts', 'DeFi', 'NFTs', 'Blockchain'
   ];
 
   // Animation variants
