@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
+import LoadingScreen from './components/LoadingScreen';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -9,61 +11,61 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 const App = () => {
-  return (
-    <div className="relative min-h-screen overflow-hidden bg-[var(--color-background)]">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 -z-10 overflow-hidden opacity-40">
-        {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] to-[var(--color-secondary-darker)]"></div>
-        
-        {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(var(--color-primary-lighter) 1px, transparent 1px)`,
-            backgroundSize: '30px 30px'
-          }}
-        ></div>
-        
-        {/* Blurred blobs */}
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={`blob-${i}`}
-            className="absolute rounded-full animate-float opacity-20 blur-3xl"
-            style={{
-              width: `${Math.random() * 400 + 200}px`,
-              height: `${Math.random() * 400 + 200}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 2 === 0 
-                ? `radial-gradient(circle at center, var(--color-primary), transparent)`
-                : `radial-gradient(circle at center, var(--color-accent), transparent)`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${20 + Math.random() * 10}s`
-            }}
-          />
-        ))}
-      </div>
+  const [isLoading, setIsLoading] = useState(true);
 
-      <Header />
+  useEffect(() => {
+    // Simulate loading time for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  return (
+    <>
+      <LoadingScreen isLoading={isLoading} onComplete={handleLoadingComplete} />
       
-      <main className="relative pt-20">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Hero />
-          <Projects />
-          <Resume />
-          <Game />
-          <Contact />
-        </motion.div>
-      </main>
-      
-      <Footer />
-      <Analytics />
-    </div>
+      <div className="relative min-h-screen overflow-hidden bg-[var(--color-background)]">
+        {/* Clean, professional background */}
+        <div className="fixed inset-0 -z-10 overflow-hidden">
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] to-[var(--color-secondary-darker)]"></div>
+          
+          {/* Minimal grid pattern for texture */}
+          <div 
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage: `radial-gradient(var(--color-primary-lighter) 1px, transparent 1px)`,
+              backgroundSize: '50px 50px'
+            }}
+          ></div>
+        </div>
+
+        <Header />
+        
+        <main className="relative pt-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoading ? 0 : 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <Hero />
+            <Projects />
+            <Resume />
+            <Game />
+            <Contact />
+          </motion.div>
+        </main>
+        
+        <Footer />
+        <Analytics />
+      </div>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Twitter, Mail, Heart, Code, Sparkles, ArrowUp, MessageCircle } from 'lucide-react';
+import { Github, Twitter, Mail, Heart, Code, ArrowUp, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const [year] = useState(new Date().getFullYear());
@@ -117,7 +117,6 @@ const Footer = () => {
                           href={item.href}
                           className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center gap-1"
                         >
-                          <Sparkles className="h-3 w-3 opacity-0 group-hover:opacity-100" />
                           {item.name}
                         </a>
                       </li>

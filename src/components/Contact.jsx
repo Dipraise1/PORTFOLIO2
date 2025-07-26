@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail, MessageSquare, Sparkles, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Send, Phone, Mail, MessageSquare, CheckCircle, AlertCircle, Loader2, User, Heart } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -127,250 +127,277 @@ const Contact = () => {
 
   return (
     <section className="py-24 relative" id="contact">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full opacity-20 blur-3xl"
-            style={{
-              width: `${300 + Math.random() * 400}px`,
-              height: `${300 + Math.random() * 400}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 2 === 0 
-                ? `radial-gradient(circle at center, var(--color-primary)/30, transparent 70%)`
-                : `radial-gradient(circle at center, var(--color-accent)/20, transparent 70%)`,
-            }}
-            animate={{
-              x: [Math.random() * 50, Math.random() * -50, Math.random() * 50],
-              y: [Math.random() * 30, Math.random() * -30, Math.random() * 30],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 20 + Math.random() * 10,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container-custom relative z-10">
+      <div className="container-custom">
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
-            <Mail size={18} className="text-[var(--color-primary)]" />
-            <span className="text-sm font-medium">Contact Me</span>
+            <Heart size={18} className="text-[var(--color-primary)]" />
+            <span className="text-sm font-medium">Let's Connect</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="heading-gradient">Let&apos;s Connect</span>
+            <span className="heading-gradient">Get In Touch</span>
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Have a project in mind or want to discuss a potential collaboration? I&apos;d love to hear from you!
+            Have a project in mind? Want to discuss Web3 opportunities? I'd love to hear from you and explore how we can work together.
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          <motion.div 
-            className="card p-8 md:p-10 backdrop-blur-md"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* Success/Error Messages */}
-            {submitStatus && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${
-                  submitStatus === 'success' 
-                    ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
-                    : 'bg-red-500/10 border border-red-500/20 text-red-400'
-                }`}
-              >
-                {submitStatus === 'success' ? (
-                  <>
-                    <CheckCircle size={20} />
-                    <span>Message sent successfully! I'll get back to you soon.</span>
-                  </>
-                ) : (
-                  <>
-                    <AlertCircle size={20} />
-                    <span>Failed to send message. Please try again or contact me directly.</span>
-                  </>
-                )}
-              </motion.div>
-            )}
-
-            {/* Social Links */}
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left Column - Contact Info */}
             <motion.div 
-              className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10"
-              variants={itemVariants}
-            >
-              <motion.a 
-                href="https://t.me/divinecodes11" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-2.5 rounded-lg shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Phone size={18} /> Telegram
-              </motion.a>
-              <motion.a 
-                href="https://x.com/divine_js2" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-gradient-to-r from-[#111] to-[#333] text-white px-5 py-2.5 rounded-lg shadow-lg shadow-gray-800/20 hover:shadow-gray-800/40"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <MessageSquare size={18} /> Twitter/X
-              </motion.a>
-              <motion.a 
-                href="mailto:raphealdivine2@gmail.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] text-white px-5 py-2.5 rounded-lg shadow-lg shadow-[var(--color-primary)]/20 hover:shadow-[var(--color-primary)]/40"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Mail size={18} /> Email Me
-              </motion.a>
-            </motion.div>
-
-            <motion.form 
-              onSubmit={handleSubmit} 
-              className="space-y-6"
+              className="space-y-8"
               variants={containerVariants}
+              initial="hidden"
+              animate="visible"
             >
               <motion.div variants={itemVariants}>
-                <label className="block text-[var(--color-text)] mb-2 text-lg font-medium">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formState.name}
-                  onChange={handleChange}
-                  className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 ${
-                    errors.name ? 'border-red-500' : 'border-[var(--color-border)]'
-                  }`}
-                  placeholder="Enter your name..."
-                />
-                {errors.name && (
-                  <p className="mt-1 text-red-400 text-sm flex items-center gap-1">
-                    <AlertCircle size={14} />
-                    {errors.name}
-                  </p>
-                )}
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <label className="block text-[var(--color-text)] mb-2 text-lg font-medium">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                  className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 ${
-                    errors.email ? 'border-red-500' : 'border-[var(--color-border)]'
-                  }`}
-                  placeholder="Enter your email..."
-                />
-                {errors.email && (
-                  <p className="mt-1 text-red-400 text-sm flex items-center gap-1">
-                    <AlertCircle size={14} />
-                    {errors.email}
-                  </p>
-                )}
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <label className="block text-[var(--color-text)] mb-2 text-lg font-medium">
-                  Your Message *
-                </label>
-                <textarea
-                  name="message"
-                  value={formState.message}
-                  onChange={handleChange}
-                  rows="5"
-                  className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-lg p-3.5 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 resize-vertical ${
-                    errors.message ? 'border-red-500' : 'border-[var(--color-border)]'
-                  }`}
-                  placeholder="What's on your mind? Tell me about your project, ideas, or just say hello!"
-                />
-                {errors.message && (
-                  <p className="mt-1 text-red-400 text-sm flex items-center gap-1">
-                    <AlertCircle size={14} />
-                    {errors.message}
-                  </p>
-                )}
-                <p className="mt-1 text-[var(--color-text-secondary)] text-sm">
-                  {formState.message.length}/500 characters
+                <h3 className="text-2xl font-bold text-[var(--color-text)] mb-6 flex items-center gap-2">
+                  <User className="text-[var(--color-primary)]" size={24} />
+                  Let's Start a Conversation
+                </h3>
+                <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed">
+                  I'm always excited to hear about new projects and opportunities. Whether you have a specific idea in mind or just want to explore possibilities, I'm here to help bring your vision to life.
                 </p>
               </motion.div>
 
-              <motion.div variants={itemVariants}>
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full btn-primary py-3.5 text-lg flex items-center justify-center gap-2 ${
-                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+              <motion.div variants={itemVariants} className="space-y-6">
+                <h4 className="text-xl font-semibold text-[var(--color-text)]">Quick Connect</h4>
+                
+                <div className="space-y-4">
+                  <motion.a 
+                    href="https://t.me/divinecodes11" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="p-3 rounded-lg bg-blue-500/20 text-blue-400">
+                      <Phone size={20} />
+                    </div>
+                    <div>
+                      <p className="font-medium text-[var(--color-text)]">Telegram</p>
+                      <p className="text-sm text-[var(--color-text-secondary)]">@divinecodes11</p>
+                    </div>
+                  </motion.a>
+
+                  <motion.a 
+                    href="mailto:raphealdivine2@gmail.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="p-3 rounded-lg bg-red-500/20 text-red-400">
+                      <Mail size={20} />
+                    </div>
+                    <div>
+                      <p className="font-medium text-[var(--color-text)]">Email</p>
+                      <p className="text-sm text-[var(--color-text-secondary)]">raphealdivine2@gmail.com</p>
+                    </div>
+                  </motion.a>
+
+                  <motion.a 
+                    href="https://x.com/divine_js2" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="p-3 rounded-lg bg-gray-500/20 text-gray-400">
+                      <MessageSquare size={20} />
+                    </div>
+                    <div>
+                      <p className="font-medium text-[var(--color-text)]">Twitter/X</p>
+                      <p className="text-sm text-[var(--color-text-secondary)]">@divine_js2</p>
+                    </div>
+                  </motion.a>
+                </div>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="p-6 rounded-lg bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20">
+                <h4 className="text-lg font-semibold text-[var(--color-text)] mb-3">What I Can Help With</h4>
+                <ul className="space-y-2 text-[var(--color-text-secondary)]">
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    Smart Contract Development
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    DeFi Protocol Integration
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    NFT Marketplace Development
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    Web3 Application Architecture
+                  </li>
+                </ul>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Contact Form */}
+            <motion.div 
+              className="card p-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {/* Success/Error Messages */}
+              {submitStatus && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${
+                    submitStatus === 'success' 
+                      ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
+                      : 'bg-red-500/10 border border-red-500/20 text-red-400'
                   }`}
-                  whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                 >
-                  {isSubmitting ? (
+                  {submitStatus === 'success' ? (
                     <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Sending Message...
+                      <CheckCircle size={20} />
+                      <span>Message sent successfully! I'll get back to you within 24 hours.</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
-                      Send Message
+                      <AlertCircle size={20} />
+                      <span>Failed to send message. Please try again or contact me directly.</span>
                     </>
                   )}
-                </motion.button>
-              </motion.div>
-            </motion.form>
+                </motion.div>
+              )}
 
-            {/* Contact Info */}
-            <motion.div 
-              className="mt-8 pt-8 border-t border-[var(--color-border)] text-center"
-              variants={itemVariants}
-            >
-              <p className="text-[var(--color-text-secondary)] mb-4">
-                Prefer direct contact? You can also reach me at:
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <a 
-                  href="mailto:raphealdivine2@gmail.com"
-                  className="text-[var(--color-primary)] hover:text-[var(--color-primary-lighter)] transition-colors"
-                >
-                  raphealdivine2@gmail.com
-                </a>
-                <span className="text-[var(--color-text-secondary)]">•</span>
-                <a 
-                  href="https://t.me/divinecodes11"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-primary)] hover:text-[var(--color-primary-lighter)] transition-colors"
-                >
-                  @divinecodes11
-                </a>
-              </div>
+              <motion.div variants={itemVariants} className="mb-8">
+                <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2">Send a Message</h3>
+                <p className="text-[var(--color-text-secondary)]">I'd love to hear about your project or ideas!</p>
+              </motion.div>
+
+              <motion.form 
+                onSubmit={handleSubmit} 
+                className="space-y-6"
+                variants={containerVariants}
+              >
+                <motion.div variants={itemVariants}>
+                  <label className="block text-[var(--color-text)] mb-3 font-semibold text-sm uppercase tracking-wide">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formState.name}
+                    onChange={handleChange}
+                    className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-xl p-4 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 text-base ${
+                      errors.name ? 'border-red-500' : 'border-[var(--color-border)]'
+                    }`}
+                    placeholder="John Doe"
+                  />
+                  {errors.name && (
+                    <p className="mt-2 text-red-400 text-sm flex items-center gap-1">
+                      <AlertCircle size={14} />
+                      {errors.name}
+                    </p>
+                  )}
+                </motion.div>
+
+                <motion.div variants={itemVariants}>
+                  <label className="block text-[var(--color-text)] mb-3 font-semibold text-sm uppercase tracking-wide">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                    className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-xl p-4 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 text-base ${
+                      errors.email ? 'border-red-500' : 'border-[var(--color-border)]'
+                    }`}
+                    placeholder="john@example.com"
+                  />
+                  {errors.email && (
+                    <p className="mt-2 text-red-400 text-sm flex items-center gap-1">
+                      <AlertCircle size={14} />
+                      {errors.email}
+                    </p>
+                  )}
+                </motion.div>
+
+                <motion.div variants={itemVariants}>
+                  <label className="block text-[var(--color-text)] mb-3 font-semibold text-sm uppercase tracking-wide">
+                    Project Details
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formState.message}
+                    onChange={handleChange}
+                    rows="5"
+                    className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-xl p-4 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 resize-vertical text-base ${
+                      errors.message ? 'border-red-500' : 'border-[var(--color-border)]'
+                    }`}
+                    placeholder="Describe your project, timeline, budget, or any specific requirements you have in mind..."
+                  />
+                  {errors.message && (
+                    <p className="mt-2 text-red-400 text-sm flex items-center gap-1">
+                      <AlertCircle size={14} />
+                      {errors.message}
+                    </p>
+                  )}
+                  <div className="mt-2 flex justify-between items-center">
+                    <p className="text-[var(--color-text-secondary)] text-sm">
+                      Tell me about your vision and I'll help bring it to life
+                    </p>
+                    <p className={`text-sm font-medium ${
+                      formState.message.length > 450 ? 'text-orange-400' : 'text-[var(--color-text-secondary)]'
+                    }`}>
+                      {formState.message.length}/500
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div variants={itemVariants} className="pt-4">
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-white font-semibold py-4 px-6 rounded-xl shadow-lg shadow-[var(--color-primary)]/20 hover:shadow-[var(--color-primary)]/40 transition-all duration-300 flex items-center justify-center gap-3 text-base ${
+                      isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.02]'
+                    }`}
+                    whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                    whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Sending Message...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
+                  </motion.button>
+                </motion.div>
+              </motion.form>
+
+              <motion.div 
+                className="mt-8 pt-6 border-t border-[var(--color-border)]"
+                variants={itemVariants}
+              >
+                <div className="flex items-center justify-center gap-2 text-[var(--color-text-secondary)] text-sm">
+                  <div className="w-2 h-2 bg-[var(--color-primary)] rounded-full animate-pulse"></div>
+                  <span>I typically respond within 24 hours</span>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -259,11 +259,11 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-[var(--color-text)] mb-3">
+                <h3 className="text-xl font-bold text-[var(--color-text)] mb-3 line-clamp-2">
                   {project.title}
                 </h3>
 
-                <p className="text-[var(--color-text-secondary)] mb-6 line-clamp-3 flex-grow">
+                <p className="text-[var(--color-text-secondary)] mb-6 line-clamp-4 flex-grow text-sm leading-relaxed">
                   {project.description}
                 </p>
 

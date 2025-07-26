@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Gamepad2, RefreshCw, Sparkles } from 'lucide-react';
+import { Gamepad2, RefreshCw } from 'lucide-react';
 
 const Game = () => {
   // Game state
@@ -154,7 +154,7 @@ const Game = () => {
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Sparkles size={48} className="text-[var(--color-primary)] mx-auto mb-4" />
+                    <Gamepad2 size={48} className="text-[var(--color-primary)] mx-auto mb-4" />
                     <h3 className="text-[var(--color-text)] text-2xl font-bold mb-2">Game Over!</h3>
                     <p className="text-[var(--color-text-secondary)] mb-4">Your score: <span className="text-[var(--color-primary)] font-bold text-xl">{score}</span></p>
                     <motion.button
@@ -182,7 +182,7 @@ const Game = () => {
                   whileTap={{ scale: 0.9 }}
                   onClick={handleTargetClick}
                 >
-                  <Sparkles size={20} className="text-white" />
+                  <div className="w-4 h-4 bg-white rounded-full" />
                 </motion.div>
               )}
             </div>

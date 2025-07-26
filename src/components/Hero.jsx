@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code, Terminal, Sparkles, Globe, Cpu, ArrowRight, MessageCircle } from 'lucide-react';
+import { Github, ExternalLink, Code, Terminal, Globe, Cpu, ArrowRight, MessageCircle } from 'lucide-react';
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -109,35 +109,6 @@ const Hero = () => {
             <span className="text-white whitespace-nowrap font-medium">{badge.text}</span>
           </motion.div>
         ))}
-
-        {/* Decorative circles */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: `${120 + i * 40}px`,
-              height: `${120 + i * 40}px`,
-              background: `radial-gradient(circle at center, ${
-                i === 0 ? 'var(--color-primary)/40' : 
-                i === 1 ? 'var(--color-accent)/30' : 'var(--color-primary-lighter)/20'
-              }, transparent)`,
-              top: `${15 + 25 * i}%`,
-              right: `${-10 - 15 * i}%`,
-              filter: 'blur(30px)'
-            }}
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.6, 0.8, 0.6]
-            }}
-            transition={{
-              duration: 8,
-              ease: "easeInOut",
-              repeat: Infinity,
-              delay: i * 2
-            }}
-          />
-        ))}
       </motion.div>
     );
   };
@@ -189,9 +160,8 @@ const Hero = () => {
                 {techStack.slice(0, 6).map((tech) => (
                   <span 
                     key={tech} 
-                    className="px-3 py-1.5 bg-[var(--color-secondary-lighter)]/70 border border-[var(--color-border)] rounded-md text-sm text-[var(--color-text-secondary)] flex items-center gap-1.5"
+                    className="px-3 py-1.5 bg-[var(--color-secondary-lighter)]/70 border border-[var(--color-border)] rounded-md text-sm text-[var(--color-text-secondary)]"
                   >
-                    <Sparkles size={12} className="text-[var(--color-primary)]" />
                     {tech}
                   </span>
                 ))}
