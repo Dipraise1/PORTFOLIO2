@@ -157,7 +157,7 @@ const Hero = () => {
                 className="flex flex-wrap gap-3 justify-center lg:justify-start"
                 variants={itemVariants}
               >
-                {techStack.slice(0, 6).map((tech) => (
+                {techStack.slice(0, 10).map((tech) => (
                   <span 
                     key={tech} 
                     className="px-3 py-1.5 bg-[var(--color-secondary-lighter)]/70 border border-[var(--color-border)] rounded-md text-sm text-[var(--color-text-secondary)]"
