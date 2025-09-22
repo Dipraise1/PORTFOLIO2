@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://deesporfolio.vercel.app/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all search engines to index the site
+Disallow:
+
+# Block access to sensitive files
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /vite.config.js
+Disallow: /tailwind.config.js
+Disallow: /postcss.config.js
+Disallow: /eslint.config.js
+
+# Allow access to public assets
+Allow: /pfp.png
+Allow: /vite.svg
+Allow: /manifest.json
+Allow: /sitemap.xml
+Allow: /robots.txt

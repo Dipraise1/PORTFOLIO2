@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://deesporfolio.vercel.app/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://deesporfolio.vercel.app/pfp.png</image:loc>
+      <image:title>Divine Rapheal - Web3 Developer & Blockchain Expert</image:title>
+      <image:caption>Professional Web3 developer specializing in smart contracts, DeFi protocols, NFT marketplaces, AI agents, Telegram bots, and automated trading systems</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- About Section -->
+  <url>
+    <loc>https://deesporfolio.vercel.app/#about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Projects Section -->
+  <url>
+    <loc>https://deesporfolio.vercel.app/#projects</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Contact Section -->
+  <url>
+    <loc>https://deesporfolio.vercel.app/#contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Resume Section -->
+  <url>
+    <loc>https://deesporfolio.vercel.app/#resume</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Game Section -->
+  <url>
+    <loc>https://deesporfolio.vercel.app/#game</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>

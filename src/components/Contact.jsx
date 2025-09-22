@@ -144,7 +144,7 @@ const Contact = () => {
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Have a project in mind? Want to discuss Web3 opportunities? I'd love to hear from you and explore how we can work together.
+            Ready to build your Web3 project or mobile app? Need smart contract development, DeFi integration, AI agent services, or Flutter/React Native app development? I'd love to hear about your blockchain development and mobile app needs and explore how we can work together.
           </p>
         </motion.div>
 
@@ -163,7 +163,7 @@ const Contact = () => {
                   Let's Start a Conversation
                 </h3>
                 <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed">
-                  I'm always excited to hear about new projects and opportunities. Whether you have a specific idea in mind or just want to explore possibilities, I'm here to help bring your vision to life.
+                  I'm always excited to hear about new Web3 projects, mobile app ideas, and blockchain development opportunities. Whether you need smart contract development, DeFi protocol integration, NFT marketplace creation, AI agent services, or Flutter/React Native mobile app development, I'm here to help bring your vision to life.
                 </p>
               </motion.div>
 
@@ -263,6 +263,18 @@ const Contact = () => {
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
                     AI-Powered Analytics Tools
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    Flutter App Development
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    React Native App Development
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
+                    Mobile App Development
                   </li>
                 </ul>
               </motion.div>

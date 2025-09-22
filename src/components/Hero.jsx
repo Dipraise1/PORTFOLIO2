@@ -22,7 +22,8 @@ const Hero = () => {
 
   const techStack = [
     'React', 'Node.js', 'Web3', 'Solidity', 'JavaScript', 'TypeScript',
-    'Rust', 'Python', 'Figma', 'Terminal', 'Smart Contracts', 'DeFi', 'NFTs', 'Blockchain'
+    'Rust', 'Python', 'Figma', 'Terminal', 'Smart Contracts', 'DeFi', 'NFTs', 'Blockchain',
+    'Flutter', 'React Native', 'Mobile Apps', 'iOS', 'Android'
   ];
 
   // Animation variants
@@ -143,14 +144,14 @@ const Hero = () => {
                 variants={itemVariants}
               >
                 <span className="heading-gradient block">Divine</span>
-                <span className="text-[var(--color-text)] block text-4xl sm:text-5xl lg:text-6xl">Web3 Developer</span>
+                <span className="text-[var(--color-text)] block text-4xl sm:text-5xl lg:text-6xl">Web3 Developer & Blockchain Expert</span>
               </motion.h1>
 
               <motion.p 
                 className="text-[var(--color-text-secondary)] text-lg max-w-lg mx-auto lg:mx-0"
                 variants={itemVariants}
               >
-                I build decentralized applications and smart contracts that power the future of Web3. Specialized in blockchain development, DeFi protocols, and NFT marketplaces.
+                Professional Web3 developer specializing in smart contracts, DeFi protocols, NFT marketplaces, AI agents, Telegram bots, automated trading systems, and mobile app development with Flutter and React Native. Available for blockchain development projects and Web3 consulting.
               </motion.p>
 
               <motion.div 
