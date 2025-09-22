@@ -59,7 +59,7 @@ const Hero = () => {
         <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--color-primary-lighter)]/40 to-[var(--color-primary)]/40 rounded-2xl opacity-30 animate-gradient" />
 
         {/* Image container */}
-        <div className="relative rounded-2xl overflow-hidden border-2 border-[var(--color-border)] aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500 shadow-xl">
+        <div className="group relative rounded-2xl overflow-hidden border-2 border-[var(--color-border)] aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500 shadow-xl">
           {/* Main image with responsive sizing */}
           <img
             src="/pfp.png"
@@ -76,8 +76,8 @@ const Hero = () => {
                style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E\")" }} />
 
           {/* Interactive hover overlay */}
-          <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[var(--color-secondary-darker)]/80 via-transparent to-transparent flex items-end justify-center p-6">
-            <div className="text-center transform translate-y-4 hover:translate-y-0 transition-transform duration-300">
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[var(--color-secondary-darker)]/80 via-transparent to-transparent flex items-end justify-center p-6">
+            <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
               <h3 className="text-[var(--color-text)] text-2xl font-bold mb-2">Web3 Developer</h3>
               <p className="text-[var(--color-text-secondary)]">Building the Future of Web3</p>
             </div>
