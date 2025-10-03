@@ -8,12 +8,12 @@ const Resume = () => {
   const handleDownload = async () => {
     setIsGenerating(true);
     
-    // Simulate PDF generation (in a real app, you'd generate or fetch a PDF)
+    // Simulate PDF generation delay for better UX
     setTimeout(() => {
-      // Create a downloadable link for the resume
+      // Create a downloadable link for the actual CV
       const link = document.createElement('a');
-      link.href = '/Divine_Rapheal_Resume.pdf'; // You'll need to add this PDF to the public folder
-      link.download = 'Divine_Rapheal_Web3_Developer_Resume.pdf';
+      link.href = '/cv.pdf';
+      link.download = 'Divine_Rapheal_Web3_Developer_CV.pdf';
       link.click();
       setIsGenerating(false);
     }, 1500);
