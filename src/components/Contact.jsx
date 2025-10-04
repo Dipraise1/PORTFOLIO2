@@ -224,59 +224,59 @@ const Contact = () => {
               </motion.div>
 
               <motion.div variants={itemVariants} className="p-6 rounded-lg bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20">
-                <h4 className="text-lg font-semibold text-[var(--color-text)] mb-3">{t('contact.whatICanHelp')}</h4>
+                <h4 className="text-lg font-semibold text-[var(--color-text)] mb-3">{t('contact.whatICanHelpWith')}</h4>
                 <ul className="space-y-2 text-[var(--color-text-secondary)]">
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.smartContract')}
+                    {t('services.smartContractDevelopment')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.defi')}
+                    {t('services.defiProtocolIntegration')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.nft')}
+                    {t('services.nftMarketplaceDevelopment')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.web3')}
+                    {t('services.web3ApplicationArchitecture')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.frontend')}
+                    {t('services.frontendDevelopment')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.backend')}
+                    {t('services.backendServices')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.aiAgent')}
+                    {t('services.aiAgentDevelopment')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.telegramBot')}
+                    {t('services.telegramBotScripts')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.tradingBot')}
+                    {t('services.automatedTradingBots')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.analytics')}
+                    {t('services.aiPoweredAnalyticsTools')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.flutter')}
+                    {t('services.flutterAppDevelopment')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.reactNative')}
+                    {t('services.reactNativeAppDevelopment')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    {t('contact.services.mobileApp')}
+                    {t('services.mobileAppDevelopment')}
                   </li>
                 </ul>
               </motion.div>
