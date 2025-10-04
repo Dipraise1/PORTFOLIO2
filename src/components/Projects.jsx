@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, Code2, Layers, ArrowRight, Terminal, Database, Coffee, Bot, Wallet, MessageCircle, BarChart, Activity, LineChart } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import useTranslation from '../hooks/useTranslation';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');

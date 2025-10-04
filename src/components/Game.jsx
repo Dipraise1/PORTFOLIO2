@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Gamepad2, RefreshCw } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import useTranslation from '../hooks/useTranslation';
 
 const Game = () => {
   const { t } = useTranslation();

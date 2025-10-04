@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import useTranslation from '../hooks/useTranslation';
 
 const LoadingScreen = ({ isLoading, onComplete }) => {
   const { t } = useTranslation();

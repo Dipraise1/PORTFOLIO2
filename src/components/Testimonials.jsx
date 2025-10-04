@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, User, Building, Globe } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import useTranslation from '../hooks/useTranslation';
 
 const Testimonials = () => {
   const { t } = useTranslation();

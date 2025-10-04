@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, User, Briefcase, GraduationCap, Award, Code, Globe, Cpu, Database, FileText, Calendar, MapPin, Mail, Phone } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import useTranslation from '../hooks/useTranslation';
 
 const Resume = () => {
   const { t } = useTranslation();

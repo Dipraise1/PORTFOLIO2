@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MessageSquare, CheckCircle, AlertCircle, Loader2, User, Heart } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import { useTranslation } from '../hooks/useTranslation';
+import useTranslation from '../hooks/useTranslation';
 
 const Contact = () => {
   const { t } = useTranslation();
