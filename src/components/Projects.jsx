@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, Code2, Layers, ArrowRight, Terminal, Database, Coffee, Bot, Wallet, MessageCircle, BarChart, Activity, LineChart } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const { t } = useLanguage();
 
   const projects = [
     {
@@ -139,12 +141,12 @@ const Projects = () => {
     : projects.filter(project => project.category === activeFilter);
 
   const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'blockchain', label: 'Blockchain' },
-    { id: 'defi', label: 'DeFi' },
-    { id: 'finance', label: 'Finance' },
-    { id: 'ai', label: 'AI' },
-    { id: 'web', label: 'Web' }
+    { id: 'all', label: t('allProjects') },
+    { id: 'blockchain', label: t('blockchain') },
+    { id: 'defi', label: t('defi') },
+    { id: 'finance', label: t('finance') },
+    { id: 'ai', label: t('ai') },
+    { id: 'web', label: t('web') }
   ];
 
   const containerVariants = {
@@ -183,15 +185,15 @@ const Projects = () => {
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <Code2 size={18} className="text-[var(--color-primary)]" />
-            <span className="text-sm font-medium">GitHub Projects</span>
+            <span className="text-sm font-medium">{t('githubProjects')}</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="heading-gradient">Recent Works</span>
+            <span className="heading-gradient">{t('recentWorks')}</span>
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Exploring the frontiers of technology through innovative applications across blockchain, web development, and AI.
+            {t('projectsDescription')}
           </p>
 
           {/* Filter tabs */}
@@ -324,7 +326,7 @@ const Projects = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="font-medium">View More on GitHub</span>
+            <span className="font-medium">{t('viewMoreOnGitHub')}</span>
             <Github className="w-5 h-5" />
           </motion.a>
           <motion.a 
@@ -335,7 +337,7 @@ const Projects = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="font-medium">Join Telegram Channel</span>
+            <span className="font-medium">{t('joinTelegramChannel')}</span>
             <MessageCircle className="w-5 h-5" />
           </motion.a>
         </div>

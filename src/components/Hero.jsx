@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, Code, Terminal, Globe, Cpu, ArrowRight, MessageCircle } from 'lucide-react';
+import useTranslation from '../hooks/useTranslation';
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [imageLoaded, setImageLoaded] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -136,7 +138,7 @@ const Hero = () => {
                 variants={itemVariants}
               >
                 <Terminal className="text-[var(--color-primary)]" size={18} />
-                <span className="text-sm font-medium">Hello World! I&apos;m</span>
+                <span className="text-sm font-medium">{t('hero.helloWorld')}</span>
               </motion.div>
 
               <motion.h1 
@@ -144,14 +146,14 @@ const Hero = () => {
                 variants={itemVariants}
               >
                 <span className="heading-gradient block">Divine</span>
-                <span className="text-[var(--color-text)] block text-4xl sm:text-5xl lg:text-6xl">Web3 Developer & Blockchain Expert</span>
+                <span className="text-[var(--color-text)] block text-4xl sm:text-5xl lg:text-6xl">{t('hero.web3Developer')}</span>
               </motion.h1>
 
               <motion.p 
                 className="text-[var(--color-text-secondary)] text-lg max-w-lg mx-auto lg:mx-0"
                 variants={itemVariants}
               >
-                Professional Web3 developer specializing in smart contracts, DeFi protocols, NFT marketplaces, AI agents, Telegram bots, automated trading systems, and mobile app development with Flutter and React Native. Available for blockchain development projects and Web3 consulting.
+                {t('hero.description')}
               </motion.p>
 
               <motion.div 
@@ -173,12 +175,12 @@ const Hero = () => {
                 variants={itemVariants}
               >
                 <a href="#projects" className="btn-primary flex items-center gap-2 group w-full sm:w-auto">
-                  View Projects 
+                  {t('hero.viewProjects')} 
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 
                 <a href="#contact" className="btn-secondary flex items-center gap-2 w-full sm:w-auto">
-                  Contact Me
+                  {t('hero.contactMe')}
                 </a>
               </motion.div>
 

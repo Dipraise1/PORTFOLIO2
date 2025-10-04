@@ -1,7 +1,7 @@
 {
   "name": "Divine Rapheal | PRAISE.ETH Portfolio",
   "short_name": "PRAISE.ETH",
-  "description": "Professional Web3 developer specializing in blockchain applications, smart contracts, DeFi protocols, and NFT marketplaces.",
+  "description": "Professional Web3 developer specializing in blockchain applications, smart contracts, DeFi protocols, NFT marketplaces, AI agents, Telegram bots, and mobile app development.",
   "theme_color": "#6366f1",
   "background_color": "#0f172a",
   "display": "standalone",
@@ -22,7 +22,65 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["portfolio", "web3", "blockchain", "developer"],
+  "categories": ["portfolio", "web3", "blockchain", "developer", "mobile", "ai"],
   "lang": "en",
-  "dir": "ltr"
+  "dir": "ltr",
+  "display_override": ["window-controls-overlay"],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "shortcuts": [
+    {
+      "name": "View Projects",
+      "short_name": "Projects",
+      "description": "Browse my portfolio projects",
+      "url": "/#projects",
+      "icons": [
+        {
+          "src": "/pfp.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact Me",
+      "short_name": "Contact",
+      "description": "Get in touch for projects",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/pfp.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Download CV",
+      "short_name": "CV",
+      "description": "Download my resume",
+      "url": "/#resume",
+      "icons": [
+        {
+          "src": "/pfp.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/pfp.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PRAISE.ETH Portfolio - Desktop View"
+    },
+    {
+      "src": "/pfp.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "PRAISE.ETH Portfolio - Mobile View"
+    }
+  ]
 } 

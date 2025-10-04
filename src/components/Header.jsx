@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Code, Github, Mail, Terminal, Gamepad2, FileText } from 'lucide-react';
+import LanguageSwitcher from './LanguageSwitcher';
+import useTranslation from '../hooks/useTranslation';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
 
   // Track scroll position
   useEffect(() => {
@@ -34,12 +37,12 @@ const Header = () => {
   };
 
   const navItems = [
-    { name: 'About', icon: <Terminal size={16} /> },
-    { name: 'Projects', icon: <Code size={16} /> },
-    { name: 'Resume', icon: <FileText size={16} /> },
-    { name: 'Game', icon: <Gamepad2 size={16} /> },
-    { name: 'Contact', icon: <Mail size={16} /> },
-    { name: 'Github', icon: <Github size={16} />, external: true, href: 'https://github.com/Dipraise1' }
+    { name: t('nav.about'), icon: <Terminal size={16} /> },
+    { name: t('nav.projects'), icon: <Code size={16} /> },
+    { name: t('nav.resume'), icon: <FileText size={16} /> },
+    { name: t('nav.game'), icon: <Gamepad2 size={16} /> },
+    { name: t('nav.contact'), icon: <Mail size={16} /> },
+    { name: t('nav.github'), icon: <Github size={16} />, external: true, href: 'https://github.com/Dipraise1' }
   ];
 
   return (
@@ -87,6 +90,8 @@ const Header = () => {
               </motion.a>
             ))}
             
+            <LanguageSwitcher />
+            
             <motion.a
               href="#contact"
               className="btn-primary ml-2 py-2 text-sm"
@@ -96,7 +101,7 @@ const Header = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Hire Me
+              {t('nav.hireMe')}
             </motion.a>
           </div>
 
@@ -146,17 +151,20 @@ const Header = () => {
                   </motion.a>
                 ))}
                 
-                <motion.a
-                  href="#contact"
-                  className="btn-primary w-full flex justify-center items-center mt-3"
-                  onClick={() => setIsOpen(false)}
-                  custom={navItems.length}
-                  variants={navItemVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  Hire Me
-                </motion.a>
+                <div className="mt-3 space-y-2">
+                  <LanguageSwitcher />
+                  <motion.a
+                    href="#contact"
+                    className="btn-primary w-full flex justify-center items-center"
+                    onClick={() => setIsOpen(false)}
+                    custom={navItems.length}
+                    variants={navItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {t('nav.hireMe')}
+                  </motion.a>
+                </div>
               </div>
             </motion.div>
           )}

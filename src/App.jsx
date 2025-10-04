@@ -8,12 +8,25 @@ import Projects from './components/Projects';
 import Resume from './components/Resume';
 import Game from './components/Game';
 import Contact from './components/Contact';
+import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+import VisitorCounter from './components/VisitorCounter';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Register service worker for PWA functionality
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('SW registered: ', registration);
+        })
+        .catch((registrationError) => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    }
+
     // Simulate loading time for better UX
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -57,12 +70,14 @@ const App = () => {
             <Hero />
             <Projects />
             <Resume />
+            <Testimonials />
             <Game />
             <Contact />
           </motion.div>
         </main>
         
         <Footer />
+        <VisitorCounter />
         <Analytics />
       </div>
     </>
