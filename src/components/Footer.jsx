@@ -1,24 +1,26 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Mail, Heart, Code, ArrowUp, MessageCircle } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const [year] = useState(new Date().getFullYear());
   
   const links = [
-    { title: 'Social', items: [
-      { name: 'Twitter', href: 'https://x.com/divine_js2' },
-      { name: 'GitHub', href: 'https://github.com/Dipraise1' },
-      { name: 'Telegram', href: 'https://t.me/+l_zN6tKLVUkwNDc5' }
+    { title: t('footer.social'), items: [
+      { name: t('footer.twitter'), href: 'https://x.com/divine_js2' },
+      { name: t('footer.github'), href: 'https://github.com/Dipraise1' },
+      { name: t('footer.telegram'), href: 'https://t.me/+l_zN6tKLVUkwNDc5' }
     ]},
-    { title: 'Resources', items: [
-      { name: 'Portfolio', href: 'https://deesporfolio.vercel.app' },
-      { name: 'Projects', href: '#projects' },
-      { name: 'Contact', href: '#contact' }
+    { title: t('footer.resources'), items: [
+      { name: t('footer.portfolio'), href: 'https://deesporfolio.vercel.app' },
+      { name: t('footer.projects'), href: '#projects' },
+      { name: t('footer.contact'), href: '#contact' }
     ]},
-    { title: 'Legal', items: [
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' }
+    { title: t('footer.legal'), items: [
+      { name: t('footer.privacyPolicy'), href: '#' },
+      { name: t('footer.termsOfService'), href: '#' }
     ]}
   ];
 
@@ -72,7 +74,7 @@ const Footer = () => {
             >
               <h3 className="text-2xl font-bold heading-gradient mb-4">PRAISE.ETH</h3>
               <p className="text-[var(--color-text-secondary)] mb-6 max-w-md">
-                Building the decentralized future through Web3 technologies, smart contracts, and blockchain innovation.
+                {t('footer.description')}
               </p>
               
               {/* Social links */}
@@ -141,7 +143,7 @@ const Footer = () => {
           >
             <Code size={18} className="text-[var(--color-primary)]" />
             <p className="text-[var(--color-text-secondary)]">
-              Made with <Heart className="inline-block text-red-500 animate-pulse-soft" size={14} /> by Divine | &copy; {year} All rights reserved
+              {t('footer.madeWith')} <Heart className="inline-block text-red-500 animate-pulse-soft" size={14} /> {t('footer.byDivine')} | &copy; {year} {t('footer.allRightsReserved')}
             </p>
           </motion.div>
           

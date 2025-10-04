@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, User, Briefcase, GraduationCap, Award, Code, Globe, Cpu, Database, FileText, Calendar, MapPin, Mail, Phone } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Resume = () => {
+  const { t } = useTranslation();
   const [isGenerating, setIsGenerating] = useState(false);
 
   const handleDownload = async () => {
@@ -82,15 +84,15 @@ const Resume = () => {
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <FileText size={18} className="text-[var(--color-primary)]" />
-            <span className="text-sm font-medium">Professional Background</span>
+            <span className="text-sm font-medium">{t('resume.professionalBackground')}</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="heading-gradient">Resume & Experience</span>
+            <span className="heading-gradient">{t('resume.resumeExperience')}</span>
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto mb-8">
-            Passionate Web3 developer with extensive experience in blockchain technologies and decentralized applications.
+            {t('resume.description')}
           </p>
 
           <motion.button
@@ -105,12 +107,12 @@ const Resume = () => {
             {isGenerating ? (
               <>
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Generating PDF...
+                {t('resume.generatingPDF')}
               </>
             ) : (
               <>
                 <Download size={18} />
-                Download Resume
+                {t('resume.downloadResume')}
               </>
             )}
           </motion.button>
@@ -128,7 +130,7 @@ const Resume = () => {
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
                 <User size={20} className="text-[var(--color-primary)]" />
-                Contact Information
+                {t('resume.contactInformation')}
               </h3>
               <div className="space-y-3 text-[var(--color-text-secondary)]">
                 <div className="flex items-center gap-3">
@@ -165,7 +167,7 @@ const Resume = () => {
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
                 <Code size={20} className="text-[var(--color-primary)]" />
-                Technical Skills
+                {t('resume.technicalSkills')}
               </h3>
               <div className="space-y-4">
                 {Object.entries(skills).map(([category, techs]) => (
@@ -195,7 +197,7 @@ const Resume = () => {
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
                 <Award size={20} className="text-[var(--color-primary)]" />
-                Key Achievements
+                {t('resume.keyAchievements')}
               </h3>
               <ul className="space-y-2 text-[var(--color-text-secondary)]">
                 {achievements.map((achievement, index) => (
@@ -219,7 +221,7 @@ const Resume = () => {
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-6">
                 <Briefcase size={20} className="text-[var(--color-primary)]" />
-                Professional Experience
+                {t('resume.professionalExperience')}
               </h3>
               <div className="space-y-8">
                 {experience.map((job, index) => (
@@ -270,7 +272,7 @@ const Resume = () => {
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-6">
                 <GraduationCap size={20} className="text-[var(--color-primary)]" />
-                Education & Learning
+                {t('resume.educationLearning')}
               </h3>
               <div className="space-y-6">
                 {education.map((edu, index) => (

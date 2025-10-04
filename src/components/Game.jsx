@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Gamepad2, RefreshCw } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Game = () => {
+  const { t } = useTranslation();
   // Game state
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
@@ -81,15 +83,15 @@ const Game = () => {
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <Gamepad2 size={18} className="text-[var(--color-primary)]" />
-            <span className="text-sm font-medium">Mini Game</span>
+            <span className="text-sm font-medium">{t('game.miniGame')}</span>
           </div>
           
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="heading-gradient">Quick Reflexes</span>
+            <span className="heading-gradient">{t('game.quickReflexes')}</span>
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Test your reflexes! Click on the target as many times as you can in 30 seconds.
+            {t('game.description')}
           </p>
         </motion.div>
 
@@ -99,10 +101,10 @@ const Game = () => {
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-4">
                 <div className="px-4 py-2 bg-[var(--color-secondary-darker)] rounded-lg">
-                  <span className="text-[var(--color-text)]">Score: <span className="text-[var(--color-primary)] font-bold">{score}</span></span>
+                  <span className="text-[var(--color-text)]">{t('game.score')}: <span className="text-[var(--color-primary)] font-bold">{score}</span></span>
                 </div>
                 <div className="px-4 py-2 bg-[var(--color-secondary-darker)] rounded-lg">
-                  <span className="text-[var(--color-text)]">Time: <span className={`font-bold ${timeLeft < 10 ? 'text-red-500' : 'text-[var(--color-primary)]'}`}>{timeLeft}s</span></span>
+                  <span className="text-[var(--color-text)]">{t('game.time')}: <span className={`font-bold ${timeLeft < 10 ? 'text-red-500' : 'text-[var(--color-primary)]'}`}>{timeLeft}s</span></span>
                 </div>
               </div>
               
@@ -115,12 +117,12 @@ const Game = () => {
                 {gameStarted ? (
                   <>
                     <RefreshCw size={16} />
-                    Reset
+                    {t('game.reset')}
                   </>
                 ) : (
                   <>
                     <Gamepad2 size={16} />
-                    Start Game
+                    {t('game.startGame')}
                   </>
                 )}
               </motion.button>
@@ -141,7 +143,7 @@ const Game = () => {
                     transition={{ duration: 0.5 }}
                   >
                     <Gamepad2 size={48} className="text-[var(--color-primary)] mx-auto mb-4" />
-                    <p className="text-[var(--color-text)] text-xl font-bold">Click Start to Play!</p>
+                    <p className="text-[var(--color-text)] text-xl font-bold">{t('game.clickStart')}</p>
                   </motion.div>
                 </div>
               )}
@@ -155,15 +157,15 @@ const Game = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <Gamepad2 size={48} className="text-[var(--color-primary)] mx-auto mb-4" />
-                    <h3 className="text-[var(--color-text)] text-2xl font-bold mb-2">Game Over!</h3>
-                    <p className="text-[var(--color-text-secondary)] mb-4">Your score: <span className="text-[var(--color-primary)] font-bold text-xl">{score}</span></p>
+                    <h3 className="text-[var(--color-text)] text-2xl font-bold mb-2">{t('game.gameOver')}</h3>
+                    <p className="text-[var(--color-text-secondary)] mb-4">{t('game.yourScore')}: <span className="text-[var(--color-primary)] font-bold text-xl">{score}</span></p>
                     <motion.button
                       onClick={startGame}
                       className="btn-primary py-2 px-6"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      Play Again
+                      {t('game.playAgain')}
                     </motion.button>
                   </motion.div>
                 </div>
@@ -189,12 +191,12 @@ const Game = () => {
 
             {/* Instructions */}
             <div className="mt-4 p-4 rounded-lg bg-[var(--color-secondary-darker)]/30 border border-[var(--color-border)]">
-              <h4 className="text-[var(--color-text)] font-medium mb-2">How to Play:</h4>
+              <h4 className="text-[var(--color-text)] font-medium mb-2">{t('game.howToPlay')}</h4>
               <ul className="text-[var(--color-text-secondary)] text-sm space-y-1">
-                <li>• Click on the colored target as quickly as you can</li>
-                <li>• Each click gives you 1 point</li>
-                <li>• You have 30 seconds to get as many points as possible</li>
-                <li>• The target will move to a new position after each click</li>
+                <li>• {t('game.instruction1')}</li>
+                <li>• {t('game.instruction2')}</li>
+                <li>• {t('game.instruction3')}</li>
+                <li>• {t('game.instruction4')}</li>
               </ul>
             </div>
           </div>

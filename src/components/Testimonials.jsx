@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, User, Building, Globe } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
@@ -94,15 +96,15 @@ const Testimonials = () => {
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <Quote size={18} className="text-[var(--color-primary)]" />
-            <span className="text-sm font-medium">Client Testimonials</span>
+            <span className="text-sm font-medium">{t('testimonials.clientTestimonials')}</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="heading-gradient">What Clients Say</span>
+            <span className="heading-gradient">{t('testimonials.whatClientsSay')}</span>
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Don't just take my word for it. Here's what clients have to say about working with me on their Web3 and mobile development projects.
+            {t('testimonials.description')}
           </p>
         </motion.div>
 
@@ -156,16 +158,16 @@ const Testimonials = () => {
                   {/* Project Stats */}
                   <div className="space-y-2 text-sm">
                     <div className="bg-[var(--color-secondary-darker)]/50 rounded-lg p-3">
-                      <div className="text-[var(--color-text-secondary)]">Project</div>
+                      <div className="text-[var(--color-text-secondary)]">{t('testimonials.project')}</div>
                       <div className="text-[var(--color-text)] font-semibold">{current.project}</div>
                     </div>
                     <div className="flex gap-2">
                       <div className="bg-[var(--color-secondary-darker)]/50 rounded-lg p-2 flex-1">
-                        <div className="text-[var(--color-text-secondary)] text-xs">Duration</div>
+                        <div className="text-[var(--color-text-secondary)] text-xs">{t('testimonials.duration')}</div>
                         <div className="text-[var(--color-text)] font-semibold text-sm">{current.duration}</div>
                       </div>
                       <div className="bg-[var(--color-secondary-darker)]/50 rounded-lg p-2 flex-1">
-                        <div className="text-[var(--color-text-secondary)] text-xs">Result</div>
+                        <div className="text-[var(--color-text-secondary)] text-xs">{t('testimonials.result')}</div>
                         <div className="text-[var(--color-primary)] font-semibold text-sm">{current.value}</div>
                       </div>
                     </div>
@@ -222,10 +224,10 @@ const Testimonials = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {[
-              { label: "Happy Clients", value: "50+", icon: <User className="w-6 h-6" /> },
-              { label: "Projects Completed", value: "100+", icon: <Building className="w-6 h-6" /> },
-              { label: "Success Rate", value: "98%", icon: <Star className="w-6 h-6" /> },
-              { label: "Countries Served", value: "25+", icon: <Globe className="w-6 h-6" /> }
+              { label: t('testimonials.stats.happyClients'), value: "50+", icon: <User className="w-6 h-6" /> },
+              { label: t('testimonials.stats.projectsCompleted'), value: "100+", icon: <Building className="w-6 h-6" /> },
+              { label: t('testimonials.stats.successRate'), value: "98%", icon: <Star className="w-6 h-6" /> },
+              { label: t('testimonials.stats.countriesServed'), value: "25+", icon: <Globe className="w-6 h-6" /> }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

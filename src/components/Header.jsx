@@ -7,7 +7,7 @@ import useTranslation from '../hooks/useTranslation';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useTranslation();
+  const { t, language, isAutoDetected, isLoading } = useTranslation();
 
   // Track scroll position
   useEffect(() => {
@@ -90,7 +90,21 @@ const Header = () => {
               </motion.a>
             ))}
             
-            <LanguageSwitcher />
+            <div className="flex items-center gap-2">
+              {isAutoDetected && (
+                <div className="text-xs text-[var(--color-text-secondary)] hidden sm:block flex items-center gap-1">
+                  {isLoading ? (
+                    <>
+                      <div className="w-2 h-2 border border-[var(--color-primary)] border-t-transparent rounded-full animate-spin"></div>
+                      Translating...
+                    </>
+                  ) : (
+                    `Auto-translated to ${language.toUpperCase()}`
+                  )}
+                </div>
+              )}
+              <LanguageSwitcher />
+            </div>
             
             <motion.a
               href="#contact"

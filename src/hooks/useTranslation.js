@@ -2,7 +2,17 @@ import { useState, useEffect } from 'react';
 
 const useTranslation = () => {
   const [language, setLanguage] = useState(() => {
-    return localStorage.getItem('portfolio-language') || 'en';
+    // First check if user has manually selected a language
+    const savedLanguage = localStorage.getItem('portfolio-language');
+    if (savedLanguage) return savedLanguage;
+    
+    // Auto-detect user's browser language
+    const browserLanguage = navigator.language || navigator.languages?.[0] || 'en';
+    const detectedLanguage = browserLanguage.split('-')[0]; // Get language code (e.g., 'en' from 'en-US')
+    
+    // Save the detected language
+    localStorage.setItem('portfolio-language', detectedLanguage);
+    return detectedLanguage;
   });
 
   const [translations, setTranslations] = useState({});
@@ -201,7 +211,7 @@ const useTranslation = () => {
     return value || key;
   };
 
-  return { language, changeLanguage, t, isLoading };
+  return { language, changeLanguage, t, isLoading, isAutoDetected: !localStorage.getItem('portfolio-language') };
 };
 
 export default useTranslation;

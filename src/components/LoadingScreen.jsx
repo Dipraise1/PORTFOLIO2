@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 const LoadingScreen = ({ isLoading, onComplete }) => {
+  const { t } = useTranslation();
   const [progress, setProgress] = useState(0);
-  const [loadingText, setLoadingText] = useState('Initializing...');
+  const [loadingText, setLoadingText] = useState(t('loading.initializing'));
 
   useEffect(() => {
     if (!isLoading) return;
 
     const loadingSteps = [
-      { progress: 20, text: 'Loading assets...' },
-      { progress: 40, text: 'Initializing components...' },
-      { progress: 60, text: 'Setting up portfolio...' },
-      { progress: 80, text: 'Preparing experience...' },
-      { progress: 95, text: 'Almost ready...' },
-      { progress: 100, text: 'Welcome!' }
+      { progress: 20, text: t('loading.loadingAssets') },
+      { progress: 40, text: t('loading.initializingComponents') },
+      { progress: 60, text: t('loading.settingUpPortfolio') },
+      { progress: 80, text: t('loading.preparingExperience') },
+      { progress: 95, text: t('loading.almostReady') },
+      { progress: 100, text: t('loading.welcome') }
     ];
 
     let currentStep = 0;
@@ -76,7 +78,7 @@ const LoadingScreen = ({ isLoading, onComplete }) => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Web3 Developer & Blockchain Expert
+              {t('loading.subtitle')}
             </motion.p>
 
             {/* Modern Progress Bar */}

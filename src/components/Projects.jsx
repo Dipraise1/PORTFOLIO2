@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, Code2, Layers, ArrowRight, Terminal, Database, Coffee, Bot, Wallet, MessageCircle, BarChart, Activity, LineChart } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
   const projects = [
     {

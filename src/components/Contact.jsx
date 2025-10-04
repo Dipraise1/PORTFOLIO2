@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MessageSquare, CheckCircle, AlertCircle, Loader2, User, Heart } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useTranslation } from '../hooks/useTranslation';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -22,19 +24,19 @@ const Contact = () => {
     const newErrors = {};
     
     if (!formState.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = t('contact.validation.nameRequired');
     }
     
     if (!formState.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = t('contact.validation.emailRequired');
     } else if (!/\S+@\S+\.\S+/.test(formState.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = t('contact.validation.emailInvalid');
     }
     
     if (!formState.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = t('contact.validation.messageRequired');
     } else if (formState.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = t('contact.validation.messageMinLength');
     }
     
     setErrors(newErrors);
@@ -136,15 +138,15 @@ const Contact = () => {
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <Heart size={18} className="text-[var(--color-primary)]" />
-            <span className="text-sm font-medium">Let's Connect</span>
+            <span className="text-sm font-medium">{t('contact.letsConnect')}</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="heading-gradient">Get In Touch</span>
+            <span className="heading-gradient">{t('contact.getInTouch')}</span>
           </h2>
           
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
-            Ready to build your Web3 project or mobile app? Need smart contract development, DeFi integration, AI agent services, or Flutter/React Native app development? I'd love to hear about your blockchain development and mobile app needs and explore how we can work together.
+            {t('contact.description')}
           </p>
         </motion.div>
 
@@ -160,15 +162,15 @@ const Contact = () => {
               <motion.div variants={itemVariants}>
                 <h3 className="text-2xl font-bold text-[var(--color-text)] mb-6 flex items-center gap-2">
                   <User className="text-[var(--color-primary)]" size={24} />
-                  Let's Start a Conversation
+                  {t('contact.startConversation')}
                 </h3>
                 <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed">
-                  I'm always excited to hear about new Web3 projects, mobile app ideas, and blockchain development opportunities. Whether you need smart contract development, DeFi protocol integration, NFT marketplace creation, AI agent services, or Flutter/React Native mobile app development, I'm here to help bring your vision to life.
+                  {t('contact.conversationText')}
                 </p>
               </motion.div>
 
               <motion.div variants={itemVariants} className="space-y-6">
-                <h4 className="text-xl font-semibold text-[var(--color-text)]">Quick Connect</h4>
+                <h4 className="text-xl font-semibold text-[var(--color-text)]">{t('contact.quickConnect')}</h4>
                 
                 <div className="space-y-4">
                   <motion.a 
@@ -222,59 +224,59 @@ const Contact = () => {
               </motion.div>
 
               <motion.div variants={itemVariants} className="p-6 rounded-lg bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20">
-                <h4 className="text-lg font-semibold text-[var(--color-text)] mb-3">What I Can Help With</h4>
+                <h4 className="text-lg font-semibold text-[var(--color-text)] mb-3">{t('contact.whatICanHelp')}</h4>
                 <ul className="space-y-2 text-[var(--color-text-secondary)]">
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Smart Contract Development
+                    {t('contact.services.smartContract')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    DeFi Protocol Integration
+                    {t('contact.services.defi')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    NFT Marketplace Development
+                    {t('contact.services.nft')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Web3 Application Architecture
+                    {t('contact.services.web3')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Frontend Development
+                    {t('contact.services.frontend')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Backend Services
+                    {t('contact.services.backend')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    AI Agent Development
+                    {t('contact.services.aiAgent')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Telegram Bot Scripts
+                    {t('contact.services.telegramBot')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Automated Trading Bots
+                    {t('contact.services.tradingBot')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    AI-Powered Analytics Tools
+                    {t('contact.services.analytics')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Flutter App Development
+                    {t('contact.services.flutter')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    React Native App Development
+                    {t('contact.services.reactNative')}
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-[var(--color-primary)] rounded-full"></div>
-                    Mobile App Development
+                    {t('contact.services.mobileApp')}
                   </li>
                 </ul>
               </motion.div>
@@ -301,20 +303,20 @@ const Contact = () => {
                   {submitStatus === 'success' ? (
                     <>
                       <CheckCircle size={20} />
-                      <span>Message sent successfully! I'll get back to you within 24 hours.</span>
+                      <span>{t('contact.successMessage')}</span>
                     </>
                   ) : (
                     <>
                       <AlertCircle size={20} />
-                      <span>Failed to send message. Please try again or contact me directly.</span>
+                      <span>{t('contact.errorMessage')}</span>
                     </>
                   )}
                 </motion.div>
               )}
 
               <motion.div variants={itemVariants} className="mb-8">
-                <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2">Send a Message</h3>
-                <p className="text-[var(--color-text-secondary)]">I'd love to hear about your project or ideas!</p>
+                <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2">{t('contact.sendMessage')}</h3>
+                <p className="text-[var(--color-text-secondary)]">{t('contact.messageDescription')}</p>
               </motion.div>
 
               <motion.form 
@@ -324,7 +326,7 @@ const Contact = () => {
               >
                 <motion.div variants={itemVariants}>
                   <label className="block text-[var(--color-text)] mb-3 font-semibold text-sm uppercase tracking-wide">
-                    Full Name
+                    {t('contact.form.fullName')}
                   </label>
                   <input
                     type="text"
@@ -334,7 +336,7 @@ const Contact = () => {
                     className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-xl p-4 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 text-base ${
                       errors.name ? 'border-red-500' : 'border-[var(--color-border)]'
                     }`}
-                    placeholder="John Doe"
+                    placeholder={t('contact.form.namePlaceholder')}
                   />
                   {errors.name && (
                     <p className="mt-2 text-red-400 text-sm flex items-center gap-1">
@@ -346,7 +348,7 @@ const Contact = () => {
 
                 <motion.div variants={itemVariants}>
                   <label className="block text-[var(--color-text)] mb-3 font-semibold text-sm uppercase tracking-wide">
-                    Email Address
+                    {t('contact.form.emailAddress')}
                   </label>
                   <input
                     type="email"
@@ -356,7 +358,7 @@ const Contact = () => {
                     className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-xl p-4 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 text-base ${
                       errors.email ? 'border-red-500' : 'border-[var(--color-border)]'
                     }`}
-                    placeholder="john@example.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                   />
                   {errors.email && (
                     <p className="mt-2 text-red-400 text-sm flex items-center gap-1">
@@ -368,7 +370,7 @@ const Contact = () => {
 
                 <motion.div variants={itemVariants}>
                   <label className="block text-[var(--color-text)] mb-3 font-semibold text-sm uppercase tracking-wide">
-                    Project Details
+                    {t('contact.form.projectDetails')}
                   </label>
                   <textarea
                     name="message"
@@ -378,7 +380,7 @@ const Contact = () => {
                     className={`w-full bg-[var(--color-secondary-darker)]/50 border rounded-xl p-4 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-300 resize-vertical text-base ${
                       errors.message ? 'border-red-500' : 'border-[var(--color-border)]'
                     }`}
-                    placeholder="Describe your project, timeline, budget, or any specific requirements you have in mind..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                   />
                   {errors.message && (
                     <p className="mt-2 text-red-400 text-sm flex items-center gap-1">
@@ -388,7 +390,7 @@ const Contact = () => {
                   )}
                   <div className="mt-2 flex justify-between items-center">
                     <p className="text-[var(--color-text-secondary)] text-sm">
-                      Tell me about your vision and I'll help bring it to life
+                      {t('contact.form.visionText')}
                     </p>
                     <p className={`text-sm font-medium ${
                       formState.message.length > 450 ? 'text-orange-400' : 'text-[var(--color-text-secondary)]'
@@ -411,12 +413,12 @@ const Contact = () => {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-5 h-5 animate-spin" />
-                        Sending Message...
+                        {t('contact.form.sending')}
                       </>
                     ) : (
                       <>
                         <Send className="w-5 h-5" />
-                        Send Message
+                        {t('contact.form.sendMessage')}
                       </>
                     )}
                   </motion.button>
@@ -429,7 +431,7 @@ const Contact = () => {
               >
                 <div className="flex items-center justify-center gap-2 text-[var(--color-text-secondary)] text-sm">
                   <div className="w-2 h-2 bg-[var(--color-primary)] rounded-full animate-pulse"></div>
-                  <span>I typically respond within 24 hours</span>
+                  <span>{t('contact.responseTime')}</span>
                 </div>
               </motion.div>
             </motion.div>
