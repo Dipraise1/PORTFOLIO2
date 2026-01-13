@@ -330,7 +330,7 @@ const Projects = () => {
             <Github className="w-5 h-5" />
           </motion.a>
           <motion.a 
-            href="https://t.me/+l_zN6tKLVUkwNDc5"
+            href="https://t.me/jokersrequired"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-text)] hover:bg-[var(--color-accent)]/20 transition-colors duration-300"

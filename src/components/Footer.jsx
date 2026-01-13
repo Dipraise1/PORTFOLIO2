@@ -9,9 +9,9 @@ const Footer = () => {
   
   const links = [
     { title: t('footer.social'), items: [
-      { name: t('footer.twitter'), href: 'https://x.com/divine_js2' },
+      { name: t('footer.twitter'), href: 'https://x.com/divinecodes11?s=21' },
       { name: t('footer.github'), href: 'https://github.com/Dipraise1' },
-      { name: t('footer.telegram'), href: 'https://t.me/+l_zN6tKLVUkwNDc5' }
+      { name: t('footer.telegram'), href: 'https://t.me/jokersrequired' }
     ]},
     { title: t('footer.resources'), items: [
       { name: t('footer.portfolio'), href: 'https://deesporfolio.vercel.app' },
@@ -81,8 +81,8 @@ const Footer = () => {
               <div className="flex gap-4">
                 {[
                   { Icon: Github, href: "https://github.com/Dipraise1", label: "GitHub", color: "hover:bg-gray-800" },
-                  { Icon: Twitter, href: "https://x.com/divine_js2", label: "Twitter", color: "hover:bg-blue-500" },
-                  { Icon: MessageCircle, href: "https://t.me/+l_zN6tKLVUkwNDc5", label: "Telegram", color: "hover:bg-blue-400" },
+                  { Icon: Twitter, href: "https://x.com/divinecodes11?s=21", label: "Twitter", color: "hover:bg-blue-500" },
+                  { Icon: MessageCircle, href: "https://t.me/jokersrequired", label: "Telegram", color: "hover:bg-blue-400" },
                   { Icon: Mail, href: "mailto:raphealdivine2@gmail.com", label: "Email", color: "hover:bg-red-500" }
                 ].map(({ Icon, href, label, color }) => (
                   <motion.a

@@ -174,7 +174,7 @@ const Contact = () => {
                 
                 <div className="space-y-4">
                   <motion.a 
-                    href="https://t.me/divinecodes11" 
+                    href="https://t.me/jokersrequired" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 group"
@@ -185,7 +185,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium text-[var(--color-text)]">Telegram</p>
-                      <p className="text-sm text-[var(--color-text-secondary)]">@divinecodes11</p>
+                      <p className="text-sm text-[var(--color-text-secondary)]">@jokersrequired</p>
                     </div>
                   </motion.a>
 
@@ -206,7 +206,7 @@ const Contact = () => {
                   </motion.a>
 
                   <motion.a 
-                    href="https://x.com/divine_js2" 
+                    href="https://x.com/divinecodes11?s=21" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 group"
@@ -217,7 +217,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium text-[var(--color-text)]">Twitter/X</p>
-                      <p className="text-sm text-[var(--color-text-secondary)]">@divine_js2</p>
+                      <p className="text-sm text-[var(--color-text-secondary)]">@divinecodes11</p>
                     </div>
                   </motion.a>
                 </div>

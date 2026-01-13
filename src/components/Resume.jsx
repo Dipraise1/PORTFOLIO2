@@ -141,8 +141,8 @@ const Resume = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone size={16} className="text-[var(--color-primary)]" />
-                  <a href="https://t.me/divinecodes11" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
-                    @divinecodes11
+                  <a href="https://t.me/jokersrequired" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
+                    @jokersrequired
                   </a>
                 </div>
                 <div className="flex items-center gap-3">

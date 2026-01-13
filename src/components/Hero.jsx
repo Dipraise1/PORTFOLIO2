@@ -198,7 +198,7 @@ const Hero = () => {
                   <Github size={24} />
                 </a>
                 <a 
-                  href="https://t.me/+l_zN6tKLVUkwNDc5" 
+                  href="https://t.me/jokersrequired" 
                   target="_blank"
                   rel="noreferrer"
                   className="hover:text-[var(--color-primary)] transition-colors p-2"
