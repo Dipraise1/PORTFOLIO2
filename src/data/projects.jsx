@@ -127,5 +127,75 @@ export const projects = [
     stats: {
       features: 'Wallet Authentication, Encrypted Messages, Cross-Chain Support'
     }
+  },
+  {
+    id: 10,
+    title: 'Multichain Trading Bot',
+    description:
+      'Production-ready multi-chain memecoin sniper bot built with Rust and TypeScript. Rust/Axum backend with Grammy Telegram interface; multi-chain (Solana, Ethereum, BSC), wallet management, auto TP/SL, GoPlus safety checks, DexScreener prices, portfolio analytics, gas optimization, and alerts.',
+    icon: <Bot className="w-10 h-10 text-teal-500" />,
+    tech: ['Rust', 'TypeScript', 'Axum', 'Grammy', 'Solana', 'EVM'],
+    githubLink: '',
+    liveLink: 'https://t.me/multichaintradingbot',
+    category: 'blockchain',
+    stats: {
+      features: 'Multi-chain, DexScreener, Jupiter, 1inch, GoPlus'
+    }
+  },
+  {
+    id: 11,
+    title: 'Sawawallet',
+    description:
+      'Web3 wallet and product startup. Secure, user-friendly blockchain wallet and related services.',
+    icon: <Wallet className="w-10 h-10 text-[var(--color-primary)]" />,
+    tech: ['Web3', 'Blockchain', 'TypeScript'],
+    githubLink: '',
+    liveLink: 'https://sawawallet.org',
+    category: 'blockchain',
+    stats: {
+      features: 'Wallet, Startup'
+    }
+  },
+  {
+    id: 12,
+    title: 'Gumy',
+    description:
+      'Meme project and interactive experience. Built with Next.js and deployed on Vercel.',
+    icon: <Coffee className="w-10 h-10 text-purple-500" />,
+    tech: ['Next.js', 'React', 'Vercel'],
+    githubLink: 'https://github.com/Dipraise1/gumy',
+    liveLink: 'https://gumy.vercel.app',
+    category: 'web',
+    stats: {
+      features: 'Meme, Next.js, Vercel'
+    }
+  },
+  {
+    id: 13,
+    title: 'OTTO+ Rewards',
+    description:
+      'Next.js dApp for cleaning up dead token accounts on Solana and earning SOL rewards. Gamified cleanup with progress animations, real-time stats, achievements, and modern glassmorphism UI with sound effects.',
+    icon: <Activity className="w-10 h-10 text-[var(--color-primary-lighter)]" />,
+    tech: ['Next.js 14', 'TypeScript', 'Solana', 'SPL Token', 'shadcn/ui', 'Tailwind'],
+    githubLink: 'https://github.com/Dipraise1/otto-burn-rewards',
+    liveLink: '',
+    category: 'blockchain',
+    stats: {
+      features: 'Token cleanup, SOL rewards, Gamified, Achievements'
+    }
+  },
+  {
+    id: 14,
+    title: 'NFT Mint Page',
+    description:
+      'NFT minting engine with Metaplex UMI for standard SPL NFTs. Physical redemption form with database storage, real-time SOL/USD pricing, toast notifications, and Solscan transaction links.',
+    icon: <Layers className="w-10 h-10 text-yellow-500" />,
+    tech: ['React', 'Metaplex UMI', 'Solana', 'SPL NFT'],
+    githubLink: '',
+    liveLink: 'https://nftmintpage.vercel.app',
+    category: 'blockchain',
+    stats: {
+      features: 'Minting, Physical redemption, Solscan, Toasts'
+    }
   }
 ];

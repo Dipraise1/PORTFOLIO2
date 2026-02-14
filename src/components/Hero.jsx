@@ -207,7 +207,7 @@ const Hero = () => {
                   <MessageCircle size={24} />
                 </a>
                 <a 
-                  href="https://deesporfolio.vercel.app" 
+                  href="https://divinebuilds.online" 
                   target="_blank"
                   rel="noreferrer"
                   className="hover:text-[var(--color-primary)] transition-colors p-2"

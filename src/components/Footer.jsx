@@ -17,7 +17,7 @@ const Footer = () => {
   const links = [
     {
       title: t('footer.resources'), items: [
-        { name: t('footer.portfolio'), href: 'https://deesporfolio.vercel.app', external: true },
+        { name: t('footer.portfolio'), href: 'https://divinebuilds.online', external: true },
         { name: t('footer.projects'), href: '#projects', external: false },
         { name: t('footer.contact'), href: '#contact', external: false }
       ]

@@ -16,8 +16,9 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Register service worker for PWA functionality
-    if ('serviceWorker' in navigator) {
+    // Register service worker only in production so localhost dev shows live updates
+    const isDev = import.meta.env.DEV || window.location.hostname === 'localhost';
+    if (!isDev && 'serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js')
         .then((registration) => {
           console.log('SW registered: ', registration);

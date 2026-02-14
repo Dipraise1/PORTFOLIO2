@@ -4,12 +4,12 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://deesporfolio.vercel.app/</loc>
+    <loc>https://divinebuilds.online/</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://deesporfolio.vercel.app/pfp.png</image:loc>
+      <image:loc>https://divinebuilds.online/pfp.png</image:loc>
       <image:title>Divine Rapheal - Web3 Developer & Blockchain Expert</image:title>
       <image:caption>Professional Web3 developer specializing in smart contracts, DeFi protocols, NFT marketplaces, AI agents, Telegram bots, and automated trading systems</image:caption>
     </image:image>
@@ -17,7 +17,7 @@
   
   <!-- About Section -->
   <url>
-    <loc>https://deesporfolio.vercel.app/#about</loc>
+    <loc>https://divinebuilds.online/#about</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -25,7 +25,7 @@
   
   <!-- Projects Section -->
   <url>
-    <loc>https://deesporfolio.vercel.app/#projects</loc>
+    <loc>https://divinebuilds.online/#projects</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -33,7 +33,7 @@
   
   <!-- Contact Section -->
   <url>
-    <loc>https://deesporfolio.vercel.app/#contact</loc>
+    <loc>https://divinebuilds.online/#contact</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -41,7 +41,7 @@
   
   <!-- Resume Section -->
   <url>
-    <loc>https://deesporfolio.vercel.app/#resume</loc>
+    <loc>https://divinebuilds.online/#resume</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -49,7 +49,7 @@
   
   <!-- Game Section -->
   <url>
-    <loc>https://deesporfolio.vercel.app/#game</loc>
+    <loc>https://divinebuilds.online/#game</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

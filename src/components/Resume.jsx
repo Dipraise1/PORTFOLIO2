@@ -151,8 +151,8 @@ const Resume = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <Globe size={16} className="text-[var(--color-primary)]" />
-                  <a href="https://deesporfolio.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
-                    deesporfolio.vercel.app
+                  <a href="https://divinebuilds.online" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
+                    divinebuilds.online
                   </a>
                 </div>
               </div>

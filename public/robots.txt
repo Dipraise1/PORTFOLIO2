@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://deesporfolio.vercel.app/sitemap.xml
+Sitemap: https://divinebuilds.online/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
