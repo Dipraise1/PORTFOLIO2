@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, Code2, ArrowRight, MessageCircle } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
@@ -9,9 +9,10 @@ const Projects = () => {
   const [hoveredId, setHoveredId] = useState(null);
   const { t } = useTranslation();
 
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects = useMemo(
+    () => (activeFilter === 'all' ? projects : projects.filter((p) => p.category === activeFilter)),
+    [activeFilter]
+  );
 
   const filters = [
     { id: 'all', label: t('projects.allProjects') },
@@ -23,12 +24,12 @@ const Projects = () => {
   ];
 
   return (
-    <section className="py-24 relative" id="projects">
+    <section className="py-24 relative overflow-visible" id="projects">
       {/* Background decoration */}
       <div className="absolute top-1/4 -right-64 w-96 h-96 bg-[var(--color-primary)]/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 -left-64 w-96 h-96 bg-[var(--color-accent)]/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 overflow-visible">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -47,6 +48,9 @@ const Projects = () => {
 
           <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto leading-relaxed">
             {t('projects.description')}
+          </p>
+          <p className="text-[var(--color-text-muted)] text-sm mt-2" aria-hidden="true">
+            {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
           </p>
 
           {/* Filter tabs */}
@@ -107,15 +111,17 @@ const Projects = () => {
                       </div>
 
                       <div className="flex gap-2">
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="p-2 rounded-lg text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-secondary-darker)] transition-all"
-                          title="View Code"
-                        >
-                          <Github className="w-5 h-5" />
-                        </a>
+                        {project.githubLink && (
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="p-2 rounded-lg text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-secondary-darker)] transition-all"
+                            title="View Code"
+                          >
+                            <Github className="w-5 h-5" />
+                          </a>
+                        )}
                         {project.liveLink && (
                           <a
                             href={project.liveLink}
@@ -157,7 +163,7 @@ const Projects = () => {
                       </div>
 
                       <a
-                        href={project.githubLink}
+                        href={project.githubLink || project.liveLink || '#'}
                         target="_blank"
                         rel="noreferrer"
                         className={`
