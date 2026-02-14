@@ -117,7 +117,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen py-16 flex items-center" id="about">
+    <section className="relative min-h-[85vh] sm:min-h-screen py-10 sm:py-16 flex items-center" id="about">
       <div className="container-custom">
         <motion.div 
           className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center"
@@ -142,11 +142,11 @@ const Hero = () => {
               </motion.div>
 
               <motion.h1 
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold space-y-2"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold space-y-2"
                 variants={itemVariants}
               >
                 <span className="heading-gradient block">Divine</span>
-                <span className="text-[var(--color-text)] block text-4xl sm:text-5xl lg:text-6xl">{t('hero.web3Developer')}</span>
+                <span className="text-[var(--color-text)] block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">{t('hero.web3Developer')}</span>
               </motion.h1>
 
               <motion.p 

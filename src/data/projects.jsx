@@ -3,6 +3,21 @@ import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot,
 
 export const projects = [
   {
+    id: 11,
+    title: 'Sawa Wallet',
+    description:
+      'Send crypto with just a phone number. Money for people, not addresses—built with Expo and TypeScript. Multi-chain USDC (Solana, Polygon, Base), non-custodial, designed for real relationships and remittances.',
+    icon: <Wallet className="w-10 h-10 text-[var(--color-primary)]" />,
+    image: 'https://sawawallet.com/logo.png',
+    tech: ['Expo', 'TypeScript', 'React Native', 'Web3', 'Multi-chain'],
+    githubLink: '',
+    liveLink: 'https://sawawallet.org',
+    category: 'blockchain',
+    stats: {
+      features: 'Phone-number sends, USDC, Africa & beyond'
+    }
+  },
+  {
     id: 1,
     title: 'Crypto Escrow DApp',
     description:
@@ -140,20 +155,6 @@ export const projects = [
     category: 'blockchain',
     stats: {
       features: 'Multi-chain, DexScreener, Jupiter, 1inch, GoPlus'
-    }
-  },
-  {
-    id: 11,
-    title: 'Sawawallet',
-    description:
-      'Web3 wallet and product startup. Secure, user-friendly blockchain wallet and related services.',
-    icon: <Wallet className="w-10 h-10 text-[var(--color-primary)]" />,
-    tech: ['Web3', 'Blockchain', 'TypeScript'],
-    githubLink: '',
-    liveLink: 'https://sawawallet.org',
-    category: 'blockchain',
-    stats: {
-      features: 'Wallet, Startup'
     }
   },
   {

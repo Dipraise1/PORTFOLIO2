@@ -105,14 +105,14 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden" id="contact">
+    <section className="section-padding relative overflow-hidden" id="contact">
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-primary)]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--color-accent)]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-custom relative z-10">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -123,7 +123,7 @@ const Contact = () => {
             <span className="text-sm font-medium">{t('contact.letsConnect')}</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h2 className="section-heading mb-4 sm:mb-6">
             <span className="heading-gradient">{t('contact.getInTouch')}</span>
           </h2>
 

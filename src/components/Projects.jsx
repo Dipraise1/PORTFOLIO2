@@ -7,6 +7,7 @@ import { projects } from '../data/projects.jsx';
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [hoveredId, setHoveredId] = useState(null);
+  const [imageErrors, setImageErrors] = useState(new Set());
   const { t } = useTranslation();
 
   const filteredProjects = useMemo(
@@ -24,7 +25,7 @@ const Projects = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-visible" id="projects">
+    <section className="section-padding relative overflow-visible" id="projects">
       {/* Background decoration */}
       <div className="absolute top-1/4 -right-64 w-96 h-96 bg-[var(--color-primary)]/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 -left-64 w-96 h-96 bg-[var(--color-accent)]/10 rounded-full blur-[100px] pointer-events-none" />
@@ -35,18 +36,18 @@ const Projects = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-6 backdrop-blur-md">
             <Code2 size={18} className="text-[var(--color-primary)]" />
             <span className="text-sm font-medium">{t('projects.githubProjects')}</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h2 className="section-heading mb-4 sm:mb-6">
             <span className="heading-gradient">{t('projects.recentWorks')}</span>
           </h2>
 
-          <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[var(--color-text-secondary)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             {t('projects.description')}
           </p>
           <p className="text-[var(--color-text-muted)] text-sm mt-2" aria-hidden="true">
@@ -54,7 +55,7 @@ const Projects = () => {
           </p>
 
           {/* Filter tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mt-12">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 sm:mt-12">
             {filters.map((filter) => (
               <button
                 key={filter.id}
@@ -72,7 +73,7 @@ const Projects = () => {
 
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -99,15 +100,25 @@ const Projects = () => {
                   `} />
 
                   {/* Card Content */}
-                  <div className="relative h-full bg-[var(--color-secondary-lighter)] rounded-xl p-6 flex flex-col z-10">
+                  <div className="relative h-full bg-[var(--color-secondary-lighter)] rounded-xl p-4 sm:p-6 flex flex-col z-10">
 
                     {/* Header */}
                     <div className="flex justify-between items-start mb-6">
                       <div className={`
-                        p-3 rounded-xl transition-all duration-500
+                        p-3 rounded-xl transition-all duration-500 overflow-hidden flex items-center justify-center
                         ${hoveredId === project.id ? 'bg-[var(--color-primary)]/10 scale-110' : 'bg-[var(--color-secondary-darker)]/50'}
+                        ${project.image ? 'w-16 h-16' : ''}
                       `}>
-                        {project.icon}
+                        {project.image && !imageErrors.has(project.id) ? (
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-10 h-10 object-contain"
+                            onError={() => setImageErrors((s) => new Set(s).add(project.id))}
+                          />
+                        ) : (
+                          project.icon
+                        )}
                       </div>
 
                       <div className="flex gap-2">
@@ -187,7 +198,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-20 text-center flex flex-wrap justify-center gap-6"
+          className="mt-12 sm:mt-20 text-center flex flex-wrap justify-center gap-4 sm:gap-6"
         >
           <a
             href="https://github.com/Dipraise1"

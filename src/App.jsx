@@ -62,7 +62,7 @@ const App = () => {
 
         <Header />
         
-        <main className="relative pt-20">
+        <main className="relative pt-16 sm:pt-20">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isLoading ? 0 : 1 }}

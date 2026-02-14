@@ -57,11 +57,11 @@ const Header = () => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <div className="container-custom">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <motion.a 
             href="/" 
-            className="text-2xl font-bold heading-gradient"
+            className="text-xl sm:text-2xl font-bold heading-gradient"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

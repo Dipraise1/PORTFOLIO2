@@ -20,10 +20,10 @@ const Testimonials = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="py-24 relative" id="testimonials">
+    <section className="section-padding relative" id="testimonials">
       <div className="container-custom">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -33,7 +33,7 @@ const Testimonials = () => {
             <span className="text-sm font-medium">{t('testimonials.clientTestimonials')}</span>
           </div>
           
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h2 className="section-heading mb-4 sm:mb-6">
             <span className="heading-gradient">{t('testimonials.whatClientsSay')}</span>
           </h2>
           
@@ -118,7 +118,7 @@ const Testimonials = () => {
 
           {/* Stats */}
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
