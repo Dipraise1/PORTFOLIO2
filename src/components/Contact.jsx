@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MessageSquare, CheckCircle, AlertCircle, Loader2, User, Heart, Sparkles } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import useTranslation from '../hooks/useTranslation';
+
+const SMARTSUPP_KEY = '71271caf1b799423e65ce7df212e80214378c777';
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -104,6 +106,46 @@ const Contact = () => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
+  // Load Smartsupp when Contact mounts and set up queue so chat:open works before loader is ready
+  useEffect(() => {
+    if (window._smartsupp?.key) return;
+    const _smartsupp = { key: SMARTSUPP_KEY };
+    window._smartsupp = _smartsupp;
+    const queue = [];
+    const smartsupp = function (...args) {
+      queue.push(args);
+    };
+    smartsupp._ = queue;
+    window.smartsupp = smartsupp;
+    const s = document.getElementsByTagName('script')[0];
+    const c = document.createElement('script');
+    c.type = 'text/javascript';
+    c.charset = 'utf-8';
+    c.async = true;
+    c.src = 'https://www.smartsuppchat.com/loader.js?';
+    s.parentNode.insertBefore(c, s);
+  }, []);
+
+  const openSmartsupp = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    try {
+      if (typeof window.smartsupp === 'function') {
+        window.smartsupp('chat:open');
+      }
+    } catch (err) {
+      console.warn('Smartsupp open:', err);
+    }
+    // Fallback: click the Smartsupp launcher if the widget added it to the DOM
+    setTimeout(() => {
+      const launcher = document.querySelector('[id*="smartsupp"], [class*="smartsupp"], [data-smartsupp], .ss-launcher') ||
+        document.querySelector('iframe[src*="smartsupp"]')?.closest('div')?.querySelector('a, button, [role="button"], [onclick]');
+      if (launcher) launcher.click();
+    }, 150);
+  };
+
   return (
     <section className="section-padding relative overflow-hidden" id="contact">
       {/* Background Ambience */}
@@ -143,11 +185,11 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <motion.div variants={itemVariants} className="relative">
-                <h3 className="text-3xl font-bold text-[var(--color-text)] mb-6 flex items-center gap-3">
-                  <User className="text-[var(--color-primary)]" size={32} />
+                <h3 className="text-lg sm:text-xl font-bold text-[var(--color-text)] mb-2 flex items-center gap-2">
+                  <User className="text-[var(--color-primary)]" size={22} />
                   {t('contact.startConversation')}
                 </h3>
-                <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed relative z-10">
+                <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed relative z-10">
                   {t('contact.conversationText')}
                 </p>
                 {/* Decorative line */}
@@ -188,26 +230,57 @@ const Contact = () => {
                       color: "text-white",
                       bg: "bg-gray-500/10",
                       border: "border-gray-500/20"
+                    },
+                    {
+                      icon: <MessageSquare size={24} />,
+                      label: "Live Chat",
+                      value: "Chat now",
+                      href: "#",
+                      onClick: true,
+                      color: "text-green-400",
+                      bg: "bg-green-500/10",
+                      border: "border-green-500/20"
                     }
                   ].map((item, index) => (
-                    <motion.a
-                      key={index}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-4 p-4 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 backdrop-blur-sm transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02]`}
-                    >
-                      <div className={`p-3 rounded-xl ${item.bg} ${item.color} group-hover:scale-110 transition-transform`}>
-                        {item.icon}
-                      </div>
-                      <div>
-                        <p className="font-semibold text-[var(--color-text)] text-lg">{item.label}</p>
-                        <p className="text-sm text-[var(--color-text-secondary)]">{item.value}</p>
-                      </div>
-                      <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
-                        <Send size={16} className={`rotate-45 ${item.color}`} />
-                      </div>
-                    </motion.a>
+                    item.onClick ? (
+                      <motion.button
+                        key={index}
+                        type="button"
+                        onClick={openSmartsupp}
+                        className={`flex items-center gap-4 p-4 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 backdrop-blur-sm transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02] w-full text-left cursor-pointer`}
+                        style={{ pointerEvents: 'auto' }}
+                      >
+                        <div className={`p-3 rounded-xl ${item.bg} ${item.color} group-hover:scale-110 transition-transform`}>
+                          {item.icon}
+                        </div>
+                        <div>
+                          <p className="font-semibold text-[var(--color-text)] text-lg">{item.label}</p>
+                          <p className="text-sm text-[var(--color-text-secondary)]">{item.value}</p>
+                        </div>
+                        <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
+                          <Send size={16} className={`rotate-45 ${item.color}`} />
+                        </div>
+                      </motion.button>
+                    ) : (
+                      <motion.a
+                        key={index}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-4 p-4 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 backdrop-blur-sm transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02]`}
+                      >
+                        <div className={`p-3 rounded-xl ${item.bg} ${item.color} group-hover:scale-110 transition-transform`}>
+                          {item.icon}
+                        </div>
+                        <div>
+                          <p className="font-semibold text-[var(--color-text)] text-lg">{item.label}</p>
+                          <p className="text-sm text-[var(--color-text-secondary)]">{item.value}</p>
+                        </div>
+                        <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
+                          <Send size={16} className={`rotate-45 ${item.color}`} />
+                        </div>
+                      </motion.a>
+                    )
                   ))}
                 </div>
               </motion.div>

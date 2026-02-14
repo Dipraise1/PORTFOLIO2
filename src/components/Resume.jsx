@@ -23,6 +23,19 @@ const Resume = () => {
 
   const experience = [
     {
+      title: "Founder & Lead Developer",
+      company: "Sawa Wallet",
+      period: "Present",
+      location: "Remote",
+      description: "Building Sawa Wallet—send crypto with just a phone number. Money for people, not addresses. Multi-chain USDC (Solana, Polygon, Base), non-custodial, designed for remittances and real relationships.",
+      highlights: [
+        "Send money like a text—phone numbers instead of wallet addresses",
+        "Multi-chain USDC on Solana, Polygon, and Base",
+        "Built with Expo, TypeScript, and React Native",
+        "Africa & beyond—transfers across 50+ countries"
+      ]
+    },
+    {
       title: "Senior Web3 Developer",
       company: "Freelance",
       period: "2022 - Present",

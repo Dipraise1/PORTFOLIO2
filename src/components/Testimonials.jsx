@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Star, Quote, User, Building, Globe } from 'lucide-react';
+import { Star, Quote, Building, Globe } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 
 const testimonial = {
@@ -114,35 +114,6 @@ const Testimonials = () => {
                 </blockquote>
               </div>
             </div>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            {[
-              { label: t('testimonials.stats.happyClients'), value: "50+", icon: <User className="w-6 h-6" /> },
-              { label: t('testimonials.stats.projectsCompleted'), value: "100+", icon: <Building className="w-6 h-6" /> },
-              { label: t('testimonials.stats.successRate'), value: "98%", icon: <Star className="w-6 h-6" /> },
-              { label: t('testimonials.stats.countriesServed'), value: "25+", icon: <Globe className="w-6 h-6" /> }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center p-4 rounded-lg bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              >
-                <div className="text-[var(--color-primary)] mb-2 flex justify-center">
-                  {stat.icon}
-                </div>
-                <div className="text-2xl font-bold text-[var(--color-text)] mb-1">{stat.value}</div>
-                <div className="text-sm text-[var(--color-text-secondary)]">{stat.label}</div>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </div>
