@@ -72,6 +72,18 @@ const Resume = () => {
 
   const education = [
     {
+      degree: "BSc Software Engineering",
+      institution: "Miva Open University",
+      period: "2025 - Present",
+      description: "Currently studying Software Engineering, focusing on modern software development practices, application architecture, and scalable systems."
+    },
+    {
+      degree: "BSc Computer Science",
+      institution: "University of Abuja",
+      period: "2024 - Present",
+      description: "Currently pursuing a degree in Computer Science, building a strong foundation in computational theory, algorithms, and system architecture."
+    },
+    {
       degree: "Self-Taught Developer",
       institution: "Online Platforms & Bootcamps",
       period: "2020 - 2022",
