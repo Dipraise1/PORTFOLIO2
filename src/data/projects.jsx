@@ -1,4 +1,3 @@
-import React from 'react';
 import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet } from 'lucide-react';
 
 export const projects = [
@@ -8,7 +7,7 @@ export const projects = [
     description:
       'Send crypto with just a phone number. Money for people, not addresses—built with Expo and TypeScript. Multi-chain USDC (Solana, Polygon, Base), non-custodial, designed for real relationships and remittances.',
     icon: <Wallet className="w-10 h-10 text-[var(--color-primary)]" />,
-    image: 'https://sawawallet.com/logo.png',
+    image: 'https://sawawallet.org/sawa.png',
     tech: ['Expo', 'TypeScript', 'React Native', 'Web3', 'Multi-chain'],
     githubLink: '',
     liveLink: 'https://sawawallet.org',

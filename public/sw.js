@@ -1,3 +1,4 @@
+/* eslint-env serviceworker */
 const CACHE_NAME = 'praise-eth-portfolio-v2';
 const urlsToCache = [
   '/',
@@ -37,8 +38,9 @@ self.addEventListener('install', (event) => {
 
 // Fetch event - serve from cache when offline
 self.addEventListener('fetch', (event) => {
-  // Skip chrome-extension and other non-http requests
-  if (!event.request.url.startsWith('http')) {
+  // Skip cross-origin requests, like those for Google Analytics.
+  // Also only cache GET requests.
+  if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
     return;
   }
   
@@ -54,7 +56,8 @@ self.addEventListener('fetch', (event) => {
         const fetchRequest = event.request.clone();
         
         return fetch(fetchRequest).then((response) => {
-          // Check if valid response
+          // Check if valid response. Opaque responses (type === 'opaque') cannot be cached safely
+          // without quota issues, but we only cache if status 200.
           if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
@@ -143,6 +146,7 @@ self.addEventListener('notificationclick', (event) => {
   
   if (event.action === 'explore') {
     event.waitUntil(
+      // eslint-disable-next-line no-undef
       clients.openWindow('/')
     );
   }

@@ -8,7 +8,7 @@ const LanguageSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const languages = [
+  const languages = useMemo(() => [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'es', name: 'Español', flag: '🇪🇸' },
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -126,7 +126,7 @@ const LanguageSwitcher = () => {
     { code: 'gcf', name: 'Kréyòl gwadloupéyen', flag: '🇬🇵' },
     { code: 'acf', name: 'Kréyòl matinik', flag: '🇲🇶' },
     { code: 'ht', name: 'Kreyòl ayisyen', flag: '🇭🇹' }
-  ];
+  ], []);
 
   const currentLanguage = languages.find(lang => lang.code === language);
 
@@ -137,7 +137,7 @@ const LanguageSwitcher = () => {
       lang.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       lang.code.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [searchTerm]);
+  }, [searchTerm, languages]);
 
   const handleLanguageChange = (newLanguage) => {
     changeLanguage(newLanguage);

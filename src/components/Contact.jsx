@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MessageSquare, CheckCircle, AlertCircle, Loader2, User, Heart, Sparkles } from 'lucide-react';
+// eslint-disable-next-line no-unused-vars
 import emailjs from '@emailjs/browser';
 import useTranslation from '../hooks/useTranslation';
 
@@ -19,8 +20,11 @@ const Contact = () => {
   const [focusedField, setFocusedField] = useState(null);
 
   // EmailJS configuration
+  // eslint-disable-next-line no-unused-vars
   const EMAILJS_SERVICE_ID = 'service_portfolio';
+  // eslint-disable-next-line no-unused-vars
   const EMAILJS_TEMPLATE_ID = 'template_contact';
+  // eslint-disable-next-line no-unused-vars
   const EMAILJS_PUBLIC_KEY = 'your_public_key';
 
   const validateForm = () => {

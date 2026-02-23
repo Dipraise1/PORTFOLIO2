@@ -177,30 +177,30 @@ const useTranslation = () => {
     }
   };
 
-  // Translate all text content
-  const translateContent = async (content, targetLang) => {
-    setIsLoading(true);
-    const translatedContent = {};
-
-    for (const [key, value] of Object.entries(content)) {
-      if (typeof value === 'string') {
-        translatedContent[key] = await translateText(value, targetLang);
-      } else if (Array.isArray(value)) {
-        translatedContent[key] = await Promise.all(
-          value.map(item => translateText(item, targetLang))
-        );
-      } else if (typeof value === 'object') {
-        translatedContent[key] = await translateContent(value, targetLang);
-      } else {
-        translatedContent[key] = value;
-      }
-    }
-
-    setIsLoading(false);
-    return translatedContent;
-  };
-
   useEffect(() => {
+    // Translate all text content
+    const translateContent = async (content, targetLang) => {
+      setIsLoading(true);
+      const translatedContent = {};
+
+      for (const [key, value] of Object.entries(content)) {
+        if (typeof value === 'string') {
+          translatedContent[key] = await translateText(value, targetLang);
+        } else if (Array.isArray(value)) {
+          translatedContent[key] = await Promise.all(
+            value.map(item => translateText(item, targetLang))
+          );
+        } else if (typeof value === 'object') {
+          translatedContent[key] = await translateContent(value, targetLang);
+        } else {
+          translatedContent[key] = value;
+        }
+      }
+
+      setIsLoading(false);
+      return translatedContent;
+    };
+
     const loadTranslations = async () => {
       if (language === 'en') {
         setTranslations(originalContent);

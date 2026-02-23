@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Code } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 
+/* eslint-disable react/prop-types */
 const LoadingScreen = ({ isLoading, onComplete }) => {
   const { t } = useTranslation();
   const [progress, setProgress] = useState(0);
@@ -36,7 +37,7 @@ const LoadingScreen = ({ isLoading, onComplete }) => {
     }, 300);
 
     return () => clearInterval(interval);
-  }, [isLoading, onComplete]);
+  }, [isLoading, onComplete, t]);
 
   return (
     <AnimatePresence>

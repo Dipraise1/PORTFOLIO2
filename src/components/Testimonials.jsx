@@ -110,7 +110,7 @@ const Testimonials = () => {
               {/* Testimonial Content */}
               <div className="lg:col-span-2">
                 <blockquote className="text-lg text-[var(--color-text-secondary)] leading-relaxed italic">
-                  "{testimonial.text}"
+                  &quot;{testimonial.text}&quot;
                 </blockquote>
               </div>
             </div>
