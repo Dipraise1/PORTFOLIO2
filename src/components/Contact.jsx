@@ -113,7 +113,7 @@ const Contact = () => {
   // Load Smartsupp when Contact mounts and set up queue so chat:open works before loader is ready
   useEffect(() => {
     if (window._smartsupp?.key) return;
-    const _smartsupp = { key: SMARTSUPP_KEY, position: 'left' };
+    const _smartsupp = { key: SMARTSUPP_KEY, position: 'left', hideWidget: true };
     window._smartsupp = _smartsupp;
     const queue = [];
     const smartsupp = function (...args) {
