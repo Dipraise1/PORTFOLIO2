@@ -138,6 +138,7 @@ const Contact = () => {
     try {
       if (typeof window.smartsupp === 'function') {
         window.smartsupp('chat:open');
+        document.body.classList.add('chat-active');
       }
     } catch (err) {
       console.warn('Smartsupp open:', err);
@@ -146,7 +147,10 @@ const Contact = () => {
     setTimeout(() => {
       const launcher = document.querySelector('[id*="smartsupp"], [class*="smartsupp"], [data-smartsupp], .ss-launcher') ||
         document.querySelector('iframe[src*="smartsupp"]')?.closest('div')?.querySelector('a, button, [role="button"], [onclick]');
-      if (launcher) launcher.click();
+      if (launcher) {
+        launcher.click();
+        document.body.classList.add('chat-active');
+      }
     }, 150);
   };
 

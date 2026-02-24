@@ -172,7 +172,8 @@
 }
 
 body:has(footer:hover) #smartsupp-widget-container iframe,
-body:has(#contact:hover) #smartsupp-widget-container iframe {
+body:has(#contact:hover) #smartsupp-widget-container iframe,
+body.chat-active #smartsupp-widget-container iframe {
   opacity: 1 !important;
   pointer-events: auto !important;
 }
