@@ -31,31 +31,31 @@
   .container-custom {
     @apply container mx-auto px-3 sm:px-6 lg:px-8 max-w-7xl;
   }
-  
+
   .section-padding {
     @apply py-12 sm:py-16 lg:py-24;
   }
-  
+
   .section-heading {
     @apply text-3xl sm:text-4xl lg:text-5xl font-bold;
   }
-  
+
   .heading-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] animate-gradient bg-[length:200%_auto];
   }
-  
+
   .card {
     @apply bg-[var(--color-secondary-lighter)] rounded-xl border border-[var(--color-border)] shadow-xl backdrop-blur-sm;
   }
-  
+
   .btn {
     @apply px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-sm sm:text-base;
   }
-  
+
   .btn-primary {
     @apply btn bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] text-white hover:shadow-lg;
   }
-  
+
   .btn-secondary {
     @apply btn bg-[var(--color-secondary-lighter)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-lg;
   }
@@ -65,15 +65,15 @@
   .animate-gradient {
     animation: gradient 5s ease infinite;
   }
-  
+
   .animate-float {
     animation: float 8s ease-in-out infinite;
   }
-  
+
   .animate-pulse-soft {
     animation: pulse-soft 3s ease-in-out infinite;
   }
-  
+
   .animate-grain {
     animation: grain 8s steps(10) infinite;
   }
@@ -85,21 +85,21 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
   }
-  
+
   .line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  
+
   .line-clamp-3 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
-  
+
   .line-clamp-4 {
     overflow: hidden;
     display: -webkit-box;
@@ -133,7 +133,8 @@
 }
 
 @keyframes pulse-soft {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.7;
   }
   50% {
@@ -142,7 +143,8 @@
 }
 
 @keyframes grain {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0);
   }
   10% {
@@ -154,10 +156,23 @@
   50% {
     transform: translate(12%, 9%);
   }
-  70% {
+  80% {
     transform: translate(9%, 4%);
   }
   90% {
     transform: translate(-1%, 7%);
   }
+}
+
+/* Smartsupp Widget Visibility Control */
+#smartsupp-widget-container iframe {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease-in-out !important;
+}
+
+body:has(footer:hover) #smartsupp-widget-container iframe,
+body:has(#contact:hover) #smartsupp-widget-container iframe {
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
