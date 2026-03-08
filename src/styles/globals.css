@@ -196,3 +196,9 @@
   }
 }
 
+/* Hide image hover overlay on touch devices where tap triggers hover */
+@media (pointer: coarse) {
+  .hero-hover-overlay {
+    display: none !important;
+  }
+}

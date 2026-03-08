@@ -87,8 +87,8 @@ const Hero = () => {
           <div className="absolute inset-0 opacity-20 mix-blend-overlay animate-grain" 
                style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E\")" }} />
 
-          {/* Interactive hover overlay */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[var(--color-secondary-darker)]/80 via-transparent to-transparent flex items-end justify-center p-6">
+          {/* Interactive hover overlay — hidden on touch devices to avoid tap-to-open behaviour */}
+          <div className="hero-hover-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[var(--color-secondary-darker)]/80 via-transparent to-transparent flex items-end justify-center p-6">
             <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
               <h3 className="text-[var(--color-text)] text-2xl font-bold mb-2">Web3 Developer</h3>
               <p className="text-[var(--color-text-secondary)]">Building the Future of Web3</p>
