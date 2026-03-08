@@ -39,9 +39,6 @@ const Footer = () => {
 
   return (
     <footer className="relative mt-12 pt-12 pb-8 sm:mt-20 sm:pt-20 sm:pb-10 border-t border-[var(--color-border)] overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--color-primary)]/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-accent)]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 mb-10 sm:mb-16">
@@ -146,7 +143,7 @@ const Footer = () => {
 
           <motion.button
             onClick={scrollToTop}
-            className="group p-3 rounded-full bg-[var(--color-secondary-lighter)] border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300 shadow-lg hover:shadow-[var(--color-primary)]/20"
+            className="group p-3 rounded-full bg-[var(--color-secondary-lighter)] border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, scale: 0.8 }}

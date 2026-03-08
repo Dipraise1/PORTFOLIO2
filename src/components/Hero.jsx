@@ -69,9 +69,6 @@ const Hero = () => {
         {/* Skeleton loader */}
         <div className={`absolute inset-0 bg-[var(--color-secondary-lighter)] rounded-2xl animate-pulse-soft ${imageLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`} />
 
-        {/* Decorative elements */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-[var(--color-primary-lighter)]/20 via-[var(--color-primary)]/20 to-[var(--color-primary-lighter)]/20 rounded-3xl opacity-30 blur-xl animate-pulse-soft" />
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--color-primary-lighter)]/40 to-[var(--color-primary)]/40 rounded-2xl opacity-30 animate-gradient" />
 
         {/* Image container */}
         <div className="group relative rounded-2xl overflow-hidden border-2 border-[var(--color-border)] aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500 shadow-xl">

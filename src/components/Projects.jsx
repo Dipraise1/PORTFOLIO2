@@ -51,9 +51,6 @@ const Projects = () => {
 
   return (
     <section className="section-padding relative overflow-visible" id="projects">
-      {/* Background decoration */}
-      <div className="absolute top-1/4 -right-64 w-96 h-96 bg-[var(--color-primary)]/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-64 w-96 h-96 bg-[var(--color-accent)]/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container-custom relative z-10 overflow-visible">
         <motion.div
@@ -86,7 +83,7 @@ const Projects = () => {
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
                 className={`px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border ${activeFilter === filter.id
-                  ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow-lg shadow-[var(--color-primary)]/25'
+                  ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
                   : 'bg-[var(--color-secondary-lighter)]/50 text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-primary)]/50 hover:text-[var(--color-text)]'
                   }`}
               >
@@ -115,7 +112,7 @@ const Projects = () => {
               >
                 <TiltCard className={`
                   card h-full p-1 relative overflow-hidden transition-all duration-500
-                  ${hoveredId === project.id ? 'shadow-2xl shadow-[var(--color-primary)]/20' : ''}
+                  ${hoveredId === project.id ? '' : ''}
                 `}>
                   {/* Gradient Border Effect */}
                   <div className={`
@@ -239,7 +236,7 @@ const Projects = () => {
             href="https://t.me/jokersrequired"
             target="_blank"
             rel="noreferrer"
-            className="btn duration-300 bg-[#229ED9]/10 text-[#229ED9] border border-[#229ED9]/20 hover:bg-[#229ED9]/20 hover:shadow-lg hover:shadow-[#229ED9]/20 flex items-center gap-2"
+            className="btn duration-300 bg-[#229ED9]/10 text-[#229ED9] border border-[#229ED9]/20 hover:bg-[#229ED9]/20 flex items-center gap-2"
           >
             <span>{t('projects.joinTelegramChannel')}</span>
             <MessageCircle className="w-5 h-5" />

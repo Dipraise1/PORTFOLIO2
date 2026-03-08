@@ -149,9 +149,6 @@ const Contact = () => {
 
   return (
     <section className="section-padding relative overflow-hidden" id="contact">
-      {/* Background Ambience */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-primary)]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--color-accent)]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-custom relative z-10">
         <motion.div
@@ -326,7 +323,6 @@ const Contact = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] rounded-2xl opacity-20 blur-2xl -z-10" />
 
               <div className="card p-5 sm:p-8 md:p-10 backdrop-blur-md border-[var(--color-primary)]/20 h-full">
                 {/* Success/Error Messages */}
@@ -375,7 +371,7 @@ const Contact = () => {
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
                       onChange={handleChange}
-                      className={`w-full bg-[var(--color-secondary-darker)]/30 border rounded-xl p-4 text-[var(--color-text)] outline-none transition-all duration-300 ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:shadow-[0_0_0_4px_rgba(99,102,241,0.1)]'
+                      className={`w-full bg-[var(--color-secondary-darker)]/30 border rounded-xl p-4 text-[var(--color-text)] outline-none transition-all duration-300 ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]/40'
                         }`}
                     />
                     {errors.name && (
@@ -398,7 +394,7 @@ const Contact = () => {
                       onFocus={() => setFocusedField('email')}
                       onBlur={() => setFocusedField(null)}
                       onChange={handleChange}
-                      className={`w-full bg-[var(--color-secondary-darker)]/30 border rounded-xl p-4 text-[var(--color-text)] outline-none transition-all duration-300 ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:shadow-[0_0_0_4px_rgba(99,102,241,0.1)]'
+                      className={`w-full bg-[var(--color-secondary-darker)]/30 border rounded-xl p-4 text-[var(--color-text)] outline-none transition-all duration-300 ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]/40'
                         }`}
                     />
                     {errors.email && (
@@ -421,7 +417,7 @@ const Contact = () => {
                       onBlur={() => setFocusedField(null)}
                       onChange={handleChange}
                       rows="5"
-                      className={`w-full bg-[var(--color-secondary-darker)]/30 border rounded-xl p-4 text-[var(--color-text)] outline-none transition-all duration-300 resize-vertical ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:shadow-[0_0_0_4px_rgba(99,102,241,0.1)]'
+                      className={`w-full bg-[var(--color-secondary-darker)]/30 border rounded-xl p-4 text-[var(--color-text)] outline-none transition-all duration-300 resize-vertical ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]/40'
                         }`}
                     />
                     {errors.message && (
@@ -442,7 +438,7 @@ const Contact = () => {
                     <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-[var(--color-primary)]/25 hover:shadow-[var(--color-primary)]/40 transition-all duration-300 flex items-center justify-center gap-3 text-lg relative overflow-hidden group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.01]'
+                      className={`w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 text-lg relative overflow-hidden group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.01]'
                         }`}
                       whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                     >

@@ -67,22 +67,6 @@ const App = () => {
             }}
           ></div>
 
-          {/* Floating ambient orbs */}
-          <motion.div
-            className="absolute top-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-[var(--color-primary)]/5 blur-[120px]"
-            animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-[var(--color-accent)]/5 blur-[100px]"
-            animate={{ x: [0, -50, 0], y: [0, 40, 0] }}
-            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          />
-          <motion.div
-            className="absolute top-[50%] left-[50%] w-[300px] h-[300px] rounded-full bg-[var(--color-primary-lighter)]/3 blur-[80px]"
-            animate={{ x: [0, 30, -20, 0], y: [0, -40, 20, 0] }}
-            transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 6 }}
-          />
         </div>
 
         <Header />
