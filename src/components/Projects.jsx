@@ -1,8 +1,33 @@
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Github, ExternalLink, Code2, ArrowRight, MessageCircle } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 import { projects } from '../data/projects.jsx';
+
+const TiltCard = ({ children, className }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 20 });
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+  const handleMouseLeave = () => { x.set(0); y.set(0); };
+
+  return (
+    <motion.div
+      className={className}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformPerspective: 800 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -47,7 +72,7 @@ const Projects = () => {
             <span className="heading-gradient">{t('projects.recentWorks')}</span>
           </h2>
 
-          <p className="text-[var(--color-text-secondary)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[var(--color-text-secondary)] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             {t('projects.description')}
           </p>
           <p className="text-[var(--color-text-muted)] text-sm mt-2" aria-hidden="true">
@@ -60,7 +85,7 @@ const Projects = () => {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${activeFilter === filter.id
+                className={`px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border ${activeFilter === filter.id
                   ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow-lg shadow-[var(--color-primary)]/25'
                   : 'bg-[var(--color-secondary-lighter)]/50 text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-primary)]/50 hover:text-[var(--color-text)]'
                   }`}
@@ -73,24 +98,24 @@ const Projects = () => {
 
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
                 layout
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="relative group h-full"
                 onMouseEnter={() => setHoveredId(project.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <div className={`
+                <TiltCard className={`
                   card h-full p-1 relative overflow-hidden transition-all duration-500
-                  ${hoveredId === project.id ? 'transform -translate-y-2' : ''}
+                  ${hoveredId === project.id ? 'shadow-2xl shadow-[var(--color-primary)]/20' : ''}
                 `}>
                   {/* Gradient Border Effect */}
                   <div className={`
@@ -100,7 +125,7 @@ const Projects = () => {
                   `} />
 
                   {/* Card Content */}
-                  <div className="relative h-full bg-[var(--color-secondary-lighter)] rounded-xl p-4 sm:p-6 flex flex-col z-10">
+                  <div className="relative h-full bg-[var(--color-secondary-lighter)] rounded-xl p-3 sm:p-5 flex flex-col z-10">
 
                     {/* Header */}
                     <div className="flex justify-between items-start mb-6">
@@ -147,7 +172,7 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-[var(--color-text)] mb-3 group-hover:text-[var(--color-primary)] transition-colors">
+                    <h3 className="text-base sm:text-lg font-bold text-[var(--color-text)] mb-2 sm:mb-3 group-hover:text-[var(--color-primary)] transition-colors">
                       {project.title}
                     </h3>
 
@@ -186,7 +211,7 @@ const Projects = () => {
                       </a>
                     </div>
                   </div>
-                </div>
+                </TiltCard>
               </motion.div>
             ))}
           </AnimatePresence>

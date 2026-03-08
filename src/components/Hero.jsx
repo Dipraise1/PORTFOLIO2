@@ -1,26 +1,38 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 import { Github, ExternalLink, Code, Terminal, Globe, Cpu, ArrowRight, MessageCircle } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 
+const tagVariants = {
+  hidden: { opacity: 0, scale: 0.7, y: 10 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 220, damping: 18 } }
+};
+
+const tagContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05 } }
+};
+
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [imageLoaded, setImageLoaded] = useState(false);
   const { t } = useTranslation();
 
+  // Spring-smoothed mouse parallax
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const springX = useSpring(rawX, { stiffness: 60, damping: 20 });
+  const springY = useSpring(rawY, { stiffness: 60, damping: 20 });
+
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 20;
-      const y = (clientY / window.innerHeight - 0.5) * 20;
-      setMousePosition({ x, y });
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      rawX.set(x);
+      rawY.set(y);
     };
-
     window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [rawX, rawY]);
 
   const techStack = [
     'React', 'Node.js', 'Web3', 'Solidity', 'JavaScript', 'TypeScript',
@@ -95,11 +107,11 @@ const Hero = () => {
         ].map((badge, index) => (
           <motion.div
             key={index}
-            className={`absolute backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg z-10
+            className={`absolute backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg hidden sm:flex items-center gap-2 shadow-lg z-10
                       transform hover:scale-110 transition-transform duration-300
-                      sm:text-sm md:text-base
-                      ${index === 0 ? 'top-[15%] -left-[10%] lg:-left-[20%]' : 
-                        index === 1 ? 'top-[45%] -right-[10%] lg:-right-[20%]' : 
+                      text-xs sm:text-sm
+                      ${index === 0 ? 'top-[15%] -left-[10%] lg:-left-[20%]' :
+                        index === 1 ? 'top-[45%] -right-[10%] lg:-right-[20%]' :
                         'bottom-[15%] -left-[10%] lg:-left-[20%]'}`}
             style={{ 
               background: `linear-gradient(to right, ${badge.color.split(' ')[0]}, ${badge.color.split(' ')[1]})`
@@ -117,22 +129,24 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen py-16 flex items-center" id="about">
+    <section className="relative min-h-screen py-10 sm:py-16 flex items-center" id="about">
       <div className="container-custom">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+          className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Left column content */}
-          <motion.div 
+          <motion.div
             className="relative z-10 text-center lg:text-left"
             style={{
-              transform: `perspective(1000px) rotateX(${mousePosition.y * 0.03}deg) rotateY(${mousePosition.x * 0.03}deg)`
+              rotateX: springY,
+              rotateY: springX,
+              transformPerspective: 1000
             }}
           >
-            <div className="space-y-8">
+            <div className="space-y-5 sm:space-y-7">
               <motion.div 
                 className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] justify-center lg:justify-start px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)]"
                 variants={itemVariants}
@@ -141,32 +155,36 @@ const Hero = () => {
                 <span className="text-sm font-medium">{t('hero.helloWorld')}</span>
               </motion.div>
 
-              <motion.h1 
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold space-y-2"
+              <motion.h1
+                className="text-4xl sm:text-5xl lg:text-7xl font-bold space-y-1 sm:space-y-2"
                 variants={itemVariants}
               >
                 <span className="heading-gradient block">Divine</span>
-                <span className="text-[var(--color-text)] block text-4xl sm:text-5xl lg:text-6xl">{t('hero.web3Developer')}</span>
+                <span className="text-[var(--color-text)] block text-2xl sm:text-4xl lg:text-6xl">{t('hero.web3Developer')}</span>
               </motion.h1>
 
-              <motion.p 
-                className="text-[var(--color-text-secondary)] text-lg max-w-lg mx-auto lg:mx-0"
+              <motion.p
+                className="text-[var(--color-text-secondary)] text-sm sm:text-base lg:text-lg max-w-lg mx-auto lg:mx-0"
                 variants={itemVariants}
               >
                 {t('hero.description')}
               </motion.p>
 
-              <motion.div 
-                className="flex flex-wrap gap-3 justify-center lg:justify-start"
-                variants={itemVariants}
+              <motion.div
+                className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start"
+                variants={tagContainer}
+                initial="hidden"
+                animate="visible"
               >
                 {techStack.slice(0, 10).map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="px-3 py-1.5 bg-[var(--color-secondary-lighter)]/70 border border-[var(--color-border)] rounded-md text-sm text-[var(--color-text-secondary)]"
+                  <motion.span
+                    key={tech}
+                    variants={tagVariants}
+                    whileHover={{ scale: 1.08, borderColor: 'var(--color-primary)', color: 'var(--color-primary-lighter)' }}
+                    className="px-3 py-1.5 bg-[var(--color-secondary-lighter)]/70 border border-[var(--color-border)] rounded-md text-xs sm:text-sm text-[var(--color-text-secondary)] cursor-default transition-colors"
                   >
                     {tech}
-                  </span>
+                  </motion.span>
                 ))}
               </motion.div>
 
@@ -223,6 +241,21 @@ const Hero = () => {
           <div className="relative z-10">
             <EnhancedImage />
           </div>
+        </motion.div>
+
+        {/* Scroll-down indicator */}
+        <motion.div
+          className="hidden sm:flex flex-col items-center gap-2 absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.6 }}
+        >
+          <span className="text-[var(--color-text-muted)] text-xs tracking-widest uppercase">Scroll</span>
+          <motion.div
+            className="w-px h-10 bg-gradient-to-b from-[var(--color-primary)] to-transparent"
+            animate={{ scaleY: [1, 0.4, 1], opacity: [1, 0.4, 1] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </motion.div>
       </div>
     </section>

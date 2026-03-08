@@ -1,7 +1,33 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { Download, User, Briefcase, GraduationCap, Award, Code, Globe, FileText, Calendar, MapPin, Mail, Phone } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
+
+const skillTagVariants = {
+  hidden: { opacity: 0, scale: 0.75, y: 8 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 260, damping: 20 } }
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } }
+};
+
+const slideUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
+};
 
 const Resume = () => {
   const { t } = useTranslation();
@@ -101,11 +127,12 @@ const Resume = () => {
   return (
     <section className="section-padding relative" id="resume">
       <div className="container-custom">
-        <motion.div 
+        <motion.div
           className="text-center mb-10 sm:mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={slideUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
           <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <FileText size={18} className="text-[var(--color-primary)]" />
@@ -116,7 +143,7 @@ const Resume = () => {
             <span className="heading-gradient">{t('resume.resumeExperience')}</span>
           </h2>
           
-          <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-[var(--color-text-secondary)] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto mb-8">
             {t('resume.description')}
           </p>
 
@@ -143,15 +170,16 @@ const Resume = () => {
           </motion.button>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-10 lg:gap-12">
           {/* Left Column - Personal Info & Skills */}
           <div className="lg:col-span-1 space-y-8">
             {/* Contact Info */}
-            <motion.div 
-              className="card p-6"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <motion.div
+              className="card p-4 sm:p-6"
+              variants={slideLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
                 <User size={20} className="text-[var(--color-primary)]" />
@@ -184,11 +212,12 @@ const Resume = () => {
             </motion.div>
 
             {/* Skills */}
-            <motion.div 
-              className="card p-6"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+            <motion.div
+              className="card p-4 sm:p-6"
+              variants={slideLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
                 <Code size={20} className="text-[var(--color-primary)]" />
@@ -198,64 +227,91 @@ const Resume = () => {
                 {Object.entries(skills).map(([category, techs]) => (
                   <div key={category}>
                     <h4 className="text-[var(--color-text)] font-semibold mb-2">{category}</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <motion.div
+                      className="flex flex-wrap gap-2"
+                      variants={staggerContainer}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    >
                       {techs.map((tech, index) => (
-                        <span 
+                        <motion.span
                           key={index}
-                          className="text-xs px-2 py-1 rounded bg-[var(--color-secondary-darker)]/80 text-[var(--color-text-secondary)]"
+                          variants={skillTagVariants}
+                          className="text-xs px-2 py-1 rounded bg-[var(--color-secondary-darker)]/80 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-colors cursor-default"
                         >
                           {tech}
-                        </span>
+                        </motion.span>
                       ))}
-                    </div>
+                    </motion.div>
                   </div>
                 ))}
               </div>
             </motion.div>
 
             {/* Achievements */}
-            <motion.div 
-              className="card p-6"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+            <motion.div
+              className="card p-4 sm:p-6"
+              variants={slideLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
                 <Award size={20} className="text-[var(--color-primary)]" />
                 {t('resume.keyAchievements')}
               </h3>
-              <ul className="space-y-2 text-[var(--color-text-secondary)]">
+              <motion.ul
+                className="space-y-2 text-[var(--color-text-secondary)]"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {achievements.map((achievement, index) => (
-                  <li key={index} className="flex items-start gap-2">
+                  <motion.li key={index} variants={slideUp} className="flex items-start gap-2">
                     <span className="text-[var(--color-primary)] mt-1">•</span>
                     <span className="text-sm">{achievement}</span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </motion.div>
           </div>
 
           {/* Right Column - Experience & Education */}
           <div className="lg:col-span-2 space-y-8">
             {/* Experience */}
-            <motion.div 
-              className="card p-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <motion.div
+              className="card p-4 sm:p-6"
+              variants={slideRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-6">
                 <Briefcase size={20} className="text-[var(--color-primary)]" />
                 {t('resume.professionalExperience')}
               </h3>
-              <div className="space-y-8">
+              <motion.div
+                className="space-y-8"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {experience.map((job, index) => (
-                  <div key={index} className="relative">
+                  <motion.div key={index} variants={slideUp} className="relative">
                     {index !== experience.length - 1 && (
                       <div className="absolute left-0 top-8 bottom-0 w-px bg-[var(--color-border)]" />
                     )}
                     <div className="flex gap-4">
-                      <div className="flex-shrink-0 w-3 h-3 rounded-full bg-[var(--color-primary)] mt-2" />
+                      <motion.div
+                        className="flex-shrink-0 w-3 h-3 rounded-full bg-[var(--color-primary)] mt-2"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 15, delay: index * 0.1 }}
+                      />
                       <div className="flex-grow">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
                           <h4 className="text-lg font-bold text-[var(--color-text)]">{job.title}</h4>
@@ -283,27 +339,40 @@ const Resume = () => {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Education */}
-            <motion.div 
-              className="card p-6"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+            <motion.div
+              className="card p-4 sm:p-6"
+              variants={slideRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
               <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-6">
                 <GraduationCap size={20} className="text-[var(--color-primary)]" />
                 {t('resume.educationLearning')}
               </h3>
-              <div className="space-y-6">
+              <motion.div
+                className="space-y-6"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {education.map((edu, index) => (
-                  <div key={index} className="relative">
+                  <motion.div key={index} variants={slideUp} className="relative">
                     <div className="flex gap-4">
-                      <div className="flex-shrink-0 w-3 h-3 rounded-full bg-[var(--color-primary)] mt-2" />
+                      <motion.div
+                        className="flex-shrink-0 w-3 h-3 rounded-full bg-[var(--color-primary)] mt-2"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 15, delay: index * 0.1 }}
+                      />
                       <div className="flex-grow">
                         <h4 className="text-lg font-bold text-[var(--color-text)] mb-1">{edu.degree}</h4>
                         <div className="flex items-center gap-4 text-sm text-[var(--color-text-secondary)] mb-2">
@@ -316,9 +385,9 @@ const Resume = () => {
                         <p className="text-[var(--color-text-secondary)]">{edu.description}</p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

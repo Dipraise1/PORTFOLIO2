@@ -38,7 +38,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative mt-20 pt-20 pb-10 border-t border-[var(--color-border)] overflow-hidden">
+    <footer className="relative mt-12 pt-12 pb-8 sm:mt-20 sm:pt-20 sm:pb-10 border-t border-[var(--color-border)] overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--color-primary)]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-accent)]/5 rounded-full blur-[100px] pointer-events-none" />
@@ -53,8 +53,8 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-3xl font-bold heading-gradient mb-4 inline-block">PRAISE.ETH</h3>
-              <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed max-w-md">
+              <h3 className="text-2xl sm:text-3xl font-bold heading-gradient mb-3 sm:mb-4 inline-block">PRAISE.ETH</h3>
+              <p className="text-[var(--color-text-secondary)] text-sm sm:text-base leading-relaxed max-w-md">
                 {t('footer.description')}
               </p>
             </motion.div>
@@ -67,7 +67,7 @@ const Footer = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-xl bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] text-[var(--color-text-muted)] ${color} transition-all duration-300 hover:border-[var(--color-primary)]/50 hover:shadow-lg hover:shadow-[var(--color-primary)]/10`}
+                  className={`p-3 rounded-xl bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] text-[var(--color-text-muted)] ${color} transition-all duration-300 hover:border-[var(--color-primary)]/50`}
                   whileHover={{ y: -3 }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

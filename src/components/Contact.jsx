@@ -135,23 +135,16 @@ const Contact = () => {
       e.preventDefault();
       e.stopPropagation();
     }
+    // Make container visible immediately
+    document.body.classList.add('chat-active');
     try {
       if (typeof window.smartsupp === 'function') {
+        window.smartsupp('widget:show');
         window.smartsupp('chat:open');
-        document.body.classList.add('chat-active');
       }
     } catch (err) {
       console.warn('Smartsupp open:', err);
     }
-    // Fallback: click the Smartsupp launcher if the widget added it to the DOM
-    setTimeout(() => {
-      const launcher = document.querySelector('[id*="smartsupp"], [class*="smartsupp"], [data-smartsupp], .ss-launcher') ||
-        document.querySelector('iframe[src*="smartsupp"]')?.closest('div')?.querySelector('a, button, [role="button"], [onclick]');
-      if (launcher) {
-        launcher.click();
-        document.body.classList.add('chat-active');
-      }
-    }, 150);
   };
 
   return (
@@ -177,16 +170,16 @@ const Contact = () => {
             <span className="heading-gradient">{t('contact.getInTouch')}</span>
           </h2>
 
-          <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[var(--color-text-secondary)] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
             {t('contact.description')}
           </p>
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Left Column - Contact Info */}
             <motion.div
-              className="space-y-10"
+              className="space-y-6 sm:space-y-10"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -210,7 +203,13 @@ const Contact = () => {
                   {t('contact.quickConnect')}
                 </h4>
 
-                <div className="grid gap-4">
+                <motion.div
+                  className="grid gap-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+                >
                   {[
                     {
                       icon: <Phone size={24} />,
@@ -255,14 +254,16 @@ const Contact = () => {
                         key={index}
                         type="button"
                         onClick={openSmartsupp}
+                        variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } } }}
                         className={`flex items-center gap-4 p-4 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 backdrop-blur-sm transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02] w-full text-left cursor-pointer`}
                         style={{ pointerEvents: 'auto' }}
+                        whileHover={{ x: 4 }}
                       >
                         <div className={`p-3 rounded-xl ${item.bg} ${item.color} group-hover:scale-110 transition-transform`}>
                           {item.icon}
                         </div>
                         <div>
-                          <p className="font-semibold text-[var(--color-text)] text-lg">{item.label}</p>
+                          <p className="font-semibold text-[var(--color-text)] text-sm sm:text-base">{item.label}</p>
                           <p className="text-sm text-[var(--color-text-secondary)]">{item.value}</p>
                         </div>
                         <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
@@ -275,13 +276,15 @@ const Contact = () => {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } } }}
                         className={`flex items-center gap-4 p-4 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 backdrop-blur-sm transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02]`}
+                        whileHover={{ x: 4 }}
                       >
                         <div className={`p-3 rounded-xl ${item.bg} ${item.color} group-hover:scale-110 transition-transform`}>
                           {item.icon}
                         </div>
                         <div>
-                          <p className="font-semibold text-[var(--color-text)] text-lg">{item.label}</p>
+                          <p className="font-semibold text-[var(--color-text)] text-sm sm:text-base">{item.label}</p>
                           <p className="text-sm text-[var(--color-text-secondary)]">{item.value}</p>
                         </div>
                         <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
@@ -290,7 +293,7 @@ const Contact = () => {
                       </motion.a>
                     )
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
 
               <motion.div variants={itemVariants}>
@@ -325,7 +328,7 @@ const Contact = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] rounded-2xl opacity-20 blur-2xl -z-10" />
 
-              <div className="card p-8 md:p-10 backdrop-blur-md border-[var(--color-primary)]/20 h-full">
+              <div className="card p-5 sm:p-8 md:p-10 backdrop-blur-md border-[var(--color-primary)]/20 h-full">
                 {/* Success/Error Messages */}
                 {submitStatus && (
                   <motion.div
