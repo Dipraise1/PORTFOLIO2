@@ -110,15 +110,13 @@ const Contact = () => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
-  // Load Smartsupp when Contact mounts and set up queue so chat:open works before loader is ready
+  // Load Smartsupp once and hide the floating widget via API until user opens it
   useEffect(() => {
     if (window._smartsupp?.key) return;
-    const _smartsupp = { key: SMARTSUPP_KEY, position: 'left', hideWidget: true };
-    window._smartsupp = _smartsupp;
-    const queue = [];
-    const smartsupp = function (...args) {
-      queue.push(args);
-    };
+    window._smartsupp = { key: SMARTSUPP_KEY, position: 'left' };
+    // Pre-queue a hide so the floating button never shows unprompted
+    const queue = [['widget:hide']];
+    const smartsupp = function (...args) { queue.push(args); };
     smartsupp._ = queue;
     window.smartsupp = smartsupp;
     const s = document.getElementsByTagName('script')[0];
@@ -135,8 +133,6 @@ const Contact = () => {
       e.preventDefault();
       e.stopPropagation();
     }
-    // Make container visible immediately
-    document.body.classList.add('chat-active');
     try {
       if (typeof window.smartsupp === 'function') {
         window.smartsupp('widget:show');

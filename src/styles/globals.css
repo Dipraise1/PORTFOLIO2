@@ -196,16 +196,3 @@
   }
 }
 
-/* Smartsupp Widget Visibility Control */
-#smartsupp-widget-container {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.3s ease-in-out !important;
-}
-
-body:has(footer:hover) #smartsupp-widget-container,
-body:has(#contact:hover) #smartsupp-widget-container,
-body.chat-active #smartsupp-widget-container {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
