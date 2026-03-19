@@ -53,12 +53,10 @@
     "yourScore": "Your score:",
     "playAgain": "Play Again",
     "howToPlay": "How to Play:",
-    "instructions": [
-      "Click on the colored target as quickly as you can",
-      "Each click gives you 1 point",
-      "You have 30 seconds to get as many points as possible",
-      "The target will move to a new position after each click"
-    ]
+    "instruction1": "Click on the colored target as quickly as you can",
+    "instruction2": "Each click gives you 1 point",
+    "instruction3": "You have 30 seconds to get as many points as possible",
+    "instruction4": "The target will move to a new position after each click"
   },
   "contact": {
     "letsConnect": "Let's Connect",

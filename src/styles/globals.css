@@ -23,7 +23,7 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-[var(--color-background)] to-[var(--color-secondary)] text-[var(--color-text)];
+    @apply bg-gradient-to-br from-[var(--color-background)] via-[#13072e] to-[var(--color-secondary)] text-[var(--color-text)] min-h-screen;
   }
 }
 
@@ -33,11 +33,11 @@
   }
 
   .section-padding {
-    @apply py-12 sm:py-16 lg:py-24;
+    @apply py-6 sm:py-10 lg:py-16;
   }
 
   .section-heading {
-    @apply text-2xl sm:text-3xl lg:text-4xl font-bold;
+    @apply text-xl sm:text-2xl lg:text-3xl font-bold;
   }
 
   .heading-gradient {
@@ -45,20 +45,20 @@
   }
 
   .card {
-    @apply bg-[var(--color-secondary-lighter)] rounded-xl border border-[var(--color-border)] shadow-xl backdrop-blur-sm transition-shadow duration-300;
+    @apply bg-[var(--color-secondary-lighter)] rounded-xl border border-[var(--color-border)] transition-all duration-300;
   }
 
 
   .btn {
-    @apply px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-sm sm:text-base;
+    @apply px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm;
   }
 
   .btn-primary {
-    @apply btn bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] text-white hover:shadow-lg;
+    @apply btn bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] text-white;
   }
 
   .btn-secondary {
-    @apply btn bg-[var(--color-secondary-lighter)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-lg;
+    @apply btn bg-[var(--color-secondary-lighter)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-[var(--color-primary)];
   }
 }
 

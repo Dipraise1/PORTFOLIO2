@@ -57,14 +57,14 @@ const LoadingScreen = ({ isLoading, onComplete }) => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] rounded-xl flex items-center justify-center">
                 <Code className="w-10 h-10 text-white" />
               </div>
             </motion.div>
 
             {/* Title */}
             <motion.h1
-              className="text-3xl font-bold text-[var(--color-text)] mb-2"
+              className="text-2xl font-bold text-[var(--color-text)] mb-2"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}

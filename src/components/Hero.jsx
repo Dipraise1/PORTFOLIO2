@@ -71,7 +71,7 @@ const Hero = () => {
 
 
         {/* Image container */}
-        <div className="group relative rounded-2xl overflow-hidden border-2 border-[var(--color-border)] aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500 shadow-xl">
+        <div className="group relative rounded-2xl overflow-hidden border-2 border-[var(--color-border)] aspect-square lg:aspect-[4/5] transform hover:scale-[1.02] transition-transform duration-500">
           {/* Main image with responsive sizing */}
           <img
             src="/pfp.png"
@@ -104,7 +104,7 @@ const Hero = () => {
         ].map((badge, index) => (
           <motion.div
             key={index}
-            className={`absolute backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg hidden sm:flex items-center gap-2 shadow-lg z-10
+            className={`absolute px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg hidden sm:flex items-center gap-2 z-10
                       transform hover:scale-110 transition-transform duration-300
                       text-xs sm:text-sm
                       ${index === 0 ? 'top-[15%] -left-[10%] lg:-left-[20%]' :
@@ -126,10 +126,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen py-10 sm:py-16 flex items-center" id="about">
+    <section className="relative min-h-[85vh] sm:min-h-screen py-6 sm:py-16 flex items-center" id="about">
       <div className="container-custom">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+          className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center mt-8 sm:mt-0"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -153,15 +153,15 @@ const Hero = () => {
               </motion.div>
 
               <motion.h1
-                className="text-4xl sm:text-5xl lg:text-7xl font-bold space-y-1 sm:space-y-2"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold space-y-1 sm:space-y-2"
                 variants={itemVariants}
               >
                 <span className="heading-gradient block">Divine</span>
-                <span className="text-[var(--color-text)] block text-2xl sm:text-4xl lg:text-6xl">{t('hero.web3Developer')}</span>
+                <span className="text-[var(--color-text)] block text-xl sm:text-2xl lg:text-4xl">{t('hero.web3Developer')}</span>
               </motion.h1>
 
               <motion.p
-                className="text-[var(--color-text-secondary)] text-sm sm:text-base lg:text-lg max-w-lg mx-auto lg:mx-0"
+                className="text-[var(--color-text-secondary)] text-xs sm:text-sm lg:text-base max-w-lg mx-auto lg:mx-0"
                 variants={itemVariants}
               >
                 {t('hero.description')}

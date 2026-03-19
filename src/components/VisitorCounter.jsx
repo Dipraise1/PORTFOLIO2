@@ -77,7 +77,7 @@ const VisitorCounter = () => {
       }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      <div className="bg-[var(--color-secondary-lighter)]/95 backdrop-blur-md border border-[var(--color-border)] rounded-lg p-2 shadow-lg max-w-[120px]">
+      <div className="bg-[var(--color-secondary-lighter)]/95 border border-[var(--color-border)] rounded-lg p-2 max-w-[120px]">
         {/* Header with controls */}
         <div className="flex items-center justify-between mb-1.5">
           <div className="flex items-center gap-1">

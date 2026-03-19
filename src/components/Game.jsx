@@ -81,22 +81,22 @@ const Game = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
+          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-3 py-1.5 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <Gamepad2 size={18} className="text-[var(--color-primary)]" />
             <span className="text-sm font-medium">{t('game.miniGame')}</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             <span className="heading-gradient">{t('game.quickReflexes')}</span>
           </h2>
           
-          <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
+          <p className="text-[var(--color-text-secondary)] text-sm sm:text-base max-w-2xl mx-auto">
             {t('game.description')}
           </p>
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
-          <div className="card p-6 backdrop-blur-md">
+          <div className="card p-4 sm:p-5">
             {/* Game controls */}
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-4">
@@ -131,7 +131,7 @@ const Game = () => {
             {/* Game area */}
             <div 
               ref={gameAreaRef}
-              className="relative bg-[var(--color-secondary-darker)]/30 rounded-xl h-[300px] sm:h-[400px] border border-[var(--color-border)] overflow-hidden"
+              className="relative bg-[var(--color-secondary-darker)]/30 rounded-xl h-[250px] sm:h-[350px] border border-[var(--color-border)] overflow-hidden"
               style={{ cursor: gameStarted && !gameOver ? 'crosshair' : 'default' }}
             >
               {!gameStarted && !gameOver && (
@@ -149,7 +149,7 @@ const Game = () => {
               )}
               
               {gameOver && (
-                <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-secondary-darker)]/80 backdrop-blur-sm">
+                <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-secondary-darker)]/80">
                   <motion.div
                     className="text-center p-6 rounded-xl bg-[var(--color-secondary)]/80 border border-[var(--color-border)]"
                     initial={{ scale: 0.8, opacity: 0 }}
@@ -173,7 +173,7 @@ const Game = () => {
               
               {gameStarted && !gameOver && (
                 <motion.div
-                  className="absolute w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center cursor-pointer shadow-lg"
+                  className="absolute w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center cursor-pointer"
                   style={{ 
                     left: `${targetPosition.x}px`, 
                     top: `${targetPosition.y}px`,

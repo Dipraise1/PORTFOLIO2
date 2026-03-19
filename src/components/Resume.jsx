@@ -134,7 +134,7 @@ const Resume = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
+          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-3 py-1.5 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <FileText size={18} className="text-[var(--color-primary)]" />
             <span className="text-sm font-medium">{t('resume.professionalBackground')}</span>
           </div>
@@ -143,7 +143,7 @@ const Resume = () => {
             <span className="heading-gradient">{t('resume.resumeExperience')}</span>
           </h2>
           
-          <p className="text-[var(--color-text-secondary)] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-[var(--color-text-secondary)] text-xs sm:text-sm lg:text-base max-w-2xl mx-auto mb-8">
             {t('resume.description')}
           </p>
 
@@ -175,13 +175,13 @@ const Resume = () => {
           <div className="lg:col-span-1 space-y-8">
             {/* Contact Info */}
             <motion.div
-              className="card p-4 sm:p-6"
+              className="card p-3 sm:p-5"
               variants={slideLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
+              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-4">
                 <User size={20} className="text-[var(--color-primary)]" />
                 {t('resume.contactInformation')}
               </h3>
@@ -213,13 +213,13 @@ const Resume = () => {
 
             {/* Skills */}
             <motion.div
-              className="card p-4 sm:p-6"
+              className="card p-3 sm:p-5"
               variants={slideLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
+              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-4">
                 <Code size={20} className="text-[var(--color-primary)]" />
                 {t('resume.technicalSkills')}
               </h3>
@@ -251,13 +251,13 @@ const Resume = () => {
 
             {/* Achievements */}
             <motion.div
-              className="card p-4 sm:p-6"
+              className="card p-3 sm:p-5"
               variants={slideLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-4">
+              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-4">
                 <Award size={20} className="text-[var(--color-primary)]" />
                 {t('resume.keyAchievements')}
               </h3>
@@ -282,13 +282,13 @@ const Resume = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Experience */}
             <motion.div
-              className="card p-4 sm:p-6"
+              className="card p-3 sm:p-5"
               variants={slideRight}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-6">
+              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-6">
                 <Briefcase size={20} className="text-[var(--color-primary)]" />
                 {t('resume.professionalExperience')}
               </h3>
@@ -314,7 +314,7 @@ const Resume = () => {
                       />
                       <div className="flex-grow">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <h4 className="text-lg font-bold text-[var(--color-text)]">{job.title}</h4>
+                          <h4 className="text-base font-bold text-[var(--color-text)]">{job.title}</h4>
                           <span className="text-[var(--color-primary)]">@</span>
                           <span className="text-[var(--color-primary)] font-semibold">{job.company}</span>
                         </div>
@@ -346,13 +346,13 @@ const Resume = () => {
 
             {/* Education */}
             <motion.div
-              className="card p-4 sm:p-6"
+              className="card p-3 sm:p-5"
               variants={slideRight}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="flex items-center gap-2 text-xl font-bold text-[var(--color-text)] mb-6">
+              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-6">
                 <GraduationCap size={20} className="text-[var(--color-primary)]" />
                 {t('resume.educationLearning')}
               </h3>
@@ -374,7 +374,7 @@ const Resume = () => {
                         transition={{ type: 'spring', stiffness: 300, damping: 15, delay: index * 0.1 }}
                       />
                       <div className="flex-grow">
-                        <h4 className="text-lg font-bold text-[var(--color-text)] mb-1">{edu.degree}</h4>
+                        <h4 className="text-base font-bold text-[var(--color-text)] mb-1">{edu.degree}</h4>
                         <div className="flex items-center gap-4 text-sm text-[var(--color-text-secondary)] mb-2">
                           <span className="text-[var(--color-primary)] font-semibold">{edu.institution}</span>
                           <div className="flex items-center gap-1">

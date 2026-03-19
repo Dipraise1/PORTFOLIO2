@@ -38,10 +38,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative mt-12 pt-12 pb-8 sm:mt-20 sm:pt-20 sm:pb-10 border-t border-[var(--color-border)] overflow-hidden">
+    <footer className="relative mt-8 pt-8 pb-6 sm:mt-16 sm:pt-16 sm:pb-8 border-t border-[var(--color-border)] overflow-hidden">
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 mb-10 sm:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 mb-8 sm:mb-12">
           {/* Brand section */}
           <div className="lg:col-span-5 space-y-6">
             <motion.div
@@ -50,8 +50,8 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-2xl sm:text-3xl font-bold heading-gradient mb-3 sm:mb-4 inline-block">PRAISE.ETH</h3>
-              <p className="text-[var(--color-text-secondary)] text-sm sm:text-base leading-relaxed max-w-md">
+              <h3 className="text-xl sm:text-2xl font-bold heading-gradient mb-3 sm:mb-4 inline-block">PRAISE.ETH</h3>
+              <p className="text-[var(--color-text-secondary)] text-xs sm:text-sm leading-relaxed max-w-md">
                 {t('footer.description')}
               </p>
             </motion.div>
@@ -64,7 +64,7 @@ const Footer = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-xl bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] text-[var(--color-text-muted)] ${color} transition-all duration-300 hover:border-[var(--color-primary)]/50`}
+                  className={`p-2 rounded-xl bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] text-[var(--color-text-muted)] ${color} transition-all duration-300 hover:border-[var(--color-primary)]/50`}
                   whileHover={{ y: -3 }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ const Footer = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
                 >
-                  <h4 className="text-lg font-bold text-[var(--color-text)] mb-6 relative inline-block">
+                  <h4 className="text-base font-bold text-[var(--color-text)] mb-6 relative inline-block">
                     {category.title}
                     <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-[var(--color-primary)] rounded-full"></span>
                   </h4>

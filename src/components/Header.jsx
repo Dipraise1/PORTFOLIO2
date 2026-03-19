@@ -49,7 +49,7 @@ const Header = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 ${
         scrolled 
-          ? 'bg-[var(--color-secondary-darker)]/90 backdrop-blur-md shadow-lg' 
+          ? 'bg-[var(--color-secondary-darker)]/90' 
           : 'bg-transparent'
       } transition-all duration-300`}
       initial={{ y: -100 }}
@@ -61,7 +61,7 @@ const Header = () => {
           {/* Logo */}
           <motion.a 
             href="/" 
-            className="text-xl sm:text-2xl font-bold heading-gradient"
+            className="text-lg sm:text-xl font-bold heading-gradient"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

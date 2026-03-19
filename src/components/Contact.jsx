@@ -122,7 +122,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-3 py-1.5 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-6">
             <Heart size={18} className="text-[var(--color-primary)] fill-[var(--color-primary)]/20" />
             <span className="text-sm font-medium">{t('contact.letsConnect')}</span>
           </div>
@@ -137,10 +137,10 @@ const Contact = () => {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-16">
             {/* Left Column - Contact Info */}
             <motion.div
-              className="space-y-6 sm:space-y-10"
+              className="space-y-6 sm:space-y-8"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -214,7 +214,7 @@ const Contact = () => {
                       <motion.div key={index} variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } } }}>
                         <Link
                           to="/live-chat"
-                          className={`flex items-center gap-4 p-4 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 backdrop-blur-sm transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02] w-full text-left`}
+                          className={`flex items-center gap-3 p-2.5 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02] w-full text-left`}
                         >
                           <div className={`p-3 rounded-xl ${item.bg} ${item.color} group-hover:scale-110 transition-transform`}>
                             {item.icon}
@@ -235,7 +235,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } } }}
-                        className={`flex items-center gap-4 p-4 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 backdrop-blur-sm transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02]`}
+                        className={`flex items-center gap-3 p-2.5 rounded-xl border ${item.border} bg-[var(--color-secondary-lighter)]/30 transition-all duration-300 group hover:bg-[var(--color-secondary-lighter)] hover:scale-[1.02]`}
                         whileHover={{ x: 4 }}
                       >
                         <div className={`p-3 rounded-xl ${item.bg} ${item.color} group-hover:scale-110 transition-transform`}>
@@ -285,7 +285,7 @@ const Contact = () => {
               viewport={{ once: true }}
             >
 
-              <div className="card p-5 sm:p-8 md:p-10 backdrop-blur-md border-[var(--color-primary)]/20 h-full">
+              <div className="card p-4 sm:p-6 md:p-8 border-[var(--color-primary)]/20 h-full mt-6 lg:mt-0">
                 {/* Success/Error Messages */}
                 {submitStatus && (
                   <motion.div
@@ -317,7 +317,7 @@ const Contact = () => {
 
                 <motion.form
                   onSubmit={handleSubmit}
-                  className="space-y-6"
+                  className="space-y-4 sm:space-y-6"
                   variants={containerVariants}
                 >
                   <motion.div variants={itemVariants} className="relative group">

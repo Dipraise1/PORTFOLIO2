@@ -60,7 +60,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-3 py-1.5 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-6">
             <Code2 size={18} className="text-[var(--color-primary)]" />
             <span className="text-sm font-medium">{t('projects.githubProjects')}</span>
           </div>
@@ -82,7 +82,7 @@ const Projects = () => {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 border ${activeFilter === filter.id
+                className={`px-2 py-1 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium transition-all duration-300 border ${activeFilter === filter.id
                   ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
                   : 'bg-[var(--color-secondary-lighter)]/50 text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-primary)]/50 hover:text-[var(--color-text)]'
                   }`}
@@ -122,7 +122,7 @@ const Projects = () => {
                   `} />
 
                   {/* Card Content */}
-                  <div className="relative h-full bg-[var(--color-secondary-lighter)] rounded-xl p-3 sm:p-5 flex flex-col z-10">
+                  <div className="relative h-full bg-[var(--color-secondary-lighter)] rounded-xl p-2 sm:p-4 flex flex-col z-10">
 
                     {/* Header */}
                     <div className="flex justify-between items-start mb-6">
@@ -169,11 +169,11 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    <h3 className="text-base sm:text-lg font-bold text-[var(--color-text)] mb-2 sm:mb-3 group-hover:text-[var(--color-primary)] transition-colors">
+                    <h3 className="text-sm sm:text-base font-bold text-[var(--color-text)] mb-2 sm:mb-3 group-hover:text-[var(--color-primary)] transition-colors">
                       {project.title}
                     </h3>
 
-                    <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-[var(--color-text-secondary)] text-xs leading-relaxed mb-6 line-clamp-4">
                       {project.description}
                     </p>
 

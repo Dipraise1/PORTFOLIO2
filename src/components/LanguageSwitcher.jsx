@@ -149,7 +149,7 @@ const LanguageSwitcher = () => {
     <div className="relative">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--color-secondary-lighter)]/70 
+        className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-[var(--color-secondary-lighter)]/70 
                    hover:bg-[var(--color-secondary-lighter)] text-[var(--color-text-secondary)] 
                    hover:text-[var(--color-primary)] transition-colors duration-300
                    border border-[var(--color-border)] hover:border-[var(--color-primary)]"
@@ -168,8 +168,8 @@ const LanguageSwitcher = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full right-0 mt-2 w-80 max-h-96 bg-[var(--color-secondary-lighter)] 
-                     border border-[var(--color-border)] rounded-lg shadow-xl backdrop-blur-md z-50"
+            className="absolute top-full right-0 mt-2 w-72 max-h-96 bg-[var(--color-secondary-lighter)] 
+                     border border-[var(--color-border)] rounded-lg z-50"
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}

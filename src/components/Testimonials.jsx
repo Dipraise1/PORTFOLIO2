@@ -44,7 +44,7 @@ const Testimonials = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-4 py-2 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
+          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-3 py-1.5 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
             <Quote size={18} className="text-[var(--color-primary)]" />
             <span className="text-sm font-medium">{t('testimonials.clientTestimonials')}</span>
           </div>
@@ -53,14 +53,14 @@ const Testimonials = () => {
             <span className="heading-gradient">{t('testimonials.whatClientsSay')}</span>
           </h2>
 
-          <p className="text-[var(--color-text-secondary)] text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-[var(--color-text-secondary)] text-xs sm:text-sm max-w-2xl mx-auto">
             {t('testimonials.description')}
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
           <motion.div
-            className="card p-6 sm:p-8 relative overflow-hidden"
+            className="card p-4 sm:p-6 relative overflow-hidden"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -101,7 +101,7 @@ const Testimonials = () => {
                     />
                   </motion.div>
 
-                  <motion.h3 variants={fadeUp} className="text-xl font-bold text-[var(--color-text)] mb-1">
+                  <motion.h3 variants={fadeUp} className="text-lg font-bold text-[var(--color-text)] mb-1">
                     {testimonial.name}
                   </motion.h3>
                   <motion.p variants={fadeUp} className="text-[var(--color-primary)] font-semibold mb-1">
