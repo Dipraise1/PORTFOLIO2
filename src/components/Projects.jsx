@@ -4,6 +4,7 @@ import { Github, ExternalLink, Code2, ArrowRight, MessageCircle } from 'lucide-r
 import useTranslation from '../hooks/useTranslation';
 import { projects } from '../data/projects.jsx';
 
+// eslint-disable-next-line react/prop-types
 const TiltCard = ({ children, className }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);

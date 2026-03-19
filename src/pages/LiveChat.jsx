@@ -21,7 +21,7 @@ const hideChat = () => {
       window.smartsupp('chat:close');
       window.smartsupp('chat:hide');
     }
-  } catch (_) { /* ignore */ }
+  } catch { /* ignore */ }
 };
 
 const LiveChat = () => {

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Download, User, Briefcase, GraduationCap, Award, Code, Globe, FileText, Calendar, MapPin, Mail, Phone } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 
