@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code, Github, Mail, Terminal, Gamepad2, FileText } from 'lucide-react';
+import { Menu, X, Code, Github, Mail, Terminal, FileText } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import useTranslation from '../hooks/useTranslation';
 
@@ -35,7 +35,6 @@ const Header = () => {
     { name: t('nav.about'),    icon: <Terminal size={18} /> },
     { name: t('nav.projects'), icon: <Code size={18} /> },
     { name: t('nav.resume'),   icon: <FileText size={18} /> },
-    { name: t('nav.game'),     icon: <Gamepad2 size={18} /> },
     { name: t('nav.contact'),  icon: <Mail size={18} /> },
     { name: t('nav.github'),   icon: <Github size={18} />, external: true, href: 'https://github.com/Dipraise1' }
   ];

@@ -7,7 +7,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Resume from './components/Resume';
-import Game from './components/Game';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
@@ -79,7 +78,6 @@ const App = () => {
             <Projects />
             <Resume />
             <Testimonials />
-            <Game />
             <Contact />
           </motion.div>
         </main>
