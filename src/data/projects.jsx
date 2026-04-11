@@ -1,4 +1,4 @@
-import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet } from 'lucide-react';
+import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket } from 'lucide-react';
 
 export const projects = [
   {
@@ -182,6 +182,48 @@ export const projects = [
     category: 'blockchain',
     stats: {
       features: 'Token cleanup, SOL rewards, Gamified, Achievements'
+    }
+  },
+  {
+    id: 15,
+    title: 'Engram',
+    description:
+      'Decentralized vector database on Bittensor — content-addressed semantic memory for AI. Every embedding gets a deterministic CID, replicated across competing miners who earn TAO for provably storing and serving vectors. HMAC challenge-response proofs ensure data integrity.',
+    icon: <Brain className="w-10 h-10 text-[var(--color-primary)]" />,
+    tech: ['Python', 'Bittensor', 'AI', 'Vector DB', 'Machine Learning', 'IPFS'],
+    githubLink: 'https://github.com/Dipraise1/-Engram-',
+    liveLink: 'https://theengram.space',
+    category: 'ai',
+    stats: {
+      features: 'Content-addressed, Decentralized, Incentivized miners, TAO rewards'
+    }
+  },
+  {
+    id: 16,
+    title: 'CabalSpy',
+    description:
+      'Real-time token tracking and trading platform built with TypeScript and Next.js. Integrates Turnkey for secure wallet management, enabling live monitoring of on-chain token movements and trading activity across EVM chains.',
+    icon: <Search className="w-10 h-10 text-teal-400" />,
+    tech: ['TypeScript', 'Next.js', 'Turnkey', 'Web3', 'Real-time'],
+    githubLink: 'https://github.com/Dipraise1/cabalspy',
+    liveLink: '',
+    category: 'blockchain',
+    stats: {
+      features: 'Token tracking, Wallet auth, Real-time, Turnkey integration'
+    }
+  },
+  {
+    id: 17,
+    title: 'PumpFun Deployer Bot',
+    description:
+      'Production-grade Solana token deployer bot with Jito bundle support. Automates token creation and launch on Pump.fun with MEV protection via Jito bundler, ensuring fast and frontrun-resistant transactions.',
+    icon: <Rocket className="w-10 h-10 text-orange-400" />,
+    tech: ['TypeScript', 'Solana', 'Jito', 'Pump.fun', 'MEV'],
+    githubLink: 'https://github.com/Dipraise1/pumpfundeplyerbot',
+    liveLink: '',
+    category: 'blockchain',
+    stats: {
+      features: 'Jito bundler, MEV protection, Auto-deploy, Pump.fun'
     }
   },
   {
