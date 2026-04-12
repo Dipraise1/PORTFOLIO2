@@ -1,17 +1,30 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Twitter, Mail, Heart, Code, ArrowUp, MessageCircle, ExternalLink } from 'lucide-react';
+import { Github, Mail, Heart, Code, ArrowUp, MessageCircle, ExternalLink } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
+
+const XIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
+
+const TikTokIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/>
+  </svg>
+);
 
 const Footer = () => {
   const { t } = useTranslation();
   const [year] = useState(new Date().getFullYear());
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/Dipraise1", label: "GitHub", color: "hover:text-white" },
-    { icon: Twitter, href: "https://x.com/divinecodes11?s=21", label: "Twitter", color: "hover:text-blue-400" },
-    { icon: MessageCircle, href: "https://t.me/jokersrequired", label: "Telegram", color: "hover:text-blue-500" },
-    { icon: Mail, href: "mailto:raphealdivine2@gmail.com", label: "Email", color: "hover:text-red-400" }
+    { Icon: Github,      href: "https://github.com/Dipraise1",                              label: "GitHub",   color: "hover:text-white" },
+    { Icon: XIcon,       href: "https://x.com/divinecodes11?s=21",                          label: "X",        color: "hover:text-white" },
+    { Icon: TikTokIcon,  href: "https://www.tiktok.com/@divin3.eth?_r=1&_t=ZS-95Sk7mHgmzE", label: "TikTok",  color: "hover:text-pink-400" },
+    { Icon: MessageCircle, href: "https://t.me/jokersrequired",                             label: "Telegram", color: "hover:text-blue-400" },
+    { Icon: Mail,        href: "mailto:raphealdivine2@gmail.com",                           label: "Email",    color: "hover:text-red-400" },
   ];
 
   const links = [
@@ -58,7 +71,7 @@ const Footer = () => {
 
             {/* Social links */}
             <div className="flex gap-3">
-              {socialLinks.map(({ icon: Icon, href, label, color }, idx) => (
+              {socialLinks.map(({ Icon, href, label, color }, idx) => (
                 <motion.a
                   key={label}
                   href={href}
