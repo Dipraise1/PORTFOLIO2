@@ -10,6 +10,7 @@
   --color-secondary-darker: #010408;
   --color-secondary-lighter: #161b22;
   --color-accent: #f97316;
+  --color-cyan: #22d3ee;
   --color-text: #f9fafb;
   --color-text-secondary: #d1d5db;
   --color-text-muted: #9ca3af;
@@ -201,4 +202,39 @@
   .hero-hover-overlay {
     display: none !important;
   }
+}
+
+/* ─── Portrait ring — rotating conic-gradient halo ─── */
+.portrait-ring {
+  background: conic-gradient(
+    from 0deg,
+    rgba(99, 102, 241, 0) 0deg,
+    rgba(99, 102, 241, 0.6) 65deg,
+    rgba(34, 211, 238, 0.45) 130deg,
+    rgba(249, 115, 22, 0.2) 200deg,
+    rgba(34, 211, 238, 0.12) 270deg,
+    rgba(99, 102, 241, 0) 315deg,
+    rgba(99, 102, 241, 0) 360deg
+  );
+  animation: ring-spin 9s linear infinite;
+  filter: blur(3px);
+}
+
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Tech marquee ─── */
+@keyframes tech-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-tech-scroll {
+  animation: tech-scroll 28s linear infinite;
+}
+
+.animate-tech-scroll:hover {
+  animation-play-state: paused;
 }

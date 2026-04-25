@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Mail, Heart, Code, ArrowUp, MessageCircle, ExternalLink } from 'lucide-react';
+import { Github, Mail, ArrowUp, MessageCircle, ExternalLink } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 
-const XIcon = ({ size = 20 }) => (
+const XIcon = ({ size = 16 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
   </svg>
 );
 
-const TikTokIcon = ({ size = 20 }) => (
+const TikTokIcon = ({ size = 16 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/>
+    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z" />
   </svg>
 );
 
@@ -19,153 +19,106 @@ const Footer = () => {
   const { t } = useTranslation();
   const [year] = useState(new Date().getFullYear());
 
-  const socialLinks = [
-    { Icon: Github,      href: "https://github.com/Dipraise1",                              label: "GitHub",   color: "hover:text-white" },
-    { Icon: XIcon,       href: "https://x.com/divinecodes11?s=21",                          label: "X",        color: "hover:text-white" },
-    { Icon: TikTokIcon,  href: "https://www.tiktok.com/@divin3.eth?_r=1&_t=ZS-95Sk7mHgmzE", label: "TikTok",  color: "hover:text-pink-400" },
-    { Icon: MessageCircle, href: "https://t.me/jokersrequired",                             label: "Telegram", color: "hover:text-blue-400" },
-    { Icon: Mail,        href: "mailto:raphealdivine2@gmail.com",                           label: "Email",    color: "hover:text-red-400" },
+  const socials = [
+    { icon: <Github size={16} />,      href: 'https://github.com/Dipraise1',                              label: 'GitHub' },
+    { icon: <XIcon />,                 href: 'https://x.com/divinecodes11?s=21',                          label: 'X' },
+    { icon: <TikTokIcon />,            href: 'https://www.tiktok.com/@divin3.eth?_r=1&_t=ZS-95Sk7mHgmzE', label: 'TikTok' },
+    { icon: <MessageCircle size={16}/>,href: 'https://t.me/jokersrequired',                               label: 'Telegram' },
+    { icon: <Mail size={16} />,        href: 'mailto:raphealdivine2@gmail.com',                           label: 'Email' },
   ];
 
-  const links = [
-    {
-      title: t('footer.resources'), items: [
-        { name: t('footer.portfolio'), href: 'https://divinebuilds.online', external: true },
-        { name: t('footer.projects'), href: '#projects', external: false },
-        { name: t('footer.contact'), href: '#contact', external: false }
-      ]
-    },
-    {
-      title: t('footer.legal'), items: [
-        { name: t('footer.privacyPolicy'), href: '#', external: false },
-        { name: t('footer.termsOfService'), href: '#', external: false }
-      ]
-    }
+  const navLinks = [
+    { name: t('footer.portfolio'), href: 'https://divinebuilds.online', external: true },
+    { name: t('footer.projects'),  href: '#projects' },
+    { name: t('footer.contact'),   href: '#contact' },
+    { name: t('footer.privacyPolicy'), href: '#' },
+    { name: t('footer.termsOfService'), href: '#' },
   ];
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   return (
-    <footer className="relative mt-8 pt-8 pb-6 sm:mt-16 sm:pt-16 sm:pb-8 border-t border-[var(--color-border)] overflow-hidden">
-
+    <footer
+      className="relative mt-8 sm:mt-16 pt-8 sm:pt-12 pb-6 sm:pb-8 overflow-hidden"
+      style={{ borderTop: '1px solid rgba(55,65,81,0.3)' }}
+    >
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 mb-8 sm:mb-12">
-          {/* Brand section */}
-          <div className="lg:col-span-5 space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-xl sm:text-2xl font-bold heading-gradient mb-3 sm:mb-4 inline-block">PRAISE.ETH</h3>
-              <p className="text-[var(--color-text-secondary)] text-xs sm:text-sm leading-relaxed max-w-md">
-                {t('footer.description')}
-              </p>
-            </motion.div>
 
-            {/* Social links */}
-            <div className="flex gap-3">
-              {socialLinks.map(({ Icon, href, label, color }, idx) => (
-                <motion.a
+        {/* ─── Main row ─── */}
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 mb-8">
+
+          {/* Brand */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-xs"
+          >
+            <h3
+              className="font-display font-bold heading-gradient mb-2 inline-block"
+              style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}
+            >
+              PRAISE.ETH
+            </h3>
+            <p className="font-ibm text-[var(--color-text-muted)] text-[11px] leading-relaxed">
+              {t('footer.description')}
+            </p>
+
+            {/* Socials */}
+            <div className="flex items-center gap-1 mt-4">
+              {socials.map(({ icon, href, label }) => (
+                <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 rounded-xl bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] text-[var(--color-text-muted)] ${color} transition-all duration-300 hover:border-[var(--color-primary)]/50`}
-                  whileHover={{ y: -3 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + idx * 0.1 }}
                   aria-label={label}
+                  className="p-2 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-primary-lighter)] hover:bg-[rgba(99,102,241,0.07)] transition-all duration-200"
                 >
-                  <Icon size={20} />
-                </motion.a>
+                  {icon}
+                </a>
               ))}
             </div>
-          </div>
-
-          {/* Links section */}
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:pl-12">
-              {links.map((category, idx) => (
-                <motion.div
-                  key={category.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                >
-                  <h4 className="text-base font-bold text-[var(--color-text)] mb-6 relative inline-block">
-                    {category.title}
-                    <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-[var(--color-primary)] rounded-full"></span>
-                  </h4>
-                  <ul className="space-y-4">
-                    {category.items.map(item => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          target={item.external ? "_blank" : undefined}
-                          rel={item.external ? "noopener noreferrer" : undefined}
-                          className="group flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors duration-300 w-fit"
-                        >
-                          <span className="relative">
-                            {item.name}
-                            <span className="absolute left-0 -bottom-1 w-0 h-px bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full"></span>
-                          </span>
-                          {item.external && <ExternalLink size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent my-8 opacity-50"></div>
-
-        {/* Footer bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
-          >
-            <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
-              <Code size={16} className="text-[var(--color-primary)]" />
-              <span>{t('footer.madeWith')}</span>
-              <Heart className="text-red-500 fill-red-500/20 animate-pulse" size={16} />
-              <span>{t('footer.byDivine')}</span>
-            </div>
-            <div className="hidden sm:block w-1.5 h-1.5 bg-[var(--color-text-muted)] rounded-full opacity-50"></div>
-            <p className="text-[var(--color-text-muted)] text-sm">
-              &copy; {year} {t('footer.allRightsReserved')}
-            </p>
           </motion.div>
 
-          <motion.button
-            onClick={scrollToTop}
-            className="group p-3 rounded-full bg-[var(--color-secondary-lighter)] border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          {/* Nav links */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-wrap gap-x-8 gap-y-2"
+          >
+            {navLinks.map(({ name, href, external }) => (
+              <a
+                key={name}
+                href={href}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
+                className="font-ibm text-[var(--color-text-muted)] text-[11px] hover:text-[var(--color-primary-lighter)] transition-colors flex items-center gap-1"
+              >
+                {name}
+                {external && <ExternalLink size={10} className="opacity-50" />}
+              </a>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* ─── Bottom bar ─── */}
+        <div
+          className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5"
+          style={{ borderTop: '1px solid rgba(55,65,81,0.2)' }}
+        >
+          <p className="font-ibm text-[var(--color-text-muted)] text-[10px] tracking-wide">
+            © {year} Divine Rapheal · {t('footer.allRightsReserved')}
+          </p>
+
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="p-2 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-primary-lighter)] hover:bg-[rgba(99,102,241,0.07)] transition-all duration-200"
             aria-label="Scroll to top"
           >
-            <ArrowUp size={20} className="group-hover:animate-bounce" />
-          </motion.button>
+            <ArrowUp size={15} />
+          </button>
         </div>
       </div>
     </footer>

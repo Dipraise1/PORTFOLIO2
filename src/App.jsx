@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import VisitorCounter from './components/VisitorCounter';
+import ChatWidget from './components/ChatWidget';
 import LiveChat from './pages/LiveChat';
 
 const App = () => {
@@ -86,6 +87,9 @@ const App = () => {
         <VisitorCounter />
         <Analytics />
       </div>
+
+      {/* ChatWidget lives outside the overflow-hidden container so fixed positioning works correctly */}
+      <ChatWidget />
     </>
   );
 

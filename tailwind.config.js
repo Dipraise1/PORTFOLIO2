@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Syne', 'sans-serif'],
+        ibm: ['"IBM Plex Mono"', 'monospace'],
+      },
       colors: {
         'brown': {
           dark: '#2D1810',

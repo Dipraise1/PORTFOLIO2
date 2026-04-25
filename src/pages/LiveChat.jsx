@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, MessageCircle, Clock, Zap, Shield } from 'lucide-react';
 
 const SMARTSUPP_KEY = '71271caf1b799423e65ce7df212e80214378c777';
+const SCRIPT_ID = 'smartsupp-loader';
 
-// Module-level flag — persists across React mounts/unmounts within the same page session
 let ssReady = false;
 
 const showChat = () => {
@@ -45,7 +45,7 @@ const LiveChat = () => {
 
       const s = document.getElementsByTagName('script')[0];
       const c = document.createElement('script');
-      c.id = 'smartsupp-loader';
+      c.id = SCRIPT_ID;
       c.type = 'text/javascript';
       c.charset = 'utf-8';
       c.async = true;

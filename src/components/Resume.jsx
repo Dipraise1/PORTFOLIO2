@@ -1,398 +1,292 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download, User, Briefcase, GraduationCap, Award, Code, Globe, FileText, Calendar, MapPin, Mail, Phone } from 'lucide-react';
+import { Download, Loader2 } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 
-const skillTagVariants = {
-  hidden: { opacity: 0, scale: 0.75, y: 8 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 260, damping: 20 } }
+const itemV = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
-
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } }
-};
-
-const slideUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
-};
-
-const slideLeft = {
-  hidden: { opacity: 0, x: -28 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
-};
-
-const slideRight = {
-  hidden: { opacity: 0, x: 28 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
+const containerV = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
 const Resume = () => {
   const { t } = useTranslation();
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     setIsGenerating(true);
-    
-    // Simulate PDF generation delay for better UX
     setTimeout(() => {
-      // Create a downloadable link for the actual CV
       const link = document.createElement('a');
       link.href = '/cv.pdf';
       link.download = 'Divine_Rapheal_Web3_Developer_CV.pdf';
       link.click();
       setIsGenerating(false);
-    }, 1500);
+    }, 1200);
   };
 
   const experience = [
     {
-      title: "Founder & Lead Developer",
-      company: "Sawa Wallet",
-      period: "Present",
-      location: "Remote",
-      description: "Building Sawa Wallet—send crypto with just a phone number. Money for people, not addresses. Multi-chain USDC (Solana, Polygon, Base), non-custodial, designed for remittances and real relationships.",
+      title: 'Founder & Lead Developer',
+      company: 'Sawa Wallet',
+      period: 'Present',
+      location: 'Remote',
+      description: 'Building Sawa Wallet — send crypto with just a phone number. Multi-chain USDC (Solana, Polygon, Base), non-custodial, designed for remittances.',
       highlights: [
-        "Send money like a text—phone numbers instead of wallet addresses",
-        "Multi-chain USDC on Solana, Polygon, and Base",
-        "Built with Expo, TypeScript, and React Native",
-        "Africa & beyond—transfers across 50+ countries"
-      ]
+        'Phone-number sends instead of wallet addresses',
+        'Multi-chain USDC on Solana, Polygon, and Base',
+        'Built with Expo, TypeScript, and React Native',
+        'Africa & beyond — transfers across 50+ countries',
+      ],
     },
     {
-      title: "Senior Web3 Developer",
-      company: "Freelance",
-      period: "2022 - Present",
-      location: "Remote",
-      description: "Building decentralized applications, smart contracts, and blockchain solutions for various clients across DeFi, NFT, and Web3 ecosystems.",
+      title: 'Senior Web3 Developer',
+      company: 'Freelance',
+      period: '2022 – Present',
+      location: 'Remote',
+      description: 'Building decentralized applications, smart contracts, and blockchain solutions for clients across DeFi, NFT, and Web3 ecosystems.',
       highlights: [
-        "Developed 15+ smart contracts with over $2M+ in total value locked",
-        "Built escrow DApps supporting Ethereum and Solana networks",
-        "Created yield optimization strategies for DeFi protocols",
-        "Implemented automated trading bots with machine learning"
-      ]
+        '15+ smart contracts with $2M+ total value locked',
+        'Escrow DApps supporting Ethereum and Solana',
+        'Yield optimization strategies for DeFi protocols',
+        'Automated trading bots with machine learning',
+      ],
     },
     {
-      title: "Senior App Developer",
-      company: "apeit.com",
-      period: "2021 - 2022",
-      location: "Remote",
-      description: "Developed high-performance web and mobile applications using modern technologies and frameworks.",
+      title: 'Senior App Developer',
+      company: 'apeit.com',
+      period: '2021 – 2022',
+      location: 'Remote',
+      description: 'Developed high-performance web and mobile applications using modern technologies and frameworks.',
       highlights: [
-        "Built scalable web applications serving thousands of users",
-        "Implemented responsive designs with React and React Native",
-        "Optimized application performance reducing load times by 50%",
-        "Collaborated with cross-functional teams on product development"
-      ]
-    }
+        'Scalable web applications serving thousands of users',
+        'Responsive designs with React and React Native',
+        'Optimized performance reducing load times by 50%',
+        'Cross-functional collaboration on product development',
+      ],
+    },
   ];
 
   const skills = {
-    "Blockchain": ["Solidity", "Ethereum", "Solana", "Web3.js", "Ethers.js", "Smart Contracts"],
-    "Frontend": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    "Backend": ["Node.js", "Python", "Rust", "PostgreSQL", "MongoDB"],
-    "Tools": ["Git", "Docker", "AWS", "Vercel", "Hardhat", "Truffle"]
+    Blockchain: ['Solidity', 'Ethereum', 'Solana', 'Web3.js', 'Ethers.js', 'Smart Contracts'],
+    Frontend:   ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    Backend:    ['Node.js', 'Python', 'Rust', 'PostgreSQL', 'MongoDB'],
+    Tools:      ['Git', 'Docker', 'AWS', 'Vercel', 'Hardhat', 'Truffle'],
   };
 
   const education = [
     {
-      degree: "BSc Software Engineering",
-      institution: "Miva Open University",
-      period: "2025 - Present",
-      description: "Currently studying Software Engineering, focusing on modern software development practices, application architecture, and scalable systems."
+      degree: 'BSc Software Engineering',
+      institution: 'Miva Open University',
+      period: '2025 – Present',
+      description: 'Software Engineering with focus on modern development practices, architecture, and scalable systems.',
     },
     {
-      degree: "BSc Computer Science",
-      institution: "University of Abuja",
-      period: "2024 - Present",
-      description: "Currently pursuing a degree in Computer Science, building a strong foundation in computational theory, algorithms, and system architecture."
+      degree: 'BSc Computer Science',
+      institution: 'University of Abuja',
+      period: '2024 – Present',
+      description: 'Computer Science foundations — computational theory, algorithms, and system architecture.',
     },
     {
-      degree: "Self-Taught Developer",
-      institution: "Online Platforms & Bootcamps",
-      period: "2020 - 2022",
-      description: "Intensive self-directed learning in blockchain development, Web3 technologies, and modern web development practices."
-    }
+      degree: 'Self-Taught Developer',
+      institution: 'Online Platforms & Bootcamps',
+      period: '2020 – 2022',
+      description: 'Intensive self-directed learning in blockchain development and Web3 technologies.',
+    },
   ];
 
   const achievements = [
-    "Built and deployed 20+ production-ready DApps",
-    "Contributed to multiple open-source blockchain projects",
-    "Successfully completed 50+ client projects",
-    "Expertise in multiple blockchain networks (Ethereum, Solana, Polygon)"
+    'Built and deployed 20+ production-ready DApps',
+    'Contributed to multiple open-source blockchain projects',
+    'Successfully completed 50+ client projects',
+    'Expertise across Ethereum, Solana, and Polygon',
   ];
 
   return (
     <section className="section-padding relative" id="resume">
       <div className="container-custom">
-        <motion.div
-          className="text-center mb-10 sm:mb-16"
-          variants={slideUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] px-3 py-1.5 rounded-full bg-[var(--color-secondary-lighter)]/50 border border-[var(--color-border)] mb-4">
-            <FileText size={18} className="text-[var(--color-primary)]" />
-            <span className="text-sm font-medium">{t('resume.professionalBackground')}</span>
-          </div>
-          
-          <h2 className="section-heading mb-4 sm:mb-6">
-            <span className="heading-gradient">{t('resume.resumeExperience')}</span>
-          </h2>
-          
-          <p className="text-[var(--color-text-secondary)] text-xs sm:text-sm lg:text-base max-w-2xl mx-auto mb-8">
-            {t('resume.description')}
-          </p>
 
-          <motion.button
-            onClick={handleDownload}
-            disabled={isGenerating}
-            className={`btn-primary flex items-center gap-2 mx-auto ${
-              isGenerating ? 'opacity-70 cursor-not-allowed' : ''
-            }`}
-            whileHover={!isGenerating ? { scale: 1.05 } : {}}
-            whileTap={!isGenerating ? { scale: 0.95 } : {}}
-          >
-            {isGenerating ? (
-              <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                {t('resume.generatingPDF')}
-              </>
-            ) : (
-              <>
-                <Download size={18} />
-                {t('resume.downloadResume')}
-              </>
-            )}
-          </motion.button>
+        {/* ─── Header ─── */}
+        <motion.div
+          className="mb-10 sm:mb-14"
+          initial={{ opacity: 0, y: -14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <p className="font-ibm text-[var(--color-cyan)] text-[10px] tracking-[0.25em] uppercase mb-2 opacity-70">
+                // {t('resume.professionalBackground')}
+              </p>
+              <h2
+                className="font-display font-bold heading-gradient leading-none"
+                style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}
+              >
+                {t('resume.resumeExperience')}
+              </h2>
+            </div>
+            <motion.button
+              onClick={handleDownload}
+              disabled={isGenerating}
+              className="btn-primary flex items-center gap-2 self-start sm:self-auto flex-shrink-0"
+              whileHover={!isGenerating ? { scale: 1.04 } : {}}
+              whileTap={!isGenerating ? { scale: 0.96 } : {}}
+            >
+              {isGenerating ? (
+                <><Loader2 size={14} className="animate-spin" /> {t('resume.generatingPDF')}</>
+              ) : (
+                <><Download size={14} /> {t('resume.downloadResume')}</>
+              )}
+            </motion.button>
+          </div>
+          <div className="mt-5 h-px" style={{ background: 'linear-gradient(to right, rgba(99,102,241,0.4), transparent)' }} />
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6 sm:gap-10 lg:gap-12">
-          {/* Left Column - Personal Info & Skills */}
-          <div className="lg:col-span-1 space-y-8">
-            {/* Contact Info */}
-            <motion.div
-              className="card p-3 sm:p-5"
-              variants={slideLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-4">
-                <User size={20} className="text-[var(--color-primary)]" />
-                {t('resume.contactInformation')}
-              </h3>
-              <div className="space-y-3 text-[var(--color-text-secondary)]">
-                <div className="flex items-center gap-3">
-                  <Mail size={16} className="text-[var(--color-primary)]" />
-                  <a href="mailto:raphealdivine2@gmail.com" className="hover:text-[var(--color-primary)] transition-colors">
-                    raphealdivine2@gmail.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone size={16} className="text-[var(--color-primary)]" />
-                  <a href="https://t.me/jokersrequired" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
-                    @jokersrequired
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MapPin size={16} className="text-[var(--color-primary)]" />
-                  <span>Remote / Global</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Globe size={16} className="text-[var(--color-primary)]" />
-                  <a href="https://divinebuilds.online" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-primary)] transition-colors">
-                    divinebuilds.online
-                  </a>
-                </div>
+        {/* ─── Body ─── */}
+        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16">
+
+          {/* Left: Experience */}
+          <motion.div
+            variants={containerV} initial="hidden"
+            whileInView="visible" viewport={{ once: true }}
+          >
+            <p className="font-ibm text-[var(--color-text-muted)] text-[9px] uppercase tracking-[0.25em] mb-6">
+              {t('resume.professionalExperience')}
+            </p>
+            <div className="space-y-8">
+              {experience.map((job, i) => (
+                <motion.div
+                  key={i}
+                  variants={itemV}
+                  className="relative pl-5"
+                  style={{ borderLeft: '1px solid rgba(55,65,81,0.4)' }}
+                >
+                  <div
+                    className="absolute -left-[5px] top-[6px] w-2.5 h-2.5 rounded-full"
+                    style={{ background: 'var(--color-primary)', boxShadow: '0 0 8px rgba(99,102,241,0.5)' }}
+                  />
+                  <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                    <div>
+                      <h3 className="font-display font-semibold text-sm sm:text-[15px] text-[var(--color-text)] leading-tight">
+                        {job.title}
+                      </h3>
+                      <span className="font-ibm text-[var(--color-primary-lighter)] text-[11px] tracking-wide">
+                        {job.company}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5 font-ibm text-[var(--color-text-muted)] text-[9px] uppercase tracking-wider flex-shrink-0">
+                      <span>{job.period}</span>
+                      <span className="opacity-40">·</span>
+                      <span>{job.location}</span>
+                    </div>
+                  </div>
+                  <p className="text-[var(--color-text-secondary)] text-xs leading-relaxed mb-2.5">
+                    {job.description}
+                  </p>
+                  <ul className="space-y-1">
+                    {job.highlights.map((h, hi) => (
+                      <li key={hi} className="flex items-start gap-2 font-ibm text-[var(--color-text-muted)] text-[10px] leading-relaxed">
+                        <span className="text-[var(--color-cyan)] flex-shrink-0 mt-px">›</span>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right: Skills + Education + Achievements */}
+          <motion.div
+            className="space-y-10"
+            variants={containerV} initial="hidden"
+            whileInView="visible" viewport={{ once: true }}
+          >
+            {/* Skills */}
+            <motion.div variants={itemV}>
+              <p className="font-ibm text-[var(--color-text-muted)] text-[9px] uppercase tracking-[0.25em] mb-5">
+                {t('resume.technicalSkills')}
+              </p>
+              <div className="space-y-3">
+                {Object.entries(skills).map(([cat, techs]) => (
+                  <div key={cat} className="flex items-start gap-4">
+                    <span className="font-ibm text-[var(--color-text-muted)] text-[9px] uppercase tracking-wider w-[68px] flex-shrink-0 mt-1 opacity-70">
+                      {cat}
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {techs.map((tech) => (
+                        <span
+                          key={tech}
+                          className="font-ibm text-[9px] px-1.5 py-0.5 rounded"
+                          style={{
+                            background: 'rgba(22,27,34,0.9)',
+                            border: '1px solid rgba(55,65,81,0.4)',
+                            color: 'var(--color-text-muted)',
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </motion.div>
 
-            {/* Skills */}
-            <motion.div
-              className="card p-3 sm:p-5"
-              variants={slideLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-4">
-                <Code size={20} className="text-[var(--color-primary)]" />
-                {t('resume.technicalSkills')}
-              </h3>
-              <div className="space-y-4">
-                {Object.entries(skills).map(([category, techs]) => (
-                  <div key={category}>
-                    <h4 className="text-[var(--color-text)] font-semibold mb-2">{category}</h4>
-                    <motion.div
-                      className="flex flex-wrap gap-2"
-                      variants={staggerContainer}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
-                      {techs.map((tech, index) => (
-                        <motion.span
-                          key={index}
-                          variants={skillTagVariants}
-                          className="text-xs px-2 py-1 rounded bg-[var(--color-secondary-darker)]/80 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-colors cursor-default"
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </motion.div>
+            {/* Education */}
+            <motion.div variants={itemV}>
+              <p className="font-ibm text-[var(--color-text-muted)] text-[9px] uppercase tracking-[0.25em] mb-5">
+                {t('resume.educationLearning')}
+              </p>
+              <div className="space-y-5">
+                {education.map((edu, i) => (
+                  <div
+                    key={i}
+                    className="relative pl-4"
+                    style={{ borderLeft: '1px solid rgba(55,65,81,0.4)' }}
+                  >
+                    <div
+                      className="absolute -left-[4px] top-[5px] w-2 h-2 rounded-full opacity-70"
+                      style={{ background: 'var(--color-primary)' }}
+                    />
+                    <h4 className="font-display font-semibold text-sm text-[var(--color-text)] leading-tight mb-0.5">
+                      {edu.degree}
+                    </h4>
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                      <span className="font-ibm text-[var(--color-primary-lighter)] text-[10px]">{edu.institution}</span>
+                      <span className="text-[var(--color-text-muted)] text-[9px] opacity-40">·</span>
+                      <span className="font-ibm text-[var(--color-text-muted)] text-[9px]">{edu.period}</span>
+                    </div>
+                    <p className="font-ibm text-[var(--color-text-muted)] text-[10px] leading-relaxed">
+                      {edu.description}
+                    </p>
                   </div>
                 ))}
               </div>
             </motion.div>
 
             {/* Achievements */}
-            <motion.div
-              className="card p-3 sm:p-5"
-              variants={slideLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-4">
-                <Award size={20} className="text-[var(--color-primary)]" />
+            <motion.div variants={itemV}>
+              <p className="font-ibm text-[var(--color-text-muted)] text-[9px] uppercase tracking-[0.25em] mb-4">
                 {t('resume.keyAchievements')}
-              </h3>
-              <motion.ul
-                className="space-y-2 text-[var(--color-text-secondary)]"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {achievements.map((achievement, index) => (
-                  <motion.li key={index} variants={slideUp} className="flex items-start gap-2">
-                    <span className="text-[var(--color-primary)] mt-1">•</span>
-                    <span className="text-sm">{achievement}</span>
-                  </motion.li>
+              </p>
+              <ul className="space-y-2">
+                {achievements.map((a, i) => (
+                  <li key={i} className="flex items-start gap-2 font-ibm text-[var(--color-text-secondary)] text-[11px] leading-relaxed">
+                    <span className="text-[var(--color-cyan)] flex-shrink-0 mt-px">›</span>
+                    {a}
+                  </li>
                 ))}
-              </motion.ul>
+              </ul>
             </motion.div>
-          </div>
-
-          {/* Right Column - Experience & Education */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Experience */}
-            <motion.div
-              className="card p-3 sm:p-5"
-              variants={slideRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-6">
-                <Briefcase size={20} className="text-[var(--color-primary)]" />
-                {t('resume.professionalExperience')}
-              </h3>
-              <motion.div
-                className="space-y-8"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {experience.map((job, index) => (
-                  <motion.div key={index} variants={slideUp} className="relative">
-                    {index !== experience.length - 1 && (
-                      <div className="absolute left-0 top-8 bottom-0 w-px bg-[var(--color-border)]" />
-                    )}
-                    <div className="flex gap-4">
-                      <motion.div
-                        className="flex-shrink-0 w-3 h-3 rounded-full bg-[var(--color-primary)] mt-2"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 15, delay: index * 0.1 }}
-                      />
-                      <div className="flex-grow">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <h4 className="text-base font-bold text-[var(--color-text)]">{job.title}</h4>
-                          <span className="text-[var(--color-primary)]">@</span>
-                          <span className="text-[var(--color-primary)] font-semibold">{job.company}</span>
-                        </div>
-                        <div className="flex items-center gap-4 text-sm text-[var(--color-text-secondary)] mb-3">
-                          <div className="flex items-center gap-1">
-                            <Calendar size={14} />
-                            <span>{job.period}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <MapPin size={14} />
-                            <span>{job.location}</span>
-                          </div>
-                        </div>
-                        <p className="text-[var(--color-text-secondary)] mb-3">{job.description}</p>
-                        <ul className="space-y-1">
-                          {job.highlights.map((highlight, hIndex) => (
-                            <li key={hIndex} className="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]">
-                              <span className="text-[var(--color-primary)] mt-1">•</span>
-                              <span>{highlight}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            {/* Education */}
-            <motion.div
-              className="card p-3 sm:p-5"
-              variants={slideRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <h3 className="flex items-center gap-2 text-lg font-bold text-[var(--color-text)] mb-6">
-                <GraduationCap size={20} className="text-[var(--color-primary)]" />
-                {t('resume.educationLearning')}
-              </h3>
-              <motion.div
-                className="space-y-6"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {education.map((edu, index) => (
-                  <motion.div key={index} variants={slideUp} className="relative">
-                    <div className="flex gap-4">
-                      <motion.div
-                        className="flex-shrink-0 w-3 h-3 rounded-full bg-[var(--color-primary)] mt-2"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 15, delay: index * 0.1 }}
-                      />
-                      <div className="flex-grow">
-                        <h4 className="text-base font-bold text-[var(--color-text)] mb-1">{edu.degree}</h4>
-                        <div className="flex items-center gap-4 text-sm text-[var(--color-text-secondary)] mb-2">
-                          <span className="text-[var(--color-primary)] font-semibold">{edu.institution}</span>
-                          <div className="flex items-center gap-1">
-                            <Calendar size={14} />
-                            <span>{edu.period}</span>
-                          </div>
-                        </div>
-                        <p className="text-[var(--color-text-secondary)]">{edu.description}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Resume; 
+export default Resume;
