@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import VisitorCounter from './components/VisitorCounter';
 import ChatWidget from './components/ChatWidget';
 import LiveChat from './pages/LiveChat';
+import CV from './pages/CV';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -69,7 +70,7 @@ const App = () => {
 
         <Header />
 
-        <main className="relative pt-16 sm:pt-20">
+        <main className="relative pt-14 sm:pt-[58px]">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isLoading ? 0 : 1 }}
@@ -98,6 +99,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<PortfolioHome />} />
         <Route path="/live-chat" element={<LiveChat />} />
+        <Route path="/cv" element={<CV />} />
       </Routes>
     </BrowserRouter>
   );

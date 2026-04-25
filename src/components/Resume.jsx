@@ -19,12 +19,9 @@ const Resume = () => {
   const handleDownload = () => {
     setIsGenerating(true);
     setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = '/cv.pdf';
-      link.download = 'Divine_Rapheal_Web3_Developer_CV.pdf';
-      link.click();
+      window.open('/cv', '_blank');
       setIsGenerating(false);
-    }, 1200);
+    }, 800);
   };
 
   const experience = [

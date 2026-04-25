@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Send, Mail, Phone, MessageSquare, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
@@ -81,12 +81,13 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errors, setErrors] = useState({});
 
-  // eslint-disable-next-line no-unused-vars
-  const EMAILJS_SERVICE_ID = 'service_portfolio';
-  // eslint-disable-next-line no-unused-vars
-  const EMAILJS_TEMPLATE_ID = 'template_contact';
-  // eslint-disable-next-line no-unused-vars
-  const EMAILJS_PUBLIC_KEY = 'your_public_key';
+  const EMAILJS_SERVICE_ID  = 'service_jtg4wjv';
+  const EMAILJS_TEMPLATE_ID = 'template_g8n4w3i';
+  const EMAILJS_PUBLIC_KEY  = 'GFD8YNq6OArj-6DFc';
+
+  useEffect(() => {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }, []);
 
   const validate = () => {
     const e = {};
@@ -105,7 +106,16 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     try {
-      await new Promise(r => setTimeout(r, 2000));
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          time: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }),
+        },
+      );
       setSubmitStatus('success');
       setForm({ name: '', email: '', message: '' });
       setErrors({});

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, ArrowUpRight, MessageCircle } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
@@ -21,13 +21,14 @@ const FILTER_LABELS = {
   web:        'Web',
 };
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = forwardRef(({ project, index }, ref) => {
   const [hovered, setHovered] = useState(false);
   const col = CATEGORY_COLORS[project.category] || CATEGORY_COLORS.blockchain;
   const num = String(index + 1).padStart(2, '0');
 
   return (
     <motion.div
+      ref={ref}
       layout
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
@@ -118,7 +119,7 @@ const ProjectCard = ({ project, index }) => {
       </div>
     </motion.div>
   );
-};
+});
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
