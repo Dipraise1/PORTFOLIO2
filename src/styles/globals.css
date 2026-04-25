@@ -14,7 +14,7 @@
   --color-text: #f9fafb;
   --color-text-secondary: #d1d5db;
   --color-text-muted: #9ca3af;
-  --color-background: #0a0f1a;
+  --color-background: #0c0a0f;
   --color-border: #374151;
 }
 
@@ -24,7 +24,7 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-[var(--color-background)] via-[#13072e] to-[var(--color-secondary)] text-[var(--color-text)] min-h-screen;
+    @apply bg-gradient-to-br from-[var(--color-background)] via-[#110920] to-[var(--color-secondary)] text-[var(--color-text)] min-h-screen;
   }
 }
 
