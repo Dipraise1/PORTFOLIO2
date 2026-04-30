@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
         ibm: ['"IBM Plex Mono"', 'monospace'],
       },
       colors: {

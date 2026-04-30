@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --font-body: 'Manrope', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
   --color-primary: #6366f1;
   --color-primary-darker: #4f46e5;
   --color-primary-lighter: #a5b4fc;
@@ -21,10 +26,29 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: var(--font-body);
   }
 
   body {
+    font-family: var(--font-body);
+    letter-spacing: 0;
     @apply bg-gradient-to-br from-[var(--color-background)] via-[#110920] to-[var(--color-secondary)] text-[var(--color-text)] min-h-screen;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
   }
 }
 

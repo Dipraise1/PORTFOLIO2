@@ -6,14 +6,14 @@ const CV = () => {
   return (
     <div className="cv-page">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body { background: #fff; }
 
         .cv-page {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Manrope', sans-serif;
           color: #111;
           background: #fff;
           min-height: 100vh;
@@ -81,7 +81,7 @@ const CV = () => {
           margin-bottom: 28px;
         }
         .cv-name {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Space Grotesk', sans-serif;
           font-size: 36px;
           font-weight: 800;
           letter-spacing: -0.02em;
