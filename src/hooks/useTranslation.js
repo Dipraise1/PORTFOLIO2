@@ -13,7 +13,7 @@ const originalContent = {
   hero: {
     helloWorld: "Hello World! I'm",
     web3Developer: "Web3 Developer & Blockchain Expert",
-    description: "Professional Web3 developer specializing in smart contracts, DeFi protocols, NFT marketplaces, AI agents, Telegram bots, automated trading systems, and mobile app development with Flutter and React Native. Available for blockchain development projects and Web3 consulting.",
+    description: "Founder of Nexxra Digitals. I build smart-contract systems, wallets, trading tools, and React/React Native interfaces for crypto teams that need practical products, not pitch decks.",
     viewProjects: "View Projects",
     contactMe: "Contact Me"
   },
@@ -34,7 +34,7 @@ const originalContent = {
     professionalBackground: "Professional Background",
     resumeExperience: "Resume & Experience",
     description: "Passionate Web3 developer with extensive experience in blockchain technologies and decentralized applications.",
-    downloadResume: "Download Resume",
+    downloadResume: "View CV",
     generatingPdf: "Generating PDF...",
     contactInformation: "Contact Information",
     technicalSkills: "Technical Skills",

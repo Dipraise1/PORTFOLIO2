@@ -1,5 +1,5 @@
 /* eslint-env serviceworker */
-const CACHE_NAME = 'praise-eth-portfolio-v2';
+const CACHE_NAME = 'praise-eth-portfolio-v3';
 const urlsToCache = [
   '/',
   '/index.html',

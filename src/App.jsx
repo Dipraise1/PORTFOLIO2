@@ -71,17 +71,13 @@ const App = () => {
         <Header />
 
         <main className="relative pt-14 sm:pt-[58px]">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isLoading ? 0 : 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
+          <div>
             <Hero />
             <Projects />
             <Resume />
             <Testimonials />
             <Contact />
-          </motion.div>
+          </div>
         </main>
 
         <Footer />

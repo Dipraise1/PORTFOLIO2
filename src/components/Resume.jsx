@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Loader2 } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import useTranslation from '../hooks/useTranslation';
 
 const itemV = {
@@ -14,14 +13,9 @@ const containerV = {
 
 const Resume = () => {
   const { t } = useTranslation();
-  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleDownload = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      window.open('/cv', '_blank');
-      setIsGenerating(false);
-    }, 800);
+    window.open('/cv', '_blank');
   };
 
   const experience = [
@@ -127,16 +121,11 @@ const Resume = () => {
             </div>
             <motion.button
               onClick={handleDownload}
-              disabled={isGenerating}
               className="btn-primary flex items-center gap-2 self-start sm:self-auto flex-shrink-0"
-              whileHover={!isGenerating ? { scale: 1.04 } : {}}
-              whileTap={!isGenerating ? { scale: 0.96 } : {}}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
             >
-              {isGenerating ? (
-                <><Loader2 size={14} className="animate-spin" /> {t('resume.generatingPDF')}</>
-              ) : (
-                <><Download size={14} /> {t('resume.downloadResume')}</>
-              )}
+              <FileText size={14} /> {t('resume.downloadResume')}
             </motion.button>
           </div>
           <div className="mt-5 h-px" style={{ background: 'linear-gradient(to right, rgba(99,102,241,0.4), transparent)' }} />
