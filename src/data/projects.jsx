@@ -37,7 +37,7 @@ export const projects = [
     icon: <ShieldCheck className="w-10 h-10 text-green-500" />,
     tech: ['Next.js', 'Supabase', 'Solana', 'Ethereum', 'Web3'],
     githubLink: 'https://github.com/Dipraise1/loogyourproofs',
-    liveLink: '',
+    liveLink: 'https://loogyourproofs.vercel.app',
     category: 'blockchain',
     stats: {
       features: 'On-chain payments, proof logging, multi-chain'
