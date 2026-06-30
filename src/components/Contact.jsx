@@ -32,6 +32,13 @@ const containerV = {
 const CHANNELS = [
   {
     icon: <Phone size={16} />,
+    label: 'Phone / WhatsApp',
+    value: '+234 811 026 8093',
+    href: 'https://wa.me/2348110268093',
+    accentColor: 'rgba(37,211,102,0.5)',
+  },
+  {
+    icon: <Phone size={16} />,
     label: 'Telegram',
     value: '@jokersrequired',
     href: 'https://t.me/jokersrequired',
