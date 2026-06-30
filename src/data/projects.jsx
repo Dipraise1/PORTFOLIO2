@@ -1,4 +1,4 @@
-import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket, Video, ShieldCheck, Mail, TrendingDown } from 'lucide-react';
+import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket, Video, ShieldCheck, Mail, TrendingDown, Globe, Coins, ShoppingBag, Zap, Plane } from 'lucide-react';
 
 export const projects = [
   {
@@ -69,6 +69,76 @@ export const projects = [
     category: 'finance',
     stats: {
       features: 'Automated stop-loss, Dockerized API'
+    }
+  },
+  {
+    id: 25,
+    title: 'Nexxra Digital',
+    description:
+      'The marketing site for Nexxra — a web development company based in Abuja, Nigeria. A modern, responsive, conversion-focused landing page built with TypeScript.',
+    icon: <Globe className="w-10 h-10 text-[var(--color-accent)]" />,
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    githubLink: 'https://github.com/Dipraise1/nexxra',
+    liveLink: 'https://nexxra.vercel.app',
+    category: 'web',
+    stats: {
+      features: 'Agency site, responsive, SEO-focused'
+    }
+  },
+  {
+    id: 26,
+    title: 'SOL Coin Flip',
+    description:
+      'A premium Solana coin-flip game — connect a wallet, place a bet and flip on-chain, with a provably-fair flow and a sleek, animated UI.',
+    icon: <Coins className="w-10 h-10 text-yellow-400" />,
+    tech: ['TypeScript', 'Solana', 'Web3', 'Next.js'],
+    githubLink: 'https://github.com/Dipraise1/coinfliptemplate',
+    liveLink: 'https://coinfliptemplate.vercel.app',
+    category: 'blockchain',
+    stats: {
+      features: 'On-chain bets, wallet connect, animated UI'
+    }
+  },
+  {
+    id: 27,
+    title: 'Marketplace Admin',
+    description:
+      'An admin dashboard for an online marketplace — manage listings, orders and users through a clean, data-dense interface.',
+    icon: <ShoppingBag className="w-10 h-10 text-[var(--color-primary)]" />,
+    tech: ['JavaScript', 'React', 'Dashboard'],
+    githubLink: 'https://github.com/Dipraise1/marketplace',
+    liveLink: 'https://marketplace-drab-psi.vercel.app',
+    category: 'web',
+    stats: {
+      features: 'Listings, orders, user management'
+    }
+  },
+  {
+    id: 28,
+    title: 'Warpcore',
+    description:
+      'Tooling that lets developers use parallelism on Solana — a Rust project focused on high-throughput, concurrent execution patterns for Solana programs.',
+    icon: <Zap className="w-10 h-10 text-purple-400" />,
+    tech: ['Rust', 'Solana', 'Parallelism'],
+    githubLink: 'https://github.com/Dipraise1/warpcore',
+    liveLink: '',
+    category: 'blockchain',
+    stats: {
+      features: 'Parallel execution, high throughput, Rust'
+    }
+  },
+  {
+    id: 29,
+    title: 'Boarderless — The Visa Machine',
+    description:
+      'A travel and visa platform that streamlines visa discovery and applications, built with TypeScript and deployed on Vercel.',
+    icon: <Plane className="w-10 h-10 text-sky-400" />,
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    githubLink: '',
+    liveLink: 'https://boarderless.vercel.app',
+    category: 'web',
+    stats: {
+      features: 'Visa discovery & applications'
     }
   },
   {
