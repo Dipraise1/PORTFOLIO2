@@ -1,6 +1,76 @@
-import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket } from 'lucide-react';
+import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket, Video, ShieldCheck, Mail, TrendingDown } from 'lucide-react';
 
 export const projects = [
+  {
+    id: 20,
+    title: 'Online Class',
+    description:
+      'A live-video lecture platform for universities. Lecturers run live classes with screen-share and host moderation, take automatic attendance (CSV export), and start polls/quizzes mid-class; students join only via invite links. Built on Next.js, LiveKit, and Prisma/Postgres.',
+    icon: <Video className="w-10 h-10 text-[var(--color-primary)]" />,
+    tech: ['Next.js', 'LiveKit', 'Prisma', 'Postgres', 'TypeScript'],
+    githubLink: 'https://github.com/Dipraise1/online-class',
+    liveLink: 'https://online-class-eosin.vercel.app',
+    category: 'web',
+    stats: {
+      features: 'Live video, screen-share, attendance, live quizzes, invite-link access'
+    }
+  },
+  {
+    id: 21,
+    title: 'HotCams',
+    description:
+      'A polished, animated streaming-site front-end built with Vite and React. Smooth motion, a responsive layout, and a fast modern landing experience.',
+    icon: <Video className="w-10 h-10 text-pink-500" />,
+    tech: ['Vite', 'React', 'Tailwind CSS', 'JavaScript'],
+    githubLink: 'https://github.com/Dipraise1/hotcams',
+    liveLink: 'https://hotcams-theta.vercel.app',
+    category: 'web',
+    stats: {
+      features: 'Animated UI, responsive, fast Vite build'
+    }
+  },
+  {
+    id: 22,
+    title: 'Solgigs — Log Your Proofs',
+    description:
+      'A Web3 gig and proof-of-work platform with multi-chain payments. Freelancers log verifiable proofs of completed work and get paid on-chain across Solana and Ethereum, with a Supabase backend.',
+    icon: <ShieldCheck className="w-10 h-10 text-green-500" />,
+    tech: ['Next.js', 'Supabase', 'Solana', 'Ethereum', 'Web3'],
+    githubLink: 'https://github.com/Dipraise1/loogyourproofs',
+    liveLink: '',
+    category: 'blockchain',
+    stats: {
+      features: 'On-chain payments, proof logging, multi-chain'
+    }
+  },
+  {
+    id: 23,
+    title: 'Webmail App',
+    description:
+      'A full webmail client built with Next.js and Prisma — compose, send, and manage email with a database-backed inbox and a clean, modern interface.',
+    icon: <Mail className="w-10 h-10 text-blue-400" />,
+    tech: ['Next.js', 'Prisma', 'TypeScript', 'Postgres'],
+    githubLink: 'https://github.com/Dipraise1/webmailler',
+    liveLink: '',
+    category: 'web',
+    stats: {
+      features: 'Inbox, compose & send, database-backed'
+    }
+  },
+  {
+    id: 24,
+    title: 'StopLoss Degen API',
+    description:
+      'A containerized trading API for automated stop-loss execution on degen positions. A Python service shipped with Docker and configurable risk parameters.',
+    icon: <TrendingDown className="w-10 h-10 text-red-500" />,
+    tech: ['Python', 'Docker', 'REST API', 'Trading'],
+    githubLink: 'https://github.com/Dipraise1/stoplossdegen-api-design-',
+    liveLink: '',
+    category: 'finance',
+    stats: {
+      features: 'Automated stop-loss, Dockerized API'
+    }
+  },
   {
     id: 11,
     title: 'Sawa Wallet',
