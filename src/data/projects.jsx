@@ -318,7 +318,7 @@ export const projects = [
     icon: <Activity className="w-10 h-10 text-[var(--color-primary-lighter)]" />,
     tech: ['Next.js 14', 'TypeScript', 'Solana', 'SPL Token', 'shadcn/ui', 'Tailwind'],
     githubLink: 'https://github.com/Dipraise1/otto-burn-rewards',
-    liveLink: '',
+    liveLink: 'https://otto-burn-rewards.vercel.app',
     category: 'blockchain',
     stats: {
       features: 'Token cleanup, SOL rewards, Gamified, Achievements'
