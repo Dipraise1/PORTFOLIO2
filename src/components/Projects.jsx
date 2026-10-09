@@ -34,7 +34,7 @@ const ProjectCard = forwardRef(({ project, index }, ref) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.35, delay: index * 0.03, ease: [0.22, 1, 0.36, 1] }}
-      className="project-card-friendly relative group flex flex-col h-full cursor-default overflow-hidden"
+      className="relative group flex flex-col h-full cursor-default rounded-xl overflow-hidden"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -51,7 +51,7 @@ const ProjectCard = forwardRef(({ project, index }, ref) => {
         transition={{ duration: 0.2 }}
       />
 
-      <div className="flex flex-col flex-1 p-5 sm:p-6">
+      <div className="flex flex-col flex-1 p-4">
         {/* Header row */}
         <div className="flex items-start justify-between mb-3">
           <span className="font-ibm text-[var(--color-text-muted)] text-[10px] select-none">{num}</span>
@@ -64,12 +64,12 @@ const ProjectCard = forwardRef(({ project, index }, ref) => {
         </div>
 
         {/* Title */}
-        <h3 className="font-display font-semibold text-lg text-[var(--color-text)] group-hover:text-white transition-colors mb-2 leading-tight">
+        <h3 className="font-display font-semibold text-sm text-[var(--color-text)] group-hover:text-white transition-colors mb-2 leading-tight">
           {project.title}
         </h3>
 
         {/* Description */}
-        <p className="font-body text-[var(--color-text-muted)] text-xs sm:text-sm leading-relaxed line-clamp-4 flex-1 mb-5">
+        <p className="font-ibm text-[var(--color-text-muted)] text-[10px] sm:text-[11px] leading-relaxed line-clamp-3 flex-1 mb-3">
           {project.description}
         </p>
 
@@ -146,14 +146,14 @@ const Projects = () => {
         >
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
-              <p className="font-ibm text-[var(--color-cyan)] text-[10px] tracking-[0.2em] uppercase mb-2 opacity-80">
-                A few things I&apos;ve made
+              <p className="font-ibm text-[var(--color-cyan)] text-[10px] tracking-[0.25em] uppercase mb-2 opacity-70">
+                // {t('projects.githubProjects')}
               </p>
               <h2
                 className="font-display font-bold heading-gradient leading-none"
                 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}
               >
-                Work with a pulse.
+                {t('projects.recentWorks')}
               </h2>
             </div>
             <span className="font-ibm text-[var(--color-text-muted)] text-[11px] tracking-wide sm:pb-1">
@@ -187,7 +187,7 @@ const Projects = () => {
         </motion.div>
 
         {/* ─── Project grid ─── */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
