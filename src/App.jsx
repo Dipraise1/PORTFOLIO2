@@ -55,7 +55,7 @@ const App = () => {
         style={{ scaleX }}
       />
 
-      <div className="relative min-h-screen overflow-hidden bg-[var(--color-background)]">
+      <div className="site-shell relative min-h-screen overflow-hidden bg-[var(--color-background)]">
         {/* Animated background */}
         <div className="fixed inset-0 -z-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] to-[var(--color-secondary-darker)]"></div>
