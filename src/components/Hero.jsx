@@ -29,7 +29,7 @@ const SOCIALS = [
 ];
 
 const STATS = [
-  ['17+', 'projects'],
+  ['30+', 'projects'],
   ['30+', 'repos'],
   ['5+', 'chains'],
 ];
@@ -51,10 +51,10 @@ const WORK = [
   },
   {
     id: '03',
-    name: 'Nexxra Digitals',
-    type: 'studio',
-    detail: 'client product builds',
-    href: 'https://nexxradigitals.com',
+    name: 'WayaTix',
+    type: 'event ticketing',
+    detail: 'WhatsApp-native tickets for Nigeria',
+    href: 'https://wayatix.com',
   },
 ];
 

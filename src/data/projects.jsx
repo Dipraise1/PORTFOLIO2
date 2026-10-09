@@ -1,6 +1,48 @@
-import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket, Video, ShieldCheck, Mail, TrendingDown, Globe, Coins, ShoppingBag, Zap, Plane } from 'lucide-react';
+import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket, Video, ShieldCheck, Mail, TrendingDown, Globe, Coins, ShoppingBag, Zap, Plane, Ticket, Radar, Cpu } from 'lucide-react';
 
 export const projects = [
+  {
+    id: 30,
+    title: 'WayaTix',
+    description:
+      'WhatsApp-native event ticketing for Nigeria. Organizers create and manage events on the web while guests can buy, gift, transfer, and refund tickets through WhatsApp or the web. Includes secure QR tickets, offline gate scanning, promoter tools, payments, payouts, and an append-only money ledger.',
+    icon: <Ticket className="w-10 h-10 text-orange-400" />,
+    tech: ['Next.js', 'TypeScript', 'Postgres', 'Redis', 'WhatsApp API', 'Paystack'],
+    githubLink: '',
+    liveLink: 'https://wayatix.com',
+    category: 'web',
+    stats: {
+      features: 'WhatsApp ticketing, secure QR, offline scanning, payouts'
+    }
+  },
+  {
+    id: 31,
+    title: 'Pons Volume Tracker',
+    description:
+      'A real-time Telegram intelligence bot for Robinhood Chain launchpad tokens. It reads directly from chain RPC, detects launches dynamically, tracks volume and momentum, monitors graduations and whales, verifies stock tokens, and scores rug risk without relying on third-party price feeds.',
+    icon: <Radar className="w-10 h-10 text-emerald-400" />,
+    tech: ['Python', 'Telegram', 'EVM', 'JSON-RPC', 'On-chain Analytics'],
+    githubLink: 'https://github.com/Dipraise1/pons-volume-tracker',
+    liveLink: '',
+    category: 'blockchain',
+    stats: {
+      features: 'RPC-direct alerts, safety scoring, whale & momentum tracking'
+    }
+  },
+  {
+    id: 32,
+    title: 'Rende',
+    description:
+      'A self-hosted toolkit that turns spare compute into paid services. A Rust gateway quotes jobs through HTTP 402, verifies USDC payments on Solana, dispatches work to local hardware, and lets a ZeroClaw agent report revenue without ever holding spending keys.',
+    icon: <Cpu className="w-10 h-10 text-cyan-400" />,
+    tech: ['Rust', 'Solana', 'USDC', 'x402', 'ZeroClaw'],
+    githubLink: 'https://github.com/Dipraise1/rende',
+    liveLink: '',
+    category: 'blockchain',
+    stats: {
+      features: 'Receive-only custody, paid compute, local hardware adapters'
+    }
+  },
   {
     id: 20,
     title: 'Online Class',
