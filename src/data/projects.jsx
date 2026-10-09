@@ -1,4 +1,4 @@
-import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket, Video, ShieldCheck, Mail, TrendingDown, Globe, Coins, ShoppingBag, Zap, Plane, Ticket, Radar, Cpu } from 'lucide-react';
+import { Database, LineChart, Activity, BarChart, Terminal, Coffee, Layers, Bot, Wallet, Brain, Search, Rocket, Video, ShieldCheck, Mail, TrendingDown, Globe, Coins, ShoppingBag, Zap, Plane, Ticket, Radar, Cpu, Gamepad2, Smartphone } from 'lucide-react';
 
 export const projects = [
   {
@@ -41,6 +41,76 @@ export const projects = [
     category: 'blockchain',
     stats: {
       features: 'Receive-only custody, paid compute, local hardware adapters'
+    }
+  },
+  {
+    id: 33,
+    title: 'Naivolt',
+    description:
+      'A Nigerian fintech platform for virtual phone numbers and crypto-to-Naira conversion. Users can receive verification codes for popular apps, fund a wallet, track orders, and withdraw Naira to local bank accounts.',
+    icon: <Coins className="w-10 h-10 text-lime-400" />,
+    tech: ['React', 'TypeScript', 'Convex', 'Fintech', 'Virtual Numbers'],
+    githubLink: '',
+    liveLink: 'https://naivolt-website-murex.vercel.app',
+    category: 'finance',
+    stats: {
+      features: 'Virtual numbers, crypto conversion, Naira withdrawals'
+    }
+  },
+  {
+    id: 34,
+    title: 'Cooking',
+    description:
+      'An autonomous token-sniper platform for Robinhood Chain and Solana with a Telegram bot, web dashboard, and Rust execution engine. It screens launches, proposes trades, manages encrypted wallets, and protects positions with an emergency guardian.',
+    icon: <Bot className="w-10 h-10 text-orange-400" />,
+    tech: ['Rust', 'TypeScript', 'Solana', 'Telegram', 'Next.js', 'Redis'],
+    githubLink: '',
+    liveLink: 'https://cookingbot.si',
+    category: 'blockchain',
+    stats: {
+      features: 'Launch detection, trade screening, guardian risk controls'
+    }
+  },
+  {
+    id: 35,
+    title: 'Trident Platform',
+    description:
+      'A full responsive trading-product experience spanning marketing, onboarding, wallet setup, dashboards, swaps, staking, governance, analytics, security, and transaction history—rebuilt precisely from a detailed product design.',
+    icon: <BarChart className="w-10 h-10 text-blue-400" />,
+    tech: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'Product UI'],
+    githubLink: '',
+    liveLink: 'https://trident-platform.vercel.app',
+    category: 'finance',
+    stats: {
+      features: 'Trading UI, staking, swaps, governance, responsive app'
+    }
+  },
+  {
+    id: 36,
+    title: 'Ludos',
+    description:
+      'A generative game engine that turns prompts and 2D art into playable games. Models produce validated game data rather than code, while a deterministic Rust and TypeScript runtime enables reproducible generation and automated headless playtesting.',
+    icon: <Gamepad2 className="w-10 h-10 text-fuchsia-400" />,
+    tech: ['Rust', 'TypeScript', 'WASM', 'Generative AI', 'Game Engine'],
+    githubLink: '',
+    liveLink: 'https://ludos-alpha.vercel.app',
+    category: 'ai',
+    stats: {
+      features: 'Prompt-to-game, deterministic runtime, automated playtesting'
+    }
+  },
+  {
+    id: 37,
+    title: 'Skriva',
+    description:
+      'A native Solana Seeker companion for staking intelligence and rewards. It ranks guardians using APY, uptime, commission, and skip rate, reads wallet positions directly from Solana, and delivers reward notifications without taking custody.',
+    icon: <Smartphone className="w-10 h-10 text-violet-400" />,
+    tech: ['Kotlin', 'Solana', 'Android', 'Seed Vault', 'Next.js'],
+    githubLink: 'https://github.com/Dipraise1/skriva',
+    liveLink: 'https://www.skriva.space',
+    category: 'blockchain',
+    stats: {
+      features: 'Seeker-native, guardian ranking, staking rewards'
     }
   },
   {
