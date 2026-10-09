@@ -34,7 +34,7 @@ const ProjectCard = forwardRef(({ project, index }, ref) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.35, delay: index * 0.03, ease: [0.22, 1, 0.36, 1] }}
-      className="slick-project-card relative group flex flex-col h-full cursor-default rounded-xl overflow-hidden"
+      className="relative group flex flex-col h-full cursor-default rounded-xl overflow-hidden"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{

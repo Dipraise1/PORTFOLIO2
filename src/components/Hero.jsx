@@ -76,10 +76,10 @@ const Hero = () => {
     >
       <div className="container-custom">
         <div className="mx-auto max-w-[366px] py-7 sm:max-w-none sm:py-9 lg:py-11">
-          <div className="hero-layout grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
-            <div className="hero-main-panel min-w-0 border-y border-white/10">
+          <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <div className="min-w-0 border-y border-white/10">
               <div className="grid min-w-0 lg:grid-cols-[168px_minmax(0,1fr)]">
-                <aside className="hero-profile border-b border-white/10 p-4 lg:border-b-0 lg:border-r">
+                <aside className="border-b border-white/10 p-4 lg:border-b-0 lg:border-r">
                   <div className="flex items-center gap-3 lg:block">
                     <img
                       src="/pfp.jpg"
@@ -146,7 +146,7 @@ const Hero = () => {
                   <div className="mt-5 flex flex-wrap items-center gap-2">
                     <a
                       href="#projects"
-                      className="hero-cta group inline-flex items-center gap-2 rounded bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] px-3.5 py-2 font-ibm text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5"
+                      className="group inline-flex items-center gap-2 rounded bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] px-3.5 py-2 font-ibm text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5"
                     >
                       {t('hero.viewProjects')}
                       <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -180,7 +180,7 @@ const Hero = () => {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="hero-work-link group relative flex min-h-[114px] min-w-0 flex-col justify-between border-r border-b border-white/10 px-3 py-3 even:border-r-0 last:border-b-0 sm:grid sm:min-h-0 sm:grid-cols-[42px_120px_minmax(0,1fr)_auto] sm:items-center sm:gap-2 sm:border-r-0 sm:border-b sm:px-4 sm:last:border-b-0"
+                    className="group relative flex min-h-[114px] min-w-0 flex-col justify-between border-r border-b border-white/10 px-3 py-3 even:border-r-0 last:border-b-0 sm:grid sm:min-h-0 sm:grid-cols-[42px_120px_minmax(0,1fr)_auto] sm:items-center sm:gap-2 sm:border-r-0 sm:border-b sm:px-4 sm:last:border-b-0"
                   >
                     <span className="font-ibm text-[9px] text-[var(--color-primary-lighter)] sm:block">{item.id}</span>
                     <span className="mt-2 min-w-0 break-words font-ibm text-[8px] uppercase tracking-[0.14em] text-[var(--color-text-muted)] sm:mt-0 sm:text-[9px] sm:tracking-[0.16em]">
@@ -203,7 +203,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <aside className="hero-now-panel border-y border-white/10 p-4 lg:p-5">
+            <aside className="border-y border-white/10 p-4 lg:p-5">
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
                 <span className="font-ibm text-[9px] uppercase tracking-[0.22em] text-[var(--color-text-muted)]">
                   now building

@@ -48,11 +48,11 @@ const Header = () => {
 
   return (
     <motion.header
-      className="site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? 'rgba(12,10,15,0.74)' : 'transparent',
+        background: scrolled ? 'rgba(12,10,15,0.82)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(165,180,252,0.12)' : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid rgba(55,65,81,0.25)' : '1px solid transparent',
       }}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
