@@ -67,7 +67,7 @@ const Header = () => {
             className="font-display font-bold heading-gradient relative z-[60] flex-shrink-0"
             style={{ fontSize: '0.95rem', letterSpacing: '-0.01em' }}
           >
-            PRAISE.ETH
+            divine<span style={{ color: 'var(--color-accent)' }}>builds</span>
           </a>
 
           {/* ── Desktop nav (centered) ── */}
@@ -141,7 +141,7 @@ const Header = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              {t('nav.hireMe')}
+              Say hello
             </motion.a>
           </nav>
 

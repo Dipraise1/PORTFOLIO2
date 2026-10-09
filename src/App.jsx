@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
-import LoadingScreen from './components/LoadingScreen';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -10,13 +9,11 @@ import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
-import VisitorCounter from './components/VisitorCounter';
 import ChatWidget from './components/ChatWidget';
 import LiveChat from './pages/LiveChat';
 import CV from './pages/CV';
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
@@ -33,22 +30,10 @@ const App = () => {
         });
     }
 
-    // Simulate loading time for better UX
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
   }, []);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
 
   const PortfolioHome = () => (
     <>
-      <LoadingScreen isLoading={isLoading} onComplete={handleLoadingComplete} />
-
       {/* Scroll progress bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-accent)] to-[var(--color-primary)] z-[60] origin-left"
@@ -81,7 +66,6 @@ const App = () => {
         </main>
 
         <Footer />
-        <VisitorCounter />
         <Analytics />
       </div>
 
