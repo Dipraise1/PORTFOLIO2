@@ -1,128 +1,78 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Github, Mail, ArrowUp, MessageCircle, ExternalLink } from 'lucide-react';
-import useTranslation from '../hooks/useTranslation';
+import { Github, Mail, ArrowUp } from 'lucide-react';
+import { XIcon, TikTokIcon, TelegramIcon } from './icons';
+import { SITE } from '../data/site';
 
-const XIcon = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
+const SOCIALS = [
+  { icon: <Github size={16} />, href: SITE.github, label: 'GitHub' },
+  { icon: <XIcon size={15} />, href: SITE.xHref, label: 'X' },
+  { icon: <TelegramIcon size={16} />, href: SITE.telegramHref, label: 'Telegram' },
+  { icon: <TikTokIcon size={15} />, href: SITE.tiktok, label: 'TikTok' },
+  { icon: <Mail size={16} />, href: `mailto:${SITE.email}`, label: 'Email' },
+];
 
-const TikTokIcon = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z" />
-  </svg>
-);
+const LINKS = [
+  { name: 'Work', href: '/#work' },
+  { name: 'Experience', href: '/#experience' },
+  { name: 'Contact', href: '/#contact' },
+  { name: 'CV', href: '/cv' },
+  { name: 'Nexxra Digitals', href: SITE.nexxra, external: true },
+];
 
-const Footer = () => {
-  const { t } = useTranslation();
-  const [year] = useState(new Date().getFullYear());
-
-  const socials = [
-    { icon: <Github size={16} />,      href: 'https://github.com/Dipraise1',                              label: 'GitHub' },
-    { icon: <XIcon />,                 href: 'https://x.com/divinecodes11?s=21',                          label: 'X' },
-    { icon: <TikTokIcon />,            href: 'https://www.tiktok.com/@divin3.eth?_r=1&_t=ZS-95Sk7mHgmzE', label: 'TikTok' },
-    { icon: <MessageCircle size={16}/>,href: 'https://t.me/jokersrequired',                               label: 'Telegram' },
-    { icon: <Mail size={16} />,        href: 'mailto:raphealdivine2@gmail.com',                           label: 'Email' },
-  ];
-
-  const navLinks = [
-    { name: t('footer.portfolio'), href: 'https://divinebuilds.online', external: true },
-    { name: t('footer.projects'),  href: '#projects' },
-    { name: t('footer.contact'),   href: '#contact' },
-    { name: t('footer.privacyPolicy'), href: '#' },
-    { name: t('footer.termsOfService'), href: '#' },
-  ];
-
-  return (
-    <footer
-      className="relative mt-8 sm:mt-16 pt-8 sm:pt-12 pb-6 sm:pb-8 overflow-hidden"
-      style={{ borderTop: '1px solid rgba(55,65,81,0.3)' }}
-    >
-      <div className="container-custom relative z-10">
-
-        {/* ─── Main row ─── */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 mb-8">
-
-          {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-xs"
-          >
-            <h3
-              className="font-display font-bold heading-gradient mb-2 inline-block"
-              style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}
-            >
-              PRAISE.ETH
-            </h3>
-            <p className="font-ibm text-[var(--color-text-muted)] text-[11px] leading-relaxed">
-              {t('footer.description')}
-            </p>
-
-            {/* Socials */}
-            <div className="flex items-center gap-1 mt-4">
-              {socials.map(({ icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="p-2 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-primary-lighter)] hover:bg-[rgba(99,102,241,0.07)] transition-all duration-200"
-                >
-                  {icon}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Nav links */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-wrap gap-x-8 gap-y-2"
-          >
-            {navLinks.map(({ name, href, external }) => (
+const Footer = () => (
+  <footer className="border-t border-[var(--line-soft)] py-10">
+    <div className="container-custom">
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+        <div className="max-w-sm">
+          <p className="font-display text-lg font-bold text-[var(--text)]">Praise.eth</p>
+          <p className="mt-1 text-[13.5px] text-[var(--muted)]">
+            {SITE.name}. Wallets, smart contracts, trading engines and apps, built from{' '}
+            {SITE.location}.
+          </p>
+          <div className="-ml-2.5 mt-3 flex items-center">
+            {SOCIALS.map(({ icon, href, label }) => (
               <a
-                key={name}
+                key={label}
                 href={href}
-                target={external ? '_blank' : undefined}
-                rel={external ? 'noopener noreferrer' : undefined}
-                className="font-ibm text-[var(--color-text-muted)] text-[11px] hover:text-[var(--color-primary-lighter)] transition-colors flex items-center gap-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"
               >
-                {name}
-                {external && <ExternalLink size={10} className="opacity-50" />}
+                {icon}
               </a>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* ─── Bottom bar ─── */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5"
-          style={{ borderTop: '1px solid rgba(55,65,81,0.2)' }}
-        >
-          <p className="font-ibm text-[var(--color-text-muted)] text-[10px] tracking-wide">
-            © {year} Divine Rapheal · {t('footer.allRightsReserved')}
-          </p>
-
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="p-2 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-primary-lighter)] hover:bg-[rgba(99,102,241,0.07)] transition-all duration-200"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp size={15} />
-          </button>
-        </div>
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-7 gap-y-2 text-[13.5px]">
+          {LINKS.map(({ name, href, external }) => (
+            <a
+              key={name}
+              href={href}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener noreferrer' : undefined}
+              className="text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+            >
+              {name}
+            </a>
+          ))}
+        </nav>
       </div>
-    </footer>
-  );
-};
+
+      <div className="mt-8 flex items-center justify-between border-t border-[var(--line-soft)] pt-5">
+        <p className="text-[12.5px] text-[var(--muted)]">
+          © {new Date().getFullYear()} {SITE.name}
+        </p>
+        <a
+          href="#about"
+          aria-label="Back to top"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+        >
+          <ArrowUp size={16} />
+        </a>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

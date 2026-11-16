@@ -1,104 +1,53 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { Analytics } from '@vercel/analytics/react';
-import LoadingScreen from './components/LoadingScreen';
+import { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Projects from './components/Projects';
+import Work from './components/Work';
 import Resume from './components/Resume';
-import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
-import VisitorCounter from './components/VisitorCounter';
 import ChatWidget from './components/ChatWidget';
-import LiveChat from './pages/LiveChat';
 import CV from './pages/CV';
 
-const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+const LiveChat = lazy(() => import('./pages/LiveChat'));
 
-  useEffect(() => {
-    // Register service worker only in production so localhost dev shows live updates
-    const isDev = import.meta.env.DEV || window.location.hostname === 'localhost';
-    if (!isDev && 'serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then((registration) => {
-          console.log('SW registered: ', registration);
-        })
-        .catch((registrationError) => {
-          console.log('SW registration failed: ', registrationError);
-        });
-    }
+const Home = () => (
+  <>
+    <a
+      href="#work"
+      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-white"
+    >
+      Skip to work
+    </a>
+    <Header />
+    <main>
+      <Hero />
+      <Work />
+      <Resume />
+      <Testimonials />
+      <Contact />
+    </main>
+    <Footer />
+    <ChatWidget />
+  </>
+);
 
-    // Simulate loading time for better UX
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
-  const PortfolioHome = () => (
-    <>
-      <LoadingScreen isLoading={isLoading} onComplete={handleLoadingComplete} />
-
-      {/* Scroll progress bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-accent)] to-[var(--color-primary)] z-[60] origin-left"
-        style={{ scaleX }}
-      />
-
-      <div className="relative min-h-screen overflow-hidden bg-[var(--color-background)]">
-        {/* Animated background */}
-        <div className="fixed inset-0 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)] to-[var(--color-secondary-darker)]"></div>
-          <div
-            className="absolute inset-0 opacity-[0.02]"
-            style={{
-              backgroundImage: `radial-gradient(var(--color-primary-lighter) 1px, transparent 1px)`,
-              backgroundSize: '50px 50px'
-            }}
-          ></div>
-        </div>
-
-        <Header />
-
-        <main className="relative pt-14 sm:pt-[58px]">
-          <div>
-            <Hero />
-            <Projects />
-            <Resume />
-            <Testimonials />
-            <Contact />
-          </div>
-        </main>
-
-        <Footer />
-        <VisitorCounter />
-        <Analytics />
-      </div>
-
-      {/* ChatWidget lives outside the overflow-hidden container so fixed positioning works correctly */}
-      <ChatWidget />
-    </>
-  );
-
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PortfolioHome />} />
-        <Route path="/live-chat" element={<LiveChat />} />
-        <Route path="/cv" element={<CV />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+// The router lives in the entry files so the same tree renders in the browser and at build time.
+const App = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/cv" element={<CV />} />
+    <Route
+      path="/live-chat"
+      element={
+        <Suspense fallback={null}>
+          <LiveChat />
+        </Suspense>
+      }
+    />
+    <Route path="*" element={<Home />} />
+  </Routes>
+);
 
 export default App;

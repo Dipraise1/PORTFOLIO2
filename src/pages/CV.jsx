@@ -1,45 +1,34 @@
 import { useEffect } from 'react';
 import { ArrowLeft, Download, ExternalLink } from 'lucide-react';
 
-const CvPage = () => {
-  const cvPath = '/cv.pdf';
+const cvPath = '/cv.pdf';
 
+const CvPage = () => {
   useEffect(() => {
-    document.title = 'CV - Divine Rapheal';
+    document.title = 'CV | Divine Rapheal';
   }, []);
 
   return (
-    <main className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
-      <div className="border-b border-white/10 bg-[rgba(12,10,15,0.9)]">
+    <main className="min-h-screen">
+      <div className="border-b border-[var(--line-soft)]">
         <div className="container-custom flex flex-wrap items-center justify-between gap-3 py-3">
           <a
             href="/"
-            className="inline-flex items-center gap-2 font-ibm text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-primary-lighter)]"
+            className="inline-flex items-center gap-2 text-[13px] text-[var(--muted)] transition-colors hover:text-[var(--text)]"
           >
-            <ArrowLeft size={14} />
+            <ArrowLeft size={15} />
             Portfolio
           </a>
 
-          <p className="font-display text-sm font-semibold text-[var(--color-text)]">
-            Divine Rapheal CV
-          </p>
+          <h1 className="font-display text-[15px] font-semibold text-[var(--text)]">Divine Rapheal, CV</h1>
 
           <div className="flex items-center gap-2">
-            <a
-              href={cvPath}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded border border-white/10 px-3 py-2 font-ibm text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-secondary)] transition-colors hover:border-[var(--color-primary-lighter)] hover:text-[var(--color-primary-lighter)]"
-            >
-              <ExternalLink size={13} />
+            <a href={cvPath} target="_blank" rel="noreferrer" className="btn-quiet !px-3 !py-2">
+              <ExternalLink size={14} />
               Open
             </a>
-            <a
-              href={cvPath}
-              download="Divine-Rapheal-CV.pdf"
-              className="inline-flex items-center gap-2 rounded bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] px-3 py-2 font-ibm text-[10px] uppercase tracking-[0.14em] text-white"
-            >
-              <Download size={13} />
+            <a href={cvPath} download="Divine-Rapheal-CV.pdf" className="btn-primary !px-3 !py-2">
+              <Download size={14} />
               Download
             </a>
           </div>
@@ -47,11 +36,15 @@ const CvPage = () => {
       </div>
 
       <section className="container-custom py-4 sm:py-6">
-        <div className="overflow-hidden rounded border border-white/10 bg-white">
+        <p className="mb-4 max-w-[70ch] text-[13.5px] text-[var(--muted)]">
+          Web3 and full-stack developer. Founder of Sawa Wallet and Nexxra Digitals. The full CV is
+          below as a PDF.
+        </p>
+        <div className="overflow-hidden rounded-md bg-white">
           <iframe
-            title="Divine Rapheal CV"
+            title="Divine Rapheal CV (PDF)"
             src={`${cvPath}#toolbar=1&navpanes=0`}
-            className="h-[calc(100vh-112px)] min-h-[620px] w-full"
+            className="h-[calc(100vh-150px)] min-h-[620px] w-full"
           />
         </div>
       </section>

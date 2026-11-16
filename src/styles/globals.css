@@ -1,264 +1,185 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-body: 'Manrope', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --color-primary: #6366f1;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --bg: #0c0a0f;
+  --surface: #15121b;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-soft: rgba(255, 255, 255, 0.06);
+  --text: #f5f5f7;
+  --text-2: #c9cbd4;
+  --muted: #979baa;
+  --accent: #6366f1;
+  --accent-text: #a5b4fc;
+
+  /* legacy names still used by the live-chat page */
+  --color-background: var(--bg);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-2);
+  --color-text-muted: var(--muted);
+  --color-primary: var(--accent);
   --color-primary-darker: #4f46e5;
-  --color-primary-lighter: #a5b4fc;
-  --color-secondary: #0d1117;
-  --color-secondary-darker: #010408;
-  --color-secondary-lighter: #161b22;
-  --color-accent: #f97316;
-  --color-cyan: #22d3ee;
-  --color-text: #f9fafb;
-  --color-text-secondary: #d1d5db;
-  --color-text-muted: #9ca3af;
-  --color-background: #0c0a0f;
+  --color-primary-lighter: var(--accent-text);
+  --color-secondary-lighter: var(--surface);
   --color-border: #374151;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: var(--font-body);
+    scroll-padding-top: 72px;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    font-family: var(--font-body);
-    letter-spacing: 0;
-    @apply bg-gradient-to-br from-[var(--color-background)] via-[#110920] to-[var(--color-secondary)] text-[var(--color-text)] min-h-screen;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display);
-  }
-
-  code,
-  pre,
-  kbd,
-  samp {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
     font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: rgba(99, 102, 241, 0.45);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
 @layer components {
   .container-custom {
-    @apply container mx-auto px-3 sm:px-6 lg:px-8 max-w-7xl;
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
   }
 
-  .section-padding {
-    @apply py-6 sm:py-10 lg:py-16;
+  .section {
+    @apply border-t py-14 sm:py-20;
+    border-color: var(--line-soft);
   }
 
-  .section-heading {
-    @apply text-xl sm:text-2xl lg:text-3xl font-bold;
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.4vw, 2.25rem);
+    line-height: 1.1;
+    color: var(--text);
   }
 
-  .heading-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] animate-gradient bg-[length:200%_auto];
+  .section-lede {
+    @apply mt-3 max-w-xl;
+    color: var(--muted);
+    font-size: 13.5px;
   }
 
-  .card {
-    @apply bg-[var(--color-secondary-lighter)] rounded-xl border border-[var(--color-border)] transition-all duration-300;
+  .label {
+    font-size: 12px;
+    color: var(--muted);
   }
 
+  .link {
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-decoration-color: rgba(165, 180, 252, 0.35);
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.15s, color 0.15s;
+  }
+  .link:hover {
+    color: #fff;
+    text-decoration-color: #fff;
+  }
 
   .btn {
-    @apply px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm;
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 font-semibold;
+    font-size: 13px;
+    transition: background-color 0.15s, color 0.15s, transform 0.15s;
   }
-
   .btn-primary {
-    @apply btn bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-darker)] text-white;
+    @apply btn text-white;
+    background: #5356e4; /* a shade under --accent so white text clears 4.5:1 */
+  }
+  .btn-primary:hover {
+    background: #4649d6;
+  }
+  .btn-quiet {
+    @apply btn;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text);
+  }
+  .btn-quiet:hover {
+    background: rgba(255, 255, 255, 0.12);
   }
 
-  .btn-secondary {
-    @apply btn bg-[var(--color-secondary-lighter)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-[var(--color-primary)];
+  /* Squared, filled tag. No stroke. */
+  .tag {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 1px 7px;
+    font-size: 11.5px;
+    line-height: 1.7;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-2);
+  }
+
+  .field {
+    @apply w-full rounded-md px-3.5 py-3;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 14px;
+    font-family: var(--font-mono);
+    transition: border-color 0.15s;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--accent-text);
+  }
+  .field[aria-invalid='true'] {
+    border-color: #f87171;
   }
 }
 
-@layer utilities {
-  .animate-gradient {
-    animation: gradient 5s ease infinite;
-  }
-
-  .animate-float {
-    animation: float 8s ease-in-out infinite;
-  }
-
-  .animate-pulse-soft {
-    animation: pulse-soft 3s ease-in-out infinite;
-  }
-
-  .animate-grain {
-    animation: grain 8s steps(10) infinite;
-  }
-
-  .animate-shimmer {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.06) 50%,
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2.5s ease-in-out infinite;
-  }
-
-  /* Line clamp utilities */
-  .line-clamp-1 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-  }
-
-  .line-clamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-
-  .line-clamp-3 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
-
-  .line-clamp-4 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-  }
+/* Featured work: the screenshot is the object, so it gets the only real motion on the page. */
+.shot {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+  aspect-ratio: 16 / 10;
+}
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.work-card:hover .shot img,
+.work-card:focus-within .shot img {
+  transform: scale(1.025);
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  50% {
-    background-position: 100% 50%;
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes pulse-soft {
-  0%,
-  100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-@keyframes slide-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes grain {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(-5%, -10%);
-  }
-  30% {
-    transform: translate(3%, -15%);
-  }
-  50% {
-    transform: translate(12%, 9%);
-  }
-  80% {
-    transform: translate(9%, 4%);
-  }
-  90% {
-    transform: translate(-1%, 7%);
-  }
-}
-
-/* Hide image hover overlay on touch devices where tap triggers hover */
-@media (pointer: coarse) {
-  .hero-hover-overlay {
-    display: none !important;
-  }
-}
-
-/* ─── Portrait ring — rotating conic-gradient halo ─── */
-.portrait-ring {
-  background: conic-gradient(
-    from 0deg,
-    rgba(99, 102, 241, 0) 0deg,
-    rgba(99, 102, 241, 0.6) 65deg,
-    rgba(34, 211, 238, 0.45) 130deg,
-    rgba(249, 115, 22, 0.2) 200deg,
-    rgba(34, 211, 238, 0.12) 270deg,
-    rgba(99, 102, 241, 0) 315deg,
-    rgba(99, 102, 241, 0) 360deg
-  );
-  animation: ring-spin 9s linear infinite;
-  filter: blur(3px);
-}
-
-@keyframes ring-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* ─── Tech marquee ─── */
-@keyframes tech-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.animate-tech-scroll {
-  animation: tech-scroll 28s linear infinite;
-}
-
-.animate-tech-scroll:hover {
-  animation-play-state: paused;
 }

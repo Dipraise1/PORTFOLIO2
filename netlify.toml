@@ -8,7 +8,7 @@
 # SPA redirects - all routes should serve index.html
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/app.html"
   status = 200
 
 # Headers for security and performance
