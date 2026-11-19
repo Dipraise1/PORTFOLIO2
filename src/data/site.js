@@ -89,27 +89,6 @@ export const SERVICES = [
 
 export const TESTIMONIALS = [
   {
-    name: 'Sarah Chen',
-    role: 'CEO, DeFi Innovations',
-    location: 'San Francisco, USA',
-    text: 'Divine delivered an exceptional DeFi protocol that exceeded our expectations. His expertise in smart contracts and blockchain development is unmatched. The project was completed on time and within budget.',
-    project: 'DeFi yield optimization protocol',
-  },
-  {
-    name: 'Marcus Williams',
-    role: 'CTO, ChainBridge Labs',
-    location: 'Toronto, Canada',
-    text: 'We needed a cross-chain bridge that could handle high throughput securely. Divine architected and delivered a robust solution with thorough testing and clear documentation. Exactly the calibre of Web3 engineer we were looking for.',
-    project: 'Cross-chain bridge protocol',
-  },
-  {
-    name: 'Léa Dubois',
-    role: 'Product Lead, Artbloc NFT',
-    location: 'Paris, France',
-    text: 'Divine built our NFT marketplace from the ground up: smart contracts, IPFS integration and a clean React frontend. Communication was excellent throughout, and the final product launched ahead of schedule.',
-    project: 'NFT marketplace and minting platform',
-  },
-  {
     name: 'Tyler Pret',
     role: 'CEO, Apeit Wallet',
     location: 'Cape Town, South Africa',
