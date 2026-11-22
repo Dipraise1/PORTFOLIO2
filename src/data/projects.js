@@ -69,21 +69,6 @@ export const projects = [
     shot: 'skriva',
   },
   {
-    slug: 'cooking',
-    title: 'Cooking',
-    role: 'Builder',
-    summary: 'An autonomous token sniper for Robinhood Chain and Solana.',
-    description:
-      'Telegram bot, web dashboard and Rust engine. It detects launches, screens them, proposes trades, manages encrypted wallets and protects positions with an emergency guardian.',
-    tech: ['Rust', 'TypeScript', 'Next.js', 'Redis', 'Telegram'],
-    live: 'https://cookingbot.si',
-    kind: 'trading',
-    featured: true,
-    shot: 'cooking',
-  },
-
-  // ── Products ──────────────────────────────────────────────
-  {
     slug: 'rooted',
     title: 'Rooted',
     summary: 'Hair-journey tracker for iOS and Android: routines, reminders, a photo journal and an AI coach.',
