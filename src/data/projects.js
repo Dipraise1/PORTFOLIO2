@@ -68,6 +68,8 @@ export const projects = [
     featured: true,
     shot: 'skriva',
   },
+
+  // ── Products ──────────────────────────────────────────────
   {
     slug: 'rooted',
     title: 'Rooted',
