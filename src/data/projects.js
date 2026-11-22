@@ -28,19 +28,6 @@ export const projects = [
     shot: 'sawa',
   },
   {
-    slug: 'flea',
-    title: 'FLÈA',
-    role: 'Builder',
-    summary: 'A memecoin trading terminal with AI auto-trading across 10 chains.',
-    description:
-      'Web terminal and Telegram bot backed by a Rust execution engine. It screens new launches, trades on rules or on an AI agent, and maps token holders as a bubble graph.',
-    tech: ['Rust', 'Next.js', 'TypeScript', 'Postgres', 'Redis', 'Telegram'],
-    live: 'https://fleatrade.fun',
-    kind: 'trading',
-    featured: true,
-    shot: 'flea',
-  },
-  {
     slug: 'wayatix',
     title: 'WayaTix',
     role: 'Builder',
